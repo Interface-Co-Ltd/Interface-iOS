@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C5B823472913ADCF0021FAF6 /* InterfaceCoLtdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B823462913ADCF0021FAF6 /* InterfaceCoLtdApp.swift */; };
-		C5B823492913ADCF0021FAF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B823482913ADCF0021FAF6 /* ContentView.swift */; };
 		C5B8234B2913ADD00021FAF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B8234A2913ADD00021FAF6 /* Assets.xcassets */; };
 		C5B8234F2913ADD00021FAF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B8234E2913ADD00021FAF6 /* Preview Assets.xcassets */; };
 		C5B823592913ADD10021FAF6 /* InterfaceCoLtdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B823582913ADD10021FAF6 /* InterfaceCoLtdTests.swift */; };
@@ -29,6 +28,7 @@
 		C5B823902913AF1E0021FAF6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8238F2913AF1E0021FAF6 /* MainView.swift */; };
 		C5B823932913AF500021FAF6 /* SwiftUICalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C5B823922913AF500021FAF6 /* SwiftUICalendar */; };
 		C5B823952913AF5D0021FAF6 /* InformationWithSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B823942913AF5D0021FAF6 /* InformationWithSelectionView.swift */; };
+		C5B823972913D0E40021FAF6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B823962913D0E30021FAF6 /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,6 @@
 /* Begin PBXFileReference section */
 		C5B823432913ADCF0021FAF6 /* InterfaceCoLtd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterfaceCoLtd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B823462913ADCF0021FAF6 /* InterfaceCoLtdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceCoLtdApp.swift; sourceTree = "<group>"; };
-		C5B823482913ADCF0021FAF6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C5B8234A2913ADD00021FAF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5B8234C2913ADD00021FAF6 /* InterfaceCoLtd.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InterfaceCoLtd.entitlements; sourceTree = "<group>"; };
 		C5B8234E2913ADD00021FAF6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -74,6 +73,7 @@
 		C5B8238D2913AEE60021FAF6 /* SubCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCalendarView.swift; sourceTree = "<group>"; };
 		C5B8238F2913AF1E0021FAF6 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C5B823942913AF5D0021FAF6 /* InformationWithSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationWithSelectionView.swift; sourceTree = "<group>"; };
+		C5B823962913D0E30021FAF6 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				C5B823462913ADCF0021FAF6 /* InterfaceCoLtdApp.swift */,
-				C5B823482913ADCF0021FAF6 /* ContentView.swift */,
 				C5B8234A2913ADD00021FAF6 /* Assets.xcassets */,
 				C5B8234C2913ADD00021FAF6 /* InterfaceCoLtd.entitlements */,
 				C5B8234D2913ADD00021FAF6 /* Preview Content */,
@@ -199,6 +198,7 @@
 		C5B8238A2913AEA40021FAF6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C5B823962913D0E30021FAF6 /* MainTabView.swift */,
 				C5B8238F2913AF1E0021FAF6 /* MainView.swift */,
 				C5B823942913AF5D0021FAF6 /* InformationWithSelectionView.swift */,
 			);
@@ -357,7 +357,7 @@
 				C5B823862913AE980021FAF6 /* Board.swift in Sources */,
 				C5B8237F2913AE640021FAF6 /* CustomModifier.swift in Sources */,
 				C5B823792913AE460021FAF6 /* ScheduleViewModel.swift in Sources */,
-				C5B823492913ADCF0021FAF6 /* ContentView.swift in Sources */,
+				C5B823972913D0E40021FAF6 /* MainTabView.swift in Sources */,
 				C5B823882913AE980021FAF6 /* Cooperation.swift in Sources */,
 				C5B8238E2913AEE60021FAF6 /* SubCalendarView.swift in Sources */,
 				C5B823762913AE460021FAF6 /* UserViewModel.swift in Sources */,
