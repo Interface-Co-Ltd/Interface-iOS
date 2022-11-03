@@ -3,7 +3,7 @@
 //  PrototypeIF2.0
 //
 //  Created by 김도형 on 2022/09/29.
-//
+//  사용자 데이터의 기능을 제공해주기 위한 view model
 
 import Foundation
 

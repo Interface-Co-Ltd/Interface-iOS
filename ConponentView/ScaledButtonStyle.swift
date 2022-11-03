@@ -3,7 +3,7 @@
 //  PrototypeIF2.0
 //
 //  Created by 김도형 on 2022/09/22.
-//
+//  버튼 클릭 효과 지정
 
 import Foundation
 import SwiftUI

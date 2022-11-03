@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//네비게이션 색 지정 modifier
+//iOS 16부터 지원
 struct VersionedNavigationBarColorModifier: ViewModifier {
     private let color: Color
     
@@ -15,6 +17,7 @@ struct VersionedNavigationBarColorModifier: ViewModifier {
     }
     
     func body(content: Content) -> some View {
+        //iOS 버전 분기
         if #available(iOS 16.0, *) {
             content
                 .toolbarBackground(self.color.opacity(0.8), for: .navigationBar)
@@ -25,6 +28,8 @@ struct VersionedNavigationBarColorModifier: ViewModifier {
     }
 }
 
+//탭바 색 지정 modifier
+//iOS 16부터 지원
 struct VersionedTabBarColorModifier: ViewModifier {
     private let color: Color
     
@@ -33,6 +38,7 @@ struct VersionedTabBarColorModifier: ViewModifier {
     }
     
     func body(content: Content) -> some View {
+        //iOS 버전 분기
         if #available(iOS 16.0, *) {
             content
                 .toolbarBackground(self.color.opacity(0.8), for: .tabBar)
@@ -43,6 +49,7 @@ struct VersionedTabBarColorModifier: ViewModifier {
     }
 }
 
+//sub view 배경 지정 modifier
 struct VersionedSubViewBackgroundModifier: ViewModifier {
     private let color: Color
     
@@ -51,6 +58,7 @@ struct VersionedSubViewBackgroundModifier: ViewModifier {
     }
     
     func body(content: Content) -> some View {
+        //iOS 버전 분기
         if #available(iOS 15.0, *) {
             content
                 .background {
@@ -67,6 +75,7 @@ struct VersionedSubViewBackgroundModifier: ViewModifier {
     }
 }
 
+//검색 기능(보류)
 struct CustomSearchView: ViewModifier {
     @Binding var isSearching: String
     @Binding var boardViewModel: BoardViewModel

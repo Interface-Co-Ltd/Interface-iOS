@@ -3,7 +3,7 @@
 //  PrototypeIF2.0
 //
 //  Created by 김도형 on 2022/10/03.
-//
+//  일정 데이터의 기능을 제공해주기 위한 view model
 
 import Foundation
 import SwiftUI
@@ -39,6 +39,7 @@ class ScheduleViewModel: ObservableObject {
         
         self.subViewSchdules = self.schedule
         
+        //iOS 버전 분기
         if #available(iOS 15, *) {
             subViewSchdules = subViewSchdules.filter {
                 $0.endDate.addingTimeInterval(3600 * 24) > .now && $0.startDate.timeIntervalSinceNow < TimeInterval(3600 * 24 * 7)

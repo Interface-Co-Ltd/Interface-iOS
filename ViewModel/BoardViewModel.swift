@@ -3,7 +3,7 @@
 //  PrototypeIF2.0
 //
 //  Created by 김도형 on 2022/09/27.
-//
+//  게시판 데이터의 기능을 제공해주기 위한 view model
 
 import Foundation
 class BoardViewModel: ObservableObject {
@@ -104,6 +104,7 @@ class BoardViewModel: ObservableObject {
             """
         ]
         
+        //preview를 위한 게시판 데이터 랜덤 생성
         for _ in range {
             if #available(iOS 15.0, *) {
                 cdt = Date.now.addingTimeInterval(TimeInterval(3600 * 24 * Int.random(in: -7..<1) - Int.random(in: 0..<3600 * 24)))
@@ -118,11 +119,13 @@ class BoardViewModel: ObservableObject {
             boardList.append(Board(title: randomTitle[randomIndex], content: randomContent[randomIndex], createdDate: cdt, modifiedDate: mdt, userID: "동기창"))
         }
         
+        //게시판을 날짜 순으로 정렬
         boardList.sort { lhs, rhs in
             return lhs.createdDate > rhs.modifiedDate ? true : false
         }
     }
     
+    //검색기능(보류)
     func filterBoardList(searchhKeyword: String){
         if searchhKeyword == "" {
             filteredBoardList = []

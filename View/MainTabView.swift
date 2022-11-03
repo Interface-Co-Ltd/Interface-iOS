@@ -16,16 +16,19 @@ struct MainTabView: View {
                         Label("메인", systemImage: "house")
                     }
                 
+                //커뮤니티 탭, 추후 지원
 //                CommunityView()
 //                    .tabItem {
 //                        Label("커뮤티니", systemImage: "person.2")
 //                    }
                 
+                //알림내역 탭, 만들면 주석 해제 ㄱ
 //                NotificationHistoryView()
 //                    .tabItem {
 //                        Label("알림내역", systemImage: "bell")
 //                    }
                 
+                //설정 탭, 만들면 주석 해제 ㄱ
 //                MenuView()
 //                    .tabItem {
 //                        if #available(iOS 15.0, *) {

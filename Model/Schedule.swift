@@ -27,9 +27,11 @@ struct Schedule: Identifiable {
         
         self.content = content
         
+        //일정 시작날짜 초기화
         if let date = formatter.date(from: startDate) {
             self.startDate = date
         } else {
+            //iOS 버전 분기
             if #available(iOS 15, *) {
                 self.startDate = .now
             } else {
@@ -37,9 +39,11 @@ struct Schedule: Identifiable {
             }
         }
         
+        //일정 종료날짜 초기화
         if let date = formatter.date(from: endDate) {
             self.endDate = date
         } else {
+            //iOS 버전 분기
             if #available(iOS 15, *) {
                 self.endDate = .now
             } else {
@@ -51,8 +55,10 @@ struct Schedule: Identifiable {
         self.allDay = allDay
     }
     
+    //해당 일정의 기간의 각각의 날짜와 현재 날짜의 날짜 차이 반환
     func fromNowCurrentDate() -> [Int] {
         let nowDate: Date
+        //iOS 버전 분기
         if #available(iOS 15, *) {
             nowDate = Calendar.current.startOfDay(for: .now)
         } else {
@@ -70,6 +76,7 @@ struct Schedule: Identifiable {
         return day
     }
     
+    //일정 시작날짜를 "11/03"형식의 문자열로 반환
     func getStartDateString() -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
@@ -78,6 +85,7 @@ struct Schedule: Identifiable {
         return formatter.string(from: self.startDate)
     }
     
+    //일정 시작날짜를 "11/03"형식의 문자열로 반환
     func getEndDateString() -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")

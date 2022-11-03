@@ -16,6 +16,7 @@ struct Board: Identifiable {
     let modifiedDate: Date
     let userID: String
     
+    //게시판 생성 날짜를 "22/11/03 오후 20:13"형태의 문자열로 반환
     func stringCreatedDate() -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
@@ -24,6 +25,7 @@ struct Board: Identifiable {
         return formatter.string(from: self.createdDate)
     }
     
+    //게시판 수정 날짜를 "22/11/03 오후 20:13"형태의 문자열로 반환
     func stringModifiedDate() -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")

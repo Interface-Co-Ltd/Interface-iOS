@@ -24,6 +24,7 @@ struct MainView: View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: columns) {
+                    //신분증 기능, 만들면 주석 해제 ㄱ
 //                    Button {
 //                        showIDCard.toggle()
 //                    } label: {
@@ -35,6 +36,7 @@ struct MainView: View {
 //                    .padding(.bottom, 10)
 //                    .padding(.vertical)
                     
+                    //게시판 기능, 만들면 주석 해제 ㄱ
 //                    NavigationLink {
 //                        NoticeView(boardViewModel: $boardViewModel)
 //                    } label: {
@@ -53,6 +55,7 @@ struct MainView: View {
                     .buttonStyle(ScaledButtonStyle())
                     .padding(.vertical, 10)
                     
+                    //추천 맛집 기능, 만들면 주석 해제 ㄱ
 //                    NavigationLink {
 //
 //                    } label: {
@@ -82,6 +85,7 @@ struct MainView: View {
             .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
             .background(Color("bkg").ignoresSafeArea())
         }
+        //신분증 시트, 만들면 주석 해제 ㄱ
 //        .sheet(isPresented: $showIDCard) {
 //            IDCardView(user: $userViewModel.currentUser)
 //        }

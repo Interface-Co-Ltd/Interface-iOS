@@ -3,7 +3,7 @@
 //  PrototypeIF2.0
 //
 //  Created by 김도형 on 2022/10/07.
-//
+//  
 
 import Foundation
 import SwiftUI
