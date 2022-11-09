@@ -36,15 +36,17 @@ struct MainView: View {
 //                    .padding(.bottom, 10)
 //                    .padding(.vertical)
                     
-                    //게시판 기능, 만들면 주석 해제 ㄱ
-//                    NavigationLink {
-//                        NoticeView(boardViewModel: $boardViewModel)
-//                    } label: {
-//                        SubNoticeView(boardService: $boardViewModel)
-//                    }
-//                    .buttonStyle(ScaledButtonStyle())
-//                    .foregroundColor(.primary)
-//                    .padding(.vertical, 10)
+                    //게시판 기능
+                    NavigationLink {
+                        //NoticeView(boardViewModel: $boardViewModel)
+                        NoticeView().environmentObject(NoticeModel())
+                    } label: {
+                        //SubNoticeView(boardService: $boardViewModel)
+                        SubNoticeView().environmentObject(NoticeModel())
+                    }
+                    .buttonStyle(ScaledButtonStyle())
+                    .foregroundColor(.primary)
+                    .padding(.vertical, 10)
                     
                     NavigationLink {
                         InformationWithSelectionView(schedule: scheduleViewModel.schedule)
@@ -55,15 +57,16 @@ struct MainView: View {
                     .buttonStyle(ScaledButtonStyle())
                     .padding(.vertical, 10)
                     
-                    //추천 맛집 기능, 만들면 주석 해제 ㄱ
-//                    NavigationLink {
-//
-//                    } label: {
-//                        SubRecommendedRestaurantView()
-//                    }
-//                    .buttonStyle(ScaledButtonStyle())
-//                    .foregroundColor(.primary)
-//                    .padding(.vertical)
+                    //추천 맛집 기능
+                    NavigationLink {
+                        RecommendedRestaurantView()
+                            .environmentObject(RecommendedRestaurantModel())
+                    } label: {
+                        SubRecommendedRestaurantView()
+                    }
+                    .buttonStyle(ScaledButtonStyle())
+                    .foregroundColor(.primary)
+                    .padding(.vertical)
                 }
                 .padding(.horizontal)
             }
