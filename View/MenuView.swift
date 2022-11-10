@@ -35,27 +35,36 @@ struct MenuView: View {
                                 .foregroundColor(.primary)
                                 .confirmationDialog("화면 스타일 선택", isPresented: $showStyleDialog) {
                                     Button("시스템 기본값") {
-                                        displayStyle = .unspecified
                                         currnetDisplayStyle = "시스템 기본값"
                                         
-                                        UIApplication.shared.windows.forEach { window in
-                                            window.overrideUserInterfaceStyle = displayStyle
+                                        withAnimation(.easeInOut) {
+                                            displayStyle = .unspecified
+                                            
+                                            UIApplication.shared.windows.forEach { window in
+                                                window.overrideUserInterfaceStyle = displayStyle
+                                            }
                                         }
                                     }
                                     Button("라이트 모드") {
-                                        displayStyle = .light
                                         currnetDisplayStyle = "라이트 모드"
                                         
-                                        UIApplication.shared.windows.forEach { window in
-                                            window.overrideUserInterfaceStyle = displayStyle
+                                        withAnimation(.easeInOut) {
+                                            displayStyle = .light
+                                            
+                                            UIApplication.shared.windows.forEach { window in
+                                                window.overrideUserInterfaceStyle = displayStyle
+                                            }
                                         }
                                     }
                                     Button("다크 모드") {
-                                        displayStyle = .dark
                                         currnetDisplayStyle = "다크 모드"
                                         
-                                        UIApplication.shared.windows.forEach { window in
-                                            window.overrideUserInterfaceStyle = displayStyle
+                                        withAnimation(.easeInOut) {
+                                            displayStyle = .dark
+
+                                            UIApplication.shared.windows.forEach { window in
+                                                window.overrideUserInterfaceStyle = displayStyle
+                                            }
                                         }
                                     }
                                     
