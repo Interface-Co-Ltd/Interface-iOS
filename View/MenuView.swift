@@ -10,6 +10,9 @@ import SwiftUI
 struct MenuView: View {
     @State private var showStyleDialog = false
     @State private var showLogoutDialog = false
+    
+    //AppStorage로 바꿀 것
+    @State private var currnetDisplayStyle = "시스템 기본값"
     @State private var displayStyle = UIUserInterfaceStyle.unspecified
     
     var body: some View {
@@ -35,6 +38,7 @@ struct MenuView: View {
                                 .confirmationDialog("화면 스타일 선택", isPresented: $showStyleDialog) {
                                     Button("시스템 기본값") {
                                         displayStyle = .unspecified
+                                        currnetDisplayStyle = "시스템 기본값"
                                         
                                         UIApplication.shared.windows.forEach { window in
                                             window.overrideUserInterfaceStyle = displayStyle
@@ -42,6 +46,7 @@ struct MenuView: View {
                                     }
                                     Button("라이트 모드") {
                                         displayStyle = .light
+                                        currnetDisplayStyle = "라이트 모드"
                                         
                                         UIApplication.shared.windows.forEach { window in
                                             window.overrideUserInterfaceStyle = displayStyle
@@ -49,40 +54,68 @@ struct MenuView: View {
                                     }
                                     Button("다크 모드") {
                                         displayStyle = .dark
+                                        currnetDisplayStyle = "다크 모드"
                                         
                                         UIApplication.shared.windows.forEach { window in
                                             window.overrideUserInterfaceStyle = displayStyle
                                         }
                                     }
                                     
-                                    if #available(iOS 15.0, *) {
-                                        Button(role: .cancel) {
-                                            
-                                        } label: {
-                                            Text("취소")
-                                        }
-                                    } else {
-                                        Button {
-                                            
-                                        } label: {
-                                            Text("취소")
-                                        }
+                                    Button(role: .cancel) {
+                                        
+                                    } label: {
+                                        Text("취소")
                                     }
                                     
+                                    Spacer()
+                                    
+                                    Button {
+                                        // 시스템 기본값
+                                    } label: {
+                                        Text(currnetDisplayStyle)
+                                    }.foregroundColor(.secondary)
                                 } message: {
                                     Text("화면 스타일 선택")
                                 }
                             } else {
-                                // Fallback on earlier versions
+                                Text("화면 스타일 설정")
+                                
+                                Spacer()
+                                
+                                Menu {
+                                    Button("시스템 기본값") {
+                                        displayStyle = .unspecified
+                                        currnetDisplayStyle = "시스템 기본값"
+                                        
+                                        UIApplication.shared.windows.forEach { window in
+                                            window.overrideUserInterfaceStyle = displayStyle
+                                        }
+                                    }
+                                    
+                                    Button("라이트 모드") {
+                                        displayStyle = .light
+                                        currnetDisplayStyle = "라이트 모드"
+                                        
+                                        UIApplication.shared.windows.forEach { window in
+                                            window.overrideUserInterfaceStyle = displayStyle
+                                        }
+                                    }
+                                    
+                                    Button("다크 모드") {
+                                        displayStyle = .dark
+                                        currnetDisplayStyle = "다크 모드"
+                                        
+                                        UIApplication.shared.windows.forEach { window in
+                                            window.overrideUserInterfaceStyle = displayStyle
+                                        }
+                                    }
+                                } label: {
+                                    Text(currnetDisplayStyle)
+                                        .foregroundColor(.secondary)
+                                }
                             }
                             
-                            Spacer()
                             
-                            Button {
-                                // 시스템 기본값
-                            } label: {
-                                Text("시스템 기본값")
-                            }.foregroundColor(.secondary)
                         }
                         
                         Button {
@@ -121,22 +154,7 @@ struct MenuView: View {
                             Text("로그아웃")
                         }
                         .foregroundColor(Color.red)
-                        /*.confirmationDialog("로그아웃", isPresented: $showLogoutDialog) {
-                            Button(role: .destructive) {
-                                
-                            } label: {
-                                Text("로그아웃")
-                            }
-                            
-                            Button(role: .cancel) {
-                                
-                            } label: {
-                                Text("취소")
-                            }
-                            
-                        } message: {
-                            Text("로그아웃 하시겠습니까?")
-                        }*/
+                        .modifier(VersionedLogoutButtonOnMenu(showLogoutDialog: $showLogoutDialog))
                     } header: {
                         Text("계정")
                     }.listRowBackground(Color("sub-view-bkg-accent"))
