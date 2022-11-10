@@ -41,10 +41,11 @@ struct RecommendedRestaurantCell: View {
         }
         .frame(width: UIScreen.main.bounds.size.width - 80)
         .padding(20)
+        .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg")))
         
-        .background(Color(.sRGB, red: 220.0/255.0, green: 226.0/255.0, blue: 240.0/255.0, opacity: 1.0))
-        .cornerRadius(15)
-        .shadow(radius: 1)
+//        .background(Color(.sRGB, red: 220.0/255.0, green: 226.0/255.0, blue: 240.0/255.0, opacity: 1.0))
+//        .cornerRadius(15)
+//        .shadow(radius: 1)
         
     }
 }

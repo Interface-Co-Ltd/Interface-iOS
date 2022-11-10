@@ -10,6 +10,7 @@ import SwiftUI
 struct MenuView: View {
     @State private var showStyleDialog = false
     @State private var showLogoutDialog = false
+    @State private var displayStyle = UIUserInterfaceStyle.unspecified
     
     var body: some View {
         NavigationView {
@@ -23,6 +24,57 @@ struct MenuView: View {
                         
                         
                         HStack {
+                            if #available(iOS 15.0, *) {
+                                Button {
+                                    // 화면 스타일
+                                    showStyleDialog = true
+                                } label: {
+                                    Text("화면 스타일")
+                                }
+                                .foregroundColor(.primary)
+                                .confirmationDialog("화면 스타일 선택", isPresented: $showStyleDialog) {
+                                    Button("시스템 기본값") {
+                                        displayStyle = .unspecified
+                                        
+                                        UIApplication.shared.windows.forEach { window in
+                                            window.overrideUserInterfaceStyle = displayStyle
+                                        }
+                                    }
+                                    Button("라이트 모드") {
+                                        displayStyle = .light
+                                        
+                                        UIApplication.shared.windows.forEach { window in
+                                            window.overrideUserInterfaceStyle = displayStyle
+                                        }
+                                    }
+                                    Button("다크 모드") {
+                                        displayStyle = .dark
+                                        
+                                        UIApplication.shared.windows.forEach { window in
+                                            window.overrideUserInterfaceStyle = displayStyle
+                                        }
+                                    }
+                                    
+                                    if #available(iOS 15.0, *) {
+                                        Button(role: .cancel) {
+                                            
+                                        } label: {
+                                            Text("취소")
+                                        }
+                                    } else {
+                                        Button {
+                                            
+                                        } label: {
+                                            Text("취소")
+                                        }
+                                    }
+                                    
+                                } message: {
+                                    Text("화면 스타일 선택")
+                                }
+                            } else {
+                                // Fallback on earlier versions
+                            }
                             Button {
                                 // 화면 스타일
                                 showStyleDialog = true
@@ -70,10 +122,11 @@ struct MenuView: View {
                             // 잠금 설정
                         } label: {
                             Text("잠금 설정")
-                        }.foregroundColor(.black)
+                        }.foregroundColor(.primary)
                     } header: {
                         Text("앱 설정")
-                    }.listRowBackground(Color(.sRGB, red: 220.0/255.0, green: 226.0/255.0, blue: 240.0/255.0, opacity: 1.0))
+                    }
+                    .listRowBackground(Color("sub-view-bkg-accent"))
                     
                     
                     Section() {
@@ -81,17 +134,17 @@ struct MenuView: View {
                             // 내 정보 변경
                         } label: {
                             Text("내 정보 변경")
-                        }.foregroundColor(.black)
+                        }.foregroundColor(.primary)
                         
                         Button {
                             // 비밀번호 변경
                         } label: {
                             Text("비밀번호 변경")
-                        }.foregroundColor(.black)
+                        }.foregroundColor(.primary)
                     } header: {
                         Text("내 정보")
-                    }.listRowBackground(Color(.sRGB, red: 220.0/255.0, green: 226.0/255.0, blue: 240.0/255.0, opacity: 1.0))
-                    
+                    }
+                    .listRowBackground(Color("sub-view-bkg-accent"))
                     
                     Section() {
                         Button {
@@ -119,7 +172,7 @@ struct MenuView: View {
                         }*/
                     } header: {
                         Text("계정")
-                    }.listRowBackground(Color(.sRGB, red: 220.0/255.0, green: 226.0/255.0, blue: 240.0/255.0, opacity: 1.0))
+                    }.listRowBackground(Color("sub-view-bkg-accent"))
                 }
                 //.scrollContentBackground(.hidden)
                 .listStyle(.insetGrouped)
