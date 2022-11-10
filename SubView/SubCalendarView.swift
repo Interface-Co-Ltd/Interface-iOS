@@ -60,7 +60,7 @@ struct SubCalendarView: View {
                         ForEach(schedule) { schdl in
                             HStack {
                                 VStack(alignment: .trailing, spacing: 2) {
-                                    Image(schdl.scheduleType == "세종대학교" ? "sejong-univ-logo" : "interface-logo")
+                                    Image(schdl.scheduleType == .sejong ? "sejong-univ-logo" : "interface-logo")
                                         .resizable()
                                         .frame(width: 20, height: 20)
                                         .opacity(0.7)

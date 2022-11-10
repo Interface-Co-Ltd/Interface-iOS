@@ -8,18 +8,24 @@
 import Foundation
 
 struct Schedule: Identifiable {
+    enum ScheduleType {
+        case interface
+        case sejong
+    }
+    
     var id = UUID()
     
-    let scheduleType: String
+    let scheduleType: ScheduleType
     let content: String
     let startDate: Date
     let endDate: Date
     let place: String
     let allDay: Bool
     
+    
     init(content: String, startDate: String, endDate: String, place: String, allDay: Bool, scheduleType: String) {
         
-        self.scheduleType = scheduleType
+        self.scheduleType = scheduleType == "인터페이스" ? .interface : .sejong
         
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")

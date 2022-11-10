@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     @State private var showIDCard = false
-    @State private var searchKeyword = ""
     @State private var isSearching = false
     
     @State private var boardViewModel = BoardViewModel(range: 0..<10)
@@ -49,7 +48,7 @@ struct MainView: View {
                     .padding(.vertical, 10)
                     
                     NavigationLink {
-                        InformationWithSelectionView(schedule: scheduleViewModel.schedule)
+                        InformationWithSelectionView(schedule: scheduleViewModel.scheduleList)
                     } label: {
                         SubCalendarView(schedule: $scheduleViewModel.subViewSchdules)
                     }
@@ -74,7 +73,9 @@ struct MainView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Button {
-                            
+                            withAnimation(.easeInOut) {
+                                isSearching = true
+                            }
                         } label: {
                             Image(systemName: "magnifyingglass")
                                 .font(.title2)
@@ -88,6 +89,7 @@ struct MainView: View {
             .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
             .background(Color("bkg").ignoresSafeArea())
         }
+        .modifier(VersionedSearchViewOverlayModifier(isSearching: $isSearching, searchView: SearchView(isSearching: $isSearching, boardList: $boardViewModel.boardList, scheduleList: $scheduleViewModel.scheduleList)))
         //신분증 시트, 만들면 주석 해제 ㄱ
 //        .sheet(isPresented: $showIDCard) {
 //            IDCardView(user: $userViewModel.currentUser)

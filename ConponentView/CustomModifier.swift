@@ -107,20 +107,47 @@ struct VersionedLogoutButtonOnMenu: ViewModifier {
     }
 }
 
-//검색 기능(보류)
-struct CustomSearchView: ViewModifier {
-    @Binding var isSearching: String
-    @Binding var boardViewModel: BoardViewModel
-    @Binding var appearSearchView: Any
+struct VersionedSearchViewOverlayModifier: ViewModifier {
+    @Binding var isSearching: Bool
+    
+    var searchView: SearchView
     
     func body(content: Content) -> some View {
         if #available(iOS 15.0, *) {
             content
                 .overlay {
-//                    appearSearchView
+                    if isSearching {
+                        searchView
+                    }
                 }
         } else {
             content
         }
     }
 }
+
+//검색 기능(보류)
+//struct CustomSearchView: ViewModifier {
+//    @Binding var keyword: String
+//    @Binding var matchedBoardList: [Board]
+//    @Binding var matchedScheduleList: [Schedule]
+//    @Binding var boardList: [Board]
+//    @Binding var scheduleList: [Schedule]
+//
+//    func body(content: Content) -> some View {
+//        if #available(iOS 15.0, *) {
+//            content
+//                .searchable(text: $keyword, prompt: "검색어를 입력하세요") {
+//
+//                }
+//                .onSubmit(of: .search) {
+//                    if
+//                    if keyword.count > 0 {
+//                        matchedBoardList =
+//                    }
+//                }
+//        } else {
+//            content
+//        }
+//    }
+//}

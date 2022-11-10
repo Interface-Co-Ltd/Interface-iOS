@@ -35,7 +35,7 @@ struct InformationWithSelectionView: View {
                     informations[date] = []
                 }
                 
-                informations[date]?.append((scheduleDate.content, scheduleDate.scheduleType == "세종대학교" ? Color(red: 0.986, green: 0.107, blue: 0.281) : Color(hue: 0.581, saturation: 0.728, brightness: 0.98)))
+                informations[date]?.append((scheduleDate.content, scheduleDate.scheduleType == .sejong ? Color(red: 0.986, green: 0.107, blue: 0.281) : Color(hue: 0.581, saturation: 0.728, brightness: 0.98)))
                 date = YearMonthDay.current
             }
         }
@@ -174,6 +174,6 @@ extension YearMonth {
 
 struct InformationWithSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        InformationWithSelectionView(schedule: ScheduleViewModel().schedule)
+        InformationWithSelectionView(schedule: ScheduleViewModel().scheduleList)
     }
 }

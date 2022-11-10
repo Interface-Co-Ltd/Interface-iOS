@@ -52,7 +52,7 @@ struct MenuView: View {
                                             }
                                         }
                                     }
-                                    Button("다크 모드") { 
+                                    Button("다크 모드") {
                                         withAnimation(.easeInOut) {
                                             displayStyle = .dark
                                             currnetDisplayStyle = "다크 모드"
