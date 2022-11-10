@@ -67,16 +67,18 @@ struct MenuView: View {
                                         Text("취소")
                                     }
                                     
-                                    Spacer()
-                                    
-                                    Button {
-                                        // 시스템 기본값
-                                    } label: {
-                                        Text(currnetDisplayStyle)
-                                    }.foregroundColor(.secondary)
                                 } message: {
                                     Text("화면 스타일 선택")
                                 }
+                                
+                                Spacer()
+                                
+                                Button {
+                                    // 시스템 기본값
+                                } label: {
+                                    Text(currnetDisplayStyle)
+                                }.foregroundColor(.secondary)
+                                
                             } else {
                                 Text("화면 스타일 설정")
                                 
