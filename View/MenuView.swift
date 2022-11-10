@@ -75,39 +75,6 @@ struct MenuView: View {
                             } else {
                                 // Fallback on earlier versions
                             }
-                            Button {
-                                // 화면 스타일
-                                showStyleDialog = true
-                            } label: {
-                                Text("화면 스타일")
-                            }
-                            .foregroundColor(.black)
-                            /*.confirmationDialog("화면 스타일 선택", isPresented: $showStyleDialog) {
-                                Button("시스템 기본값") {
-                                    UIApplication.shared.windows.forEach { window in
-                                        window.overrideUserInterfaceStyle = .unspecified
-                                    }
-                                }
-                                Button("라이트 모드") {
-                                    UIApplication.shared.windows.forEach { window in
-                                        window.overrideUserInterfaceStyle = .light
-                                    }
-                                }
-                                Button("다크 모드") {
-                                    UIApplication.shared.windows.forEach { window in
-                                        window.overrideUserInterfaceStyle = .dark
-                                    }
-                                }
-                                
-                                Button(role: .cancel) {
-                                    
-                                } label: {
-                                    Text("취소")
-                                }
-                                
-                            } message: {
-                                Text("화면 스타일 선택")
-                            }*/
                             
                             Spacer()
                             
@@ -174,9 +141,13 @@ struct MenuView: View {
                         Text("계정")
                     }.listRowBackground(Color("sub-view-bkg-accent"))
                 }
-                //.scrollContentBackground(.hidden)
-                .listStyle(.insetGrouped)
             }
+            .listStyle(.insetGrouped)
+            .onAppear() {
+                UITableView.appearance().backgroundColor = .clear
+            }
+            .background(Color("bkg").ignoresSafeArea())
+            .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
             .navigationTitle("메뉴")
             
         }
