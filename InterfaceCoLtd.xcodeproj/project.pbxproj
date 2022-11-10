@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01065CA8291C17320067C9AC /* MenuNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065C9F291C17310067C9AC /* MenuNotificationView.swift */; };
+		01065CA9291C17320067C9AC /* RecommendedRestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CA0291C17310067C9AC /* RecommendedRestaurantCell.swift */; };
+		01065CAA291C17320067C9AC /* RecommendedRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CA1291C17310067C9AC /* RecommendedRestaurantView.swift */; };
+		01065CAB291C17320067C9AC /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CA2291C17310067C9AC /* NoticeCell.swift */; };
+		01065CAC291C17320067C9AC /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CA3291C17310067C9AC /* NoticeView.swift */; };
+		01065CAD291C17320067C9AC /* NoticeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CA4291C17320067C9AC /* NoticeDetailView.swift */; };
+		01065CAE291C17320067C9AC /* RecommendedRestaurantCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CA5291C17320067C9AC /* RecommendedRestaurantCategoryView.swift */; };
+		01065CAF291C17320067C9AC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CA6291C17320067C9AC /* MenuView.swift */; };
+		01065CB0291C17320067C9AC /* RecommendedRestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CA7291C17320067C9AC /* RecommendedRestaurantDetailView.swift */; };
+		01065CB5291C173B0067C9AC /* RecommendedRestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CB1291C173A0067C9AC /* RecommendedRestaurantModel.swift */; };
+		01065CB6291C173B0067C9AC /* RecommendedRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CB2291C173B0067C9AC /* RecommendedRestaurant.swift */; };
+		01065CB7291C173B0067C9AC /* NoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CB3291C173B0067C9AC /* NoticeModel.swift */; };
+		01065CB8291C173B0067C9AC /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CB4291C173B0067C9AC /* Notice.swift */; };
+		01065CBA291C215F0067C9AC /* SubRecommendedRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CB9291C215F0067C9AC /* SubRecommendedRestaurantView.swift */; };
+		01065CBC291C244E0067C9AC /* SubNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CBB291C244E0067C9AC /* SubNoticeView.swift */; };
+		C54A44D4291AA22700DAF5FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C54A44D3291AA22700DAF5FB /* LaunchScreen.storyboard */; };
 		C5B823472913ADCF0021FAF6 /* InterfaceCoLtdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B823462913ADCF0021FAF6 /* InterfaceCoLtdApp.swift */; };
 		C5B8234B2913ADD00021FAF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B8234A2913ADD00021FAF6 /* Assets.xcassets */; };
 		C5B8234F2913ADD00021FAF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B8234E2913ADD00021FAF6 /* Preview Assets.xcassets */; };
@@ -49,6 +65,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01065C9F291C17310067C9AC /* MenuNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNotificationView.swift; sourceTree = "<group>"; };
+		01065CA0291C17310067C9AC /* RecommendedRestaurantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedRestaurantCell.swift; sourceTree = "<group>"; };
+		01065CA1291C17310067C9AC /* RecommendedRestaurantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedRestaurantView.swift; sourceTree = "<group>"; };
+		01065CA2291C17310067C9AC /* NoticeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
+		01065CA3291C17310067C9AC /* NoticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
+		01065CA4291C17320067C9AC /* NoticeDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailView.swift; sourceTree = "<group>"; };
+		01065CA5291C17320067C9AC /* RecommendedRestaurantCategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedRestaurantCategoryView.swift; sourceTree = "<group>"; };
+		01065CA6291C17320067C9AC /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		01065CA7291C17320067C9AC /* RecommendedRestaurantDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedRestaurantDetailView.swift; sourceTree = "<group>"; };
+		01065CB1291C173A0067C9AC /* RecommendedRestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedRestaurantModel.swift; sourceTree = "<group>"; };
+		01065CB2291C173B0067C9AC /* RecommendedRestaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedRestaurant.swift; sourceTree = "<group>"; };
+		01065CB3291C173B0067C9AC /* NoticeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeModel.swift; sourceTree = "<group>"; };
+		01065CB4291C173B0067C9AC /* Notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
+		01065CB9291C215F0067C9AC /* SubRecommendedRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubRecommendedRestaurantView.swift; sourceTree = "<group>"; };
+		01065CBB291C244E0067C9AC /* SubNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubNoticeView.swift; sourceTree = "<group>"; };
+		C54A44D3291AA22700DAF5FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C54A44D5291AA63000DAF5FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C5B823432913ADCF0021FAF6 /* InterfaceCoLtd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterfaceCoLtd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B823462913ADCF0021FAF6 /* InterfaceCoLtdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceCoLtdApp.swift; sourceTree = "<group>"; };
 		C5B8234A2913ADD00021FAF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,6 +107,7 @@
 		C5B8238F2913AF1E0021FAF6 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C5B823942913AF5D0021FAF6 /* InformationWithSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationWithSelectionView.swift; sourceTree = "<group>"; };
 		C5B823962913D0E30021FAF6 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		C5EB7AA82915647E00B786DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,10 +164,12 @@
 		C5B823452913ADCF0021FAF6 /* InterfaceCoLtd */ = {
 			isa = PBXGroup;
 			children = (
+				C5EB7AA82915647E00B786DE /* Info.plist */,
 				C5B823462913ADCF0021FAF6 /* InterfaceCoLtdApp.swift */,
 				C5B8234A2913ADD00021FAF6 /* Assets.xcassets */,
 				C5B8234C2913ADD00021FAF6 /* InterfaceCoLtd.entitlements */,
 				C5B8234D2913ADD00021FAF6 /* Preview Content */,
+				C54A44D3291AA22700DAF5FB /* LaunchScreen.storyboard */,
 			);
 			path = InterfaceCoLtd;
 			sourceTree = "<group>";
@@ -149,6 +185,7 @@
 		C5B823572913ADD00021FAF6 /* InterfaceCoLtdTests */ = {
 			isa = PBXGroup;
 			children = (
+				C54A44D5291AA63000DAF5FB /* Info.plist */,
 				C5B823582913ADD10021FAF6 /* InterfaceCoLtdTests.swift */,
 			);
 			path = InterfaceCoLtdTests;
@@ -170,6 +207,8 @@
 				C5B823732913AE460021FAF6 /* CooperationViewModel.swift */,
 				C5B823752913AE460021FAF6 /* ScheduleViewModel.swift */,
 				C5B823722913AE460021FAF6 /* UserViewModel.swift */,
+				01065CB3291C173B0067C9AC /* NoticeModel.swift */,
+				01065CB1291C173A0067C9AC /* RecommendedRestaurantModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -191,6 +230,8 @@
 				C5B823842913AE970021FAF6 /* Cooperation.swift */,
 				C5B823832913AE970021FAF6 /* Schedule.swift */,
 				C5B823852913AE980021FAF6 /* User.swift */,
+				01065CB4291C173B0067C9AC /* Notice.swift */,
+				01065CB2291C173B0067C9AC /* RecommendedRestaurant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +242,15 @@
 				C5B823962913D0E30021FAF6 /* MainTabView.swift */,
 				C5B8238F2913AF1E0021FAF6 /* MainView.swift */,
 				C5B823942913AF5D0021FAF6 /* InformationWithSelectionView.swift */,
+				01065C9F291C17310067C9AC /* MenuNotificationView.swift */,
+				01065CA6291C17320067C9AC /* MenuView.swift */,
+				01065CA3291C17310067C9AC /* NoticeView.swift */,
+				01065CA2291C17310067C9AC /* NoticeCell.swift */,
+				01065CA4291C17320067C9AC /* NoticeDetailView.swift */,
+				01065CA1291C17310067C9AC /* RecommendedRestaurantView.swift */,
+				01065CA0291C17310067C9AC /* RecommendedRestaurantCell.swift */,
+				01065CA7291C17320067C9AC /* RecommendedRestaurantDetailView.swift */,
+				01065CA5291C17320067C9AC /* RecommendedRestaurantCategoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,6 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				C5B8238D2913AEE60021FAF6 /* SubCalendarView.swift */,
+				01065CBB291C244E0067C9AC /* SubNoticeView.swift */,
+				01065CB9291C215F0067C9AC /* SubRecommendedRestaurantView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -323,6 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C54A44D4291AA22700DAF5FB /* LaunchScreen.storyboard in Resources */,
 				C5B8234F2913ADD00021FAF6 /* Preview Assets.xcassets in Resources */,
 				C5B8234B2913ADD00021FAF6 /* Assets.xcassets in Resources */,
 			);
@@ -349,22 +402,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01065CA9291C17320067C9AC /* RecommendedRestaurantCell.swift in Sources */,
+				01065CAF291C17320067C9AC /* MenuView.swift in Sources */,
 				C5B823952913AF5D0021FAF6 /* InformationWithSelectionView.swift in Sources */,
 				C5B823892913AE980021FAF6 /* User.swift in Sources */,
+				01065CBA291C215F0067C9AC /* SubRecommendedRestaurantView.swift in Sources */,
 				C5B823772913AE460021FAF6 /* CooperationViewModel.swift in Sources */,
 				C5B823802913AE640021FAF6 /* ScaledButtonStyle.swift in Sources */,
+				01065CB8291C173B0067C9AC /* Notice.swift in Sources */,
+				01065CB5291C173B0067C9AC /* RecommendedRestaurantModel.swift in Sources */,
 				C5B823872913AE980021FAF6 /* Schedule.swift in Sources */,
+				01065CAE291C17320067C9AC /* RecommendedRestaurantCategoryView.swift in Sources */,
+				01065CAC291C17320067C9AC /* NoticeView.swift in Sources */,
 				C5B823862913AE980021FAF6 /* Board.swift in Sources */,
+				01065CB7291C173B0067C9AC /* NoticeModel.swift in Sources */,
 				C5B8237F2913AE640021FAF6 /* CustomModifier.swift in Sources */,
+				01065CAD291C17320067C9AC /* NoticeDetailView.swift in Sources */,
 				C5B823792913AE460021FAF6 /* ScheduleViewModel.swift in Sources */,
+				01065CAB291C17320067C9AC /* NoticeCell.swift in Sources */,
+				01065CAA291C17320067C9AC /* RecommendedRestaurantView.swift in Sources */,
 				C5B823972913D0E40021FAF6 /* MainTabView.swift in Sources */,
+				01065CB0291C17320067C9AC /* RecommendedRestaurantDetailView.swift in Sources */,
 				C5B823882913AE980021FAF6 /* Cooperation.swift in Sources */,
 				C5B8238E2913AEE60021FAF6 /* SubCalendarView.swift in Sources */,
 				C5B823762913AE460021FAF6 /* UserViewModel.swift in Sources */,
+				01065CA8291C17320067C9AC /* MenuNotificationView.swift in Sources */,
 				C5B823472913ADCF0021FAF6 /* InterfaceCoLtdApp.swift in Sources */,
 				C5B823782913AE460021FAF6 /* BoardViewModel.swift in Sources */,
 				C5B823902913AF1E0021FAF6 /* MainView.swift in Sources */,
+				01065CBC291C244E0067C9AC /* SubNoticeView.swift in Sources */,
 				C5B8237E2913AE640021FAF6 /* DrawingCheckmarkView.swift in Sources */,
+				01065CB6291C173B0067C9AC /* RecommendedRestaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,16 +587,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"InterfaceCoLtd/Preview Content\"";
-				DEVELOPMENT_TEAM = FNC65X95VM;
+				DEVELOPMENT_TEAM = 5BH8J2FT32;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InterfaceCoLtd/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "인터페이스";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -537,7 +609,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.InterfaceiOSTeam.InterfaceCoLtd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -557,16 +629,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"InterfaceCoLtd/Preview Content\"";
-				DEVELOPMENT_TEAM = FNC65X95VM;
+				DEVELOPMENT_TEAM = 5BH8J2FT32;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InterfaceCoLtd/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "인터페이스";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -575,7 +651,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.InterfaceiOSTeam.InterfaceCoLtd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -595,6 +671,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FNC65X95VM;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InterfaceCoLtdTests/Info.plist;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
@@ -618,6 +697,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FNC65X95VM;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InterfaceCoLtdTests/Info.plist;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
