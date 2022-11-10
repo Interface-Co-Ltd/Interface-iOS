@@ -100,10 +100,9 @@ struct VersionedLogoutButtonOnMenu: ViewModifier {
         } else {
             content
                 .alert(isPresented: $showLogoutDialog) {
-//                    Alert(title: Text("로그아웃 하시겠습니까?"), message: Text(""), dismissButton: .destructive(Text("로그아웃")))
                     Alert(title: Text("로그아웃 하시겠습니까?"), primaryButton: .destructive(Text("로그아웃")), secondaryButton: .cancel(Text("취소")))
                 }
-
+            
         }
     }
 }

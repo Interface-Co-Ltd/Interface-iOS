@@ -20,11 +20,9 @@ struct MenuView: View {
             VStack {
                 List{
                     Section() {
-                        
                         NavigationLink("알림 설정") {
                             MenuNotificationView()
                         }
-                        
                         
                         HStack {
                             if #available(iOS 15.0, *) {
@@ -84,6 +82,7 @@ struct MenuView: View {
                                 
                                 Spacer()
                                 
+                                //ios14버전 시뮬레이터 깔아야함
                                 Menu {
                                     Button("시스템 기본값") {
                                         displayStyle = .unspecified
