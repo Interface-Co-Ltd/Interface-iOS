@@ -29,14 +29,14 @@ struct MainTabView: View {
 //                    }
                 
                 //설정 탭, 만들면 주석 해제 ㄱ
-//                MenuView()
-//                    .tabItem {
-//                        if #available(iOS 15.0, *) {
-//                            Label("메뉴", systemImage: "line.3.horizontal")
-//                        } else {
-//                            Label("메뉴", systemImage: "list.bullet")
-//                        }
-//                    }
+                MenuView()
+                    .tabItem {
+                        if #available(iOS 15.0, *) {
+                            Label("메뉴", systemImage: "line.3.horizontal")
+                        } else {
+                            Label("메뉴", systemImage: "list.bullet")
+                        }
+                    }
             }
             .modifier(VersionedTabBarColorModifier(color: Color("bkg")))
         }
