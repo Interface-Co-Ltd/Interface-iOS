@@ -107,18 +107,11 @@ struct VersionedLogoutButtonOnMenu: ViewModifier {
     }
 }
 
-//검색 기능(보류)
-struct CustomSearchView: ViewModifier {
-    @Binding var isSearching: String
-    @Binding var boardViewModel: BoardViewModel
-    @Binding var appearSearchView: Any
-    
+struct VersionedUltraThinMaterialEffect: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOS 15.0, *) {
             content
-                .overlay {
-//                    appearSearchView
-                }
+                .background(.ultraThinMaterial)
         } else {
             content
         }

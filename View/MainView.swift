@@ -9,12 +9,11 @@ import SwiftUI
 
 struct MainView: View {
     @State private var showIDCard = false
-    @State private var searchKeyword = ""
     @State private var isSearching = false
     
-    @State private var boardViewModel = BoardViewModel(range: 0..<10)
-    @State private var userViewModel = UserViewModel(serverId: "ddonguri", serverPassword: "1234")
-    @State private var scheduleViewModel = ScheduleViewModel()
+    @EnvironmentObject var boardViewModel: BoardViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     
     private let columns = [
         GridItem(.adaptive(minimum: 350, maximum: .infinity), spacing: nil, alignment: .top)
@@ -49,9 +48,9 @@ struct MainView: View {
                     .padding(.vertical, 10)
                     
                     NavigationLink {
-                        InformationWithSelectionView(schedule: scheduleViewModel.schedule)
+                        InformationWithSelectionView(schedule: scheduleViewModel.scheduleList)
                     } label: {
-                        SubCalendarView(schedule: $scheduleViewModel.subViewSchdules)
+                        SubCalendarView()
                     }
                     .foregroundColor(.primary)
                     .buttonStyle(ScaledButtonStyle())
@@ -74,7 +73,9 @@ struct MainView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Button {
-                            
+                            withAnimation(.easeInOut) {
+                                isSearching = true
+                            }
                         } label: {
                             Image(systemName: "magnifyingglass")
                                 .font(.title2)
@@ -88,6 +89,9 @@ struct MainView: View {
             .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
             .background(Color("bkg").ignoresSafeArea())
         }
+        .fullScreenCover(isPresented: $isSearching) {
+            SearchView(isSearching: $isSearching)
+        }
         //신분증 시트, 만들면 주석 해제 ㄱ
 //        .sheet(isPresented: $showIDCard) {
 //            IDCardView(user: $userViewModel.currentUser)
@@ -98,5 +102,8 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(BoardViewModel(range: 0..<10))
+            .environmentObject(UserViewModel(serverId: "ddonguri", serverPassword: "1234"))
+            .environmentObject(ScheduleViewModel())
     }
 }
