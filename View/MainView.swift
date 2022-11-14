@@ -89,7 +89,9 @@ struct MainView: View {
             .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
             .background(Color("bkg").ignoresSafeArea())
         }
-        .modifier(VersionedSearchViewOverlayModifier(isSearching: $isSearching, searchView: SearchView(isSearching: $isSearching, boardList: $boardViewModel.boardList, scheduleList: $scheduleViewModel.scheduleList)))
+        .fullScreenCover(isPresented: $isSearching) {
+            SearchView(isSearching: $isSearching, boardList: $boardViewModel.boardList, scheduleList: $scheduleViewModel.scheduleList)
+        }
         //신분증 시트, 만들면 주석 해제 ㄱ
 //        .sheet(isPresented: $showIDCard) {
 //            IDCardView(user: $userViewModel.currentUser)

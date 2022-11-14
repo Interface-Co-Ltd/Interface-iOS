@@ -58,7 +58,7 @@ struct SubNoticeView: View {
                 
             }
             .padding(.all, 25)
-            .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg")))
+            .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg-accent")))
         }
     }
 }

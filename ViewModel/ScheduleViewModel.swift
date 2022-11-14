@@ -27,7 +27,9 @@ class ScheduleViewModel: ObservableObject {
         
         scheduleList.append(Schedule(content: "학생예비군", startDate: "22/11/01", endDate: "22/11/04", place: "없음", allDay: true, scheduleType: "세종대학교"))
         
-//        schedule.append(Schedule(content: "축제", startDate: "22/11/02", endDate: "22/11/04", place: "없음", allDay: true, scheduleType: "세종대학교"))
+        scheduleList.append(Schedule(content: "인터페이스 창립제", startDate: "22/11/19", endDate: "22/11/19", place: "없음", allDay: true, scheduleType: "인터페이스"))
+        
+        scheduleList.append(Schedule(content: "프로그래밍 전시회", startDate: "22/12/01", endDate: "22/12/02", place: "없음", allDay: true, scheduleType: "인터페이스"))
         
         scheduleList.append(Schedule(content: "계절학기 수강신청", startDate: "22/12/01", endDate: "22/12/05", place: "없음", allDay: true, scheduleType: "세종대학교"))
         

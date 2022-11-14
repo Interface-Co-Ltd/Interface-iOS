@@ -64,13 +64,11 @@ struct InformationWithSelectionView: View {
                                 }
                                 .padding(4)
                             } else {
-                                
                                 Text("\(date.day)")
                                     .font(.system(size: 10, weight: .light, design: .default))
                                     .opacity(date.isFocusYearMonth == true ? 1 : 0.4)
                                     .foregroundColor(getColor(date))
                                     .padding(4)
-                                
                             }
                             
                             if let infos = informations[date] {
