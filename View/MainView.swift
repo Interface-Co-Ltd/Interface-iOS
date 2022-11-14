@@ -11,9 +11,9 @@ struct MainView: View {
     @State private var showIDCard = false
     @State private var isSearching = false
     
-    @State private var boardViewModel = BoardViewModel(range: 0..<10)
-    @State private var userViewModel = UserViewModel(serverId: "ddonguri", serverPassword: "1234")
-    @State private var scheduleViewModel = ScheduleViewModel()
+    @EnvironmentObject var boardViewModel: BoardViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     
     private let columns = [
         GridItem(.adaptive(minimum: 350, maximum: .infinity), spacing: nil, alignment: .top)
@@ -50,7 +50,7 @@ struct MainView: View {
                     NavigationLink {
                         InformationWithSelectionView(schedule: scheduleViewModel.scheduleList)
                     } label: {
-                        SubCalendarView(schedule: $scheduleViewModel.subViewSchdules)
+                        SubCalendarView()
                     }
                     .foregroundColor(.primary)
                     .buttonStyle(ScaledButtonStyle())
@@ -90,7 +90,7 @@ struct MainView: View {
             .background(Color("bkg").ignoresSafeArea())
         }
         .fullScreenCover(isPresented: $isSearching) {
-            SearchView(isSearching: $isSearching, boardList: $boardViewModel.boardList, scheduleList: $scheduleViewModel.scheduleList)
+            SearchView(isSearching: $isSearching)
         }
         //신분증 시트, 만들면 주석 해제 ㄱ
 //        .sheet(isPresented: $showIDCard) {
@@ -102,5 +102,8 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(BoardViewModel(range: 0..<10))
+            .environmentObject(UserViewModel(serverId: "ddonguri", serverPassword: "1234"))
+            .environmentObject(ScheduleViewModel())
     }
 }

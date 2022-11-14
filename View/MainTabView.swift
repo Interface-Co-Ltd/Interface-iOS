@@ -46,5 +46,8 @@ struct MainTabView: View {
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()
+            .environmentObject(BoardViewModel(range: 0..<10))
+            .environmentObject(UserViewModel(serverId: "ddonguri", serverPassword: "1234"))
+            .environmentObject(ScheduleViewModel())
     }
 }

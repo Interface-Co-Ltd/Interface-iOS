@@ -15,8 +15,8 @@ enum SearchType {
 
 struct SearchView: View {
     @Binding var isSearching: Bool
-    @Binding var boardList: [Board]
-    @Binding var scheduleList: [Schedule]
+    @EnvironmentObject var boardViewModel: BoardViewModel
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     
     @State private var searchType: SearchType = .board
     @State private var isEmptyTextField: Bool = true
@@ -123,7 +123,7 @@ struct SearchView: View {
                         .onChange(of: keyword) { newValue in
                             withAnimation(.interactiveSpring()) {
                                 if newValue.count > 0 {
-                                    matchedBoardList = boardList.filter {
+                                    matchedBoardList = boardViewModel.boardList.filter {
                                         $0.title.contains(newValue) || $0.content.contains(newValue)
                                     }
                                     
@@ -181,7 +181,7 @@ struct SearchView: View {
                             .onChange(of: keyword) { newValue in
                                 withAnimation(.interactiveSpring()) {
                                     if newValue.count > 0 {
-                                        matchedScheduleList = scheduleList.filter {
+                                        matchedScheduleList = scheduleViewModel.scheduleList.filter {
                                             $0.content.contains(newValue)
                                         }
                                         
@@ -227,6 +227,8 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(isSearching: .constant(true), boardList: .constant(BoardViewModel(range: 0..<10).boardList), scheduleList: .constant(ScheduleViewModel().scheduleList))
+        SearchView(isSearching: .constant(true))
+            .environmentObject(BoardViewModel(range: 0..<10))
+            .environmentObject(ScheduleViewModel())
     }
 }

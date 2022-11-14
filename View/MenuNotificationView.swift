@@ -21,7 +21,6 @@ struct MenuNotificationView: View {
             }
             .listRowBackground(Color(.sRGB, red: 220.0/255.0, green: 226.0/255.0, blue: 240.0/255.0, opacity: 1.0))
         }
-        //.scrollContentBackground(.hidden)
     }
 }
 

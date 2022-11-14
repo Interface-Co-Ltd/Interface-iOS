@@ -12,6 +12,9 @@ struct InterfaceCoLtdApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .environmentObject(BoardViewModel(range: 0..<10))
+                .environmentObject(UserViewModel(serverId: "ddonguri", serverPassword: "1234"))
+                .environmentObject(ScheduleViewModel())
         }
     }
 }

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SubCalendarView: View {
-    @Binding var schedule: [Schedule]
+//    @Binding var schedule: [Schedule]
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     
     @State var isCurrentWeek = true
     
@@ -56,8 +57,8 @@ struct SubCalendarView: View {
             
             VStack(alignment: .leading, spacing: 20) {
                 Section {
-                    if schedule.count != 0 {
-                        ForEach(schedule) { schdl in
+                    if scheduleViewModel.scheduleList.count != 0 {
+                        ForEach(scheduleViewModel.subViewSchdules) { schdl in
                             HStack {
                                 VStack(alignment: .trailing, spacing: 2) {
                                     Image(schdl.scheduleType == .sejong ? "sejong-univ-logo" : "interface-logo")
@@ -113,6 +114,7 @@ struct SubCalendarView: View {
 
 struct SubCalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        SubCalendarView(schedule: .constant(ScheduleViewModel().subViewSchdules))
+        SubCalendarView()
+            .environmentObject(ScheduleViewModel())
     }
 }
