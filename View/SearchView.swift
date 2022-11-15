@@ -15,16 +15,16 @@ enum SearchType {
 
 struct SearchView: View {
     @Binding var isSearching: Bool
+    
     @EnvironmentObject var boardViewModel: BoardViewModel
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     
     @State private var searchType: SearchType = .board
     @State private var isEmptyTextField: Bool = true
+    @State private var keyword = ""
     
     @State private var matchedBoardList: [Board] = []
     @State private var matchedScheduleList: [Schedule] = []
-    @State private var keyword = ""
-
     
     var body: some View {
         NavigationView {
@@ -57,10 +57,12 @@ struct SearchView: View {
                     Button {
                         withAnimation(.easeInOut) {
                             searchType = searchType == .board ? .schedule : .board
-                            if keyword == "" {
-                                matchedBoardList = []
-                                matchedScheduleList = []
+                            if keyword != "" {
+                                keyword = ""
                             }
+                            
+                            matchedBoardList = []
+                            matchedScheduleList = []
                         }
                     } label: {
                         Text("공지사항")
@@ -74,10 +76,12 @@ struct SearchView: View {
                     Button {
                         withAnimation(.easeInOut) {
                             searchType = searchType == .schedule ? .board : .schedule
-                            if keyword == "" {
-                                matchedBoardList = []
-                                matchedScheduleList = []
+                            if keyword != "" {
+                                keyword = ""
                             }
+                            
+                            matchedBoardList = []
+                            matchedScheduleList = []
                         }
                     } label: {
                         Text("일정")
@@ -158,8 +162,6 @@ struct SearchView: View {
                                         
                                         HStack(spacing: 5) {
                                             Text(item.content)
-                                                .font(.subheadline)
-                                                .lineLimit(1)
                                                 .allowsTightening(true)
                                             
                                             Spacer()
@@ -204,7 +206,9 @@ struct SearchView: View {
             .toolbar{
                 ToolbarItem {
                     Button {
-                        isSearching = false
+                        withAnimation(.easeInOut) {
+                            isSearching = false
+                        }
                     } label: {
                         Image(systemName: "xmark")
                             .foregroundColor(.secondary)

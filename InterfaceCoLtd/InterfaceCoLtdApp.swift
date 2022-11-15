@@ -9,12 +9,16 @@ import SwiftUI
 
 @main
 struct InterfaceCoLtdApp: App {
+    @StateObject var boardViewModel = BoardViewModel(range: 0..<10)
+    @StateObject var userViewModel = UserViewModel(serverId: "ddonguri", serverPassword: "1234")
+    @StateObject var scheduleViewModel = ScheduleViewModel()
+    
     var body: some Scene {
         WindowGroup {
             MainTabView()
-                .environmentObject(BoardViewModel(range: 0..<10))
-                .environmentObject(UserViewModel(serverId: "ddonguri", serverPassword: "1234"))
-                .environmentObject(ScheduleViewModel())
+                .environmentObject(boardViewModel)
+                .environmentObject(userViewModel)
+                .environmentObject(scheduleViewModel)
         }
     }
 }
