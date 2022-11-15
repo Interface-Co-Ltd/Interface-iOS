@@ -14,7 +14,7 @@ struct SubNoticeView: View {
         VStack {
             HStack {
                 Text("필독! 인페 공지")
-                    .font(.headline)
+                    .font(.title3)
                     .fontWeight(.semibold)
                 Spacer()
             }
