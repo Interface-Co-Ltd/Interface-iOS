@@ -45,7 +45,7 @@ struct SubIDCardView: View {
     }
 }
 
-struct Idcard_Previews: PreviewProvider {
+struct SubIDCardView_Previews: PreviewProvider {
     static var previews: some View {
         SubIDCardView()
     }

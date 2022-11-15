@@ -258,7 +258,6 @@
 				01065CA7291C17320067C9AC /* RecommendedRestaurantDetailView.swift */,
 				01065CA5291C17320067C9AC /* RecommendedRestaurantCategoryView.swift */,
 				C57A0292291D387F00D585D6 /* SearchView.swift */,
-				B931B590292349B700059E4B /* SubIDCardView.swift */,
 				B931B59229234EB300059E4B /* IDcardDetailView.swift */,
 			);
 			path = View;
@@ -270,6 +269,7 @@
 				C5B8238D2913AEE60021FAF6 /* SubCalendarView.swift */,
 				01065CBB291C244E0067C9AC /* SubNoticeView.swift */,
 				01065CB9291C215F0067C9AC /* SubRecommendedRestaurantView.swift */,
+				B931B590292349B700059E4B /* SubIDCardView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
