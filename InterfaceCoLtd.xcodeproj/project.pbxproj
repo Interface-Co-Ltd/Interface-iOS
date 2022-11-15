@@ -25,6 +25,13 @@
 		B931B591292349B700059E4B /* SubIDCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931B590292349B700059E4B /* SubIDCardView.swift */; };
 		B931B59329234EB300059E4B /* IDcardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931B59229234EB300059E4B /* IDcardDetailView.swift */; };
 		C54A44D4291AA22700DAF5FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C54A44D3291AA22700DAF5FB /* LaunchScreen.storyboard */; };
+		C551703A2923D6910052763B /* CodableBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55170392923D6910052763B /* CodableBoard.swift */; };
+		C551703C2923D8900052763B /* BoardViewModel+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = C551703B2923D8900052763B /* BoardViewModel+Api.swift */; };
+		C551703E2923D8D50052763B /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C551703D2923D8D50052763B /* ApiError.swift */; };
+		C55170402923DE1A0052763B /* CodableSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C551703F2923DE1A0052763B /* CodableSchedule.swift */; };
+		C55170422923DECD0052763B /* ScheduleViewModel+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55170412923DECD0052763B /* ScheduleViewModel+Api.swift */; };
+		C55170452923E9800052763B /* CooperationViewModel+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55170442923E9800052763B /* CooperationViewModel+Api.swift */; };
+		C55170472923E9C50052763B /* CodableCooperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55170462923E9C50052763B /* CodableCooperation.swift */; };
 		C57A0293291D387F00D585D6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57A0292291D387F00D585D6 /* SearchView.swift */; };
 		C5B823472913ADCF0021FAF6 /* InterfaceCoLtdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B823462913ADCF0021FAF6 /* InterfaceCoLtdApp.swift */; };
 		C5B8234B2913ADD00021FAF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B8234A2913ADD00021FAF6 /* Assets.xcassets */; };
@@ -87,6 +94,13 @@
 		B931B59229234EB300059E4B /* IDcardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDcardDetailView.swift; sourceTree = "<group>"; };
 		C54A44D3291AA22700DAF5FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C54A44D5291AA63000DAF5FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C55170392923D6910052763B /* CodableBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableBoard.swift; sourceTree = "<group>"; };
+		C551703B2923D8900052763B /* BoardViewModel+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardViewModel+Api.swift"; sourceTree = "<group>"; };
+		C551703D2923D8D50052763B /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		C551703F2923DE1A0052763B /* CodableSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableSchedule.swift; sourceTree = "<group>"; };
+		C55170412923DECD0052763B /* ScheduleViewModel+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduleViewModel+Api.swift"; sourceTree = "<group>"; };
+		C55170442923E9800052763B /* CooperationViewModel+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CooperationViewModel+Api.swift"; sourceTree = "<group>"; };
+		C55170462923E9C50052763B /* CodableCooperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableCooperation.swift; sourceTree = "<group>"; };
 		C57A0292291D387F00D585D6 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C5B823432913ADCF0021FAF6 /* InterfaceCoLtd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterfaceCoLtd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B823462913ADCF0021FAF6 /* InterfaceCoLtdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceCoLtdApp.swift; sourceTree = "<group>"; };
@@ -142,6 +156,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C55170382923D33A0052763B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C55170392923D6910052763B /* CodableBoard.swift */,
+				C551703D2923D8D50052763B /* ApiError.swift */,
+				C551703F2923DE1A0052763B /* CodableSchedule.swift */,
+				C55170462923E9C50052763B /* CodableCooperation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C55170432923E2750052763B /* ViewModel+Api */ = {
+			isa = PBXGroup;
+			children = (
+				C551703B2923D8900052763B /* BoardViewModel+Api.swift */,
+				C55170412923DECD0052763B /* ScheduleViewModel+Api.swift */,
+				C55170442923E9800052763B /* CooperationViewModel+Api.swift */,
+			);
+			path = "ViewModel+Api";
+			sourceTree = "<group>";
+		};
 		C5B8233A2913ADCF0021FAF6 = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +244,8 @@
 		C5B823712913ADF70021FAF6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C55170432923E2750052763B /* ViewModel+Api */,
+				C55170382923D33A0052763B /* Model */,
 				C5B823742913AE460021FAF6 /* BoardViewModel.swift */,
 				C5B823732913AE460021FAF6 /* CooperationViewModel.swift */,
 				C5B823752913AE460021FAF6 /* ScheduleViewModel.swift */,
@@ -418,9 +455,13 @@
 				C5B823892913AE980021FAF6 /* User.swift in Sources */,
 				01065CBA291C215F0067C9AC /* SubRecommendedRestaurantView.swift in Sources */,
 				C5B823772913AE460021FAF6 /* CooperationViewModel.swift in Sources */,
+				C55170422923DECD0052763B /* ScheduleViewModel+Api.swift in Sources */,
+				C55170402923DE1A0052763B /* CodableSchedule.swift in Sources */,
 				C5B823802913AE640021FAF6 /* ScaledButtonStyle.swift in Sources */,
+				C551703C2923D8900052763B /* BoardViewModel+Api.swift in Sources */,
 				01065CB8291C173B0067C9AC /* Notice.swift in Sources */,
 				01065CB5291C173B0067C9AC /* RecommendedRestaurantModel.swift in Sources */,
+				C551703E2923D8D50052763B /* ApiError.swift in Sources */,
 				C5B823872913AE980021FAF6 /* Schedule.swift in Sources */,
 				01065CAE291C17320067C9AC /* RecommendedRestaurantCategoryView.swift in Sources */,
 				01065CAC291C17320067C9AC /* NoticeView.swift in Sources */,
@@ -435,6 +476,9 @@
 				C5B823972913D0E40021FAF6 /* MainTabView.swift in Sources */,
 				01065CB0291C17320067C9AC /* RecommendedRestaurantDetailView.swift in Sources */,
 				C5B823882913AE980021FAF6 /* Cooperation.swift in Sources */,
+				C551703A2923D6910052763B /* CodableBoard.swift in Sources */,
+				C55170472923E9C50052763B /* CodableCooperation.swift in Sources */,
+				C55170452923E9800052763B /* CooperationViewModel+Api.swift in Sources */,
 				C5B8238E2913AEE60021FAF6 /* SubCalendarView.swift in Sources */,
 				C5B823762913AE460021FAF6 /* UserViewModel.swift in Sources */,
 				01065CA8291C17320067C9AC /* MenuNotificationView.swift in Sources */,

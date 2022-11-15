@@ -9,9 +9,9 @@ import SwiftUI
 
 @main
 struct InterfaceCoLtdApp: App {
-    @StateObject var boardViewModel = BoardViewModel(range: 0..<10)
-    @StateObject var userViewModel = UserViewModel(serverId: "ddonguri", serverPassword: "1234")
-    @StateObject var scheduleViewModel = ScheduleViewModel()
+    @StateObject var boardViewModel = BoardViewModel.preview
+    @StateObject var userViewModel = UserViewModel.preview
+    @StateObject var scheduleViewModel = ScheduleViewModel.preview
     
     var body: some Scene {
         WindowGroup {

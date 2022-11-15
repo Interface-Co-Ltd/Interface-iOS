@@ -45,7 +45,6 @@ struct MainView: View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: columns) {
-                    
                     Button{
                         showIDCard.toggle()
                     } label: {
@@ -73,7 +72,9 @@ struct MainView: View {
                     .padding(.vertical, 10)
                     
                     NavigationLink {
-                        InformationWithSelectionView(schedule: scheduleViewModel.scheduleList)
+                        if let schedules = scheduleViewModel.scheduleList {
+                            InformationWithSelectionView(schedule: schedules)
+                        }
                     } label: {
                         SubCalendarView()
                     }
@@ -107,6 +108,13 @@ struct MainView: View {
                                 .foregroundColor(.gray)
                         }
                         .buttonStyle(ScaledButtonStyle())
+                        .fullScreenCover(isPresented: $isSearching) {
+                            withAnimation(.easeInOut) {
+                                SearchView(isSearching: $isSearching)
+                            }
+                            //                .offset(currentTranslation)
+                            //                .gesture(dragSearchView)
+                        }
                     }
                 }
             }
@@ -116,23 +124,14 @@ struct MainView: View {
             
         }
         .scaleEffect(isSearching ? 0.9 : 1)
-        .fullScreenCover(isPresented: $isSearching) {
-            SearchView(isSearching: $isSearching)
-            //                .offset(currentTranslation)
-            //                .gesture(dragSearchView)
-        }
-        //신분증 시트, 만들면 주석 해제 ㄱ
-        .sheet(isPresented: $showIDCard) {
-            IDcardDetailView()
-        }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .environmentObject(BoardViewModel(range: 0..<10))
-            .environmentObject(UserViewModel(serverId: "ddonguri", serverPassword: "1234"))
-            .environmentObject(ScheduleViewModel())
+            .environmentObject(BoardViewModel.preview)
+            .environmentObject(UserViewModel.preview)
+            .environmentObject(ScheduleViewModel.preview)
     }
 }

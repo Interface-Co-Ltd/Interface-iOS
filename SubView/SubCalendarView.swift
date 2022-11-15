@@ -57,53 +57,56 @@ struct SubCalendarView: View {
             
             VStack(alignment: .leading, spacing: 20) {
                 Section {
-                    if scheduleViewModel.scheduleList.count != 0 {
-                        ForEach(scheduleViewModel.subViewSchdules) { schdl in
-                            HStack {
-                                VStack(alignment: .trailing, spacing: 2) {
-                                    Image(schdl.scheduleType == .sejong ? "sejong-univ-logo" : "interface-logo")
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                        .opacity(0.7)
-                                }
-                                
-                                HStack(spacing: 5) {
-                                    Text(schdl.content)
-                                        .font(.subheadline)
-                                        .lineLimit(1)
-                                        .allowsTightening(true)
-                                    
-                                    if schdl.startDate.timeIntervalSinceNow <= 0 && schdl.endDate.timeIntervalSinceNow + 3600 * 24 >= 0 {
-                                        Text("진행중!")
-                                            .foregroundColor(.red)
-                                            .font(.caption2)
+                    if let scheduleList = scheduleViewModel.scheduleList {
+                        if scheduleList.count != 0 {
+                            ForEach(scheduleViewModel.subViewSchdules) { schdl in
+                                HStack {
+                                    VStack(alignment: .trailing, spacing: 2) {
+                                        Image(schdl.div == .sejong ? "sejong-univ-logo" : "interface-logo")
+                                            .resizable()
+                                            .frame(width: 20, height: 20)
+                                            .opacity(0.7)
                                     }
                                     
-                                    Spacer()
-                                    
-                                    if schdl.startDate == schdl.endDate {
-                                        Text(schdl.getStartDateString())
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                    } else {
-                                        Text("\(schdl.getStartDateString())~\(schdl.getEndDateString())")
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
+                                    HStack(spacing: 5) {
+                                        Text(schdl.content)
+                                            .font(.subheadline)
+                                            .lineLimit(1)
+                                            .allowsTightening(true)
+                                        
+                                        if schdl.startDate.timeIntervalSinceNow <= 0 && schdl.endDate.timeIntervalSinceNow + 3600 * 24 >= 0 {
+                                            Text("진행중!")
+                                                .foregroundColor(.red)
+                                                .font(.caption2)
+                                        }
+                                        
+                                        Spacer()
+                                        
+                                        if schdl.startDate == schdl.endDate {
+                                            Text(schdl.getStartDateString())
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                        } else {
+                                            Text("\(schdl.getStartDateString())~\(schdl.getEndDateString())")
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                        }
                                     }
                                 }
+                                .opacity(schdl.startDate.timeIntervalSinceNow <= SubCalendarView.nowSinceSunday() ? 1 : 0.5)
                             }
-                            .opacity(schdl.startDate.timeIntervalSinceNow <= SubCalendarView.nowSinceSunday() ? 1 : 0.5)
-                        }
-                    } else {
-                        HStack {
-                            Spacer()
-                            
-                            Text("이번주엔 일정이 없어요.")
-                                .font(.subheadline)
-                            
-                            Spacer()
+                        } else {
+                            HStack {
+                                Spacer()
+                                
+                                Text("이번주엔 일정이 없어요.")
+                                    .font(.subheadline)
+                                
+                                Spacer()
+                            }
                         }
                     }
+                    
                 }
             }
             .padding(.all, 25)
@@ -115,6 +118,6 @@ struct SubCalendarView: View {
 struct SubCalendarView_Previews: PreviewProvider {
     static var previews: some View {
         SubCalendarView()
-            .environmentObject(ScheduleViewModel())
+            .environmentObject(ScheduleViewModel.preview)
     }
 }

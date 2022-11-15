@@ -127,8 +127,10 @@ struct SearchView: View {
                         .onChange(of: keyword) { newValue in
                             withAnimation(.interactiveSpring()) {
                                 if newValue.count > 0 {
-                                    matchedBoardList = boardViewModel.boardList.filter {
-                                        $0.title.contains(newValue) || $0.content.contains(newValue)
+                                    if let list = boardViewModel.boardList {
+                                        matchedBoardList = list.filter {
+                                            $0.title.contains(newValue) || $0.content.contains(newValue)
+                                        }
                                     }
                                     
                                     isEmptyTextField = false
@@ -154,7 +156,7 @@ struct SearchView: View {
                                     
                                     HStack {
                                         VStack(alignment: .trailing, spacing: 2) {
-                                            Image(item.scheduleType == .sejong ? "sejong-univ-logo" : "interface-logo")
+                                            Image(item.div == .sejong ? "sejong-univ-logo" : "interface-logo")
                                                 .resizable()
                                                 .frame(width: 15, height: 15)
                                                 .opacity(0.7)
@@ -183,8 +185,10 @@ struct SearchView: View {
                             .onChange(of: keyword) { newValue in
                                 withAnimation(.interactiveSpring()) {
                                     if newValue.count > 0 {
-                                        matchedScheduleList = scheduleViewModel.scheduleList.filter {
-                                            $0.content.contains(newValue)
+                                        if let list = scheduleViewModel.scheduleList {
+                                            matchedScheduleList = list.filter {
+                                                $0.content.contains(newValue)
+                                            }
                                         }
                                         
                                         isEmptyTextField = false
@@ -232,7 +236,7 @@ struct SearchView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView(isSearching: .constant(true))
-            .environmentObject(BoardViewModel(range: 0..<10))
+            .environmentObject(BoardViewModel.preview)
             .environmentObject(ScheduleViewModel())
     }
 }
