@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ModalView: View {
+struct IDcardDetailView: View {
     var body: some View {
         ZStack{
             Image("logo-background").resizable().aspectRatio(contentMode:.fill)
@@ -45,7 +45,7 @@ struct ModalView: View {
 
 struct ModalView_Previews: PreviewProvider {
     static var previews: some View {
-        ModalView()
+        IDcardDetailView()
     }
 }
 

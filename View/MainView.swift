@@ -56,12 +56,20 @@ struct MainView: View {
 //                    .padding(.top)
 //                    .padding(.bottom, 10)
 //                    .padding(.vertical)
-//                    Button{
-//                        showIDCard.toggle()
-//                    } label:{
-//                    }
-//                    .sheet(isPresented: $showIDCard) {
-//                    }
+
+                    Button{
+                        showIDCard.toggle()
+                    } label: {
+                        SubIDCardView()
+                    }
+                    .buttonStyle(ScaledButtonStyle())
+                    .foregroundColor(.primary)
+                    .padding(.top)
+                    .padding(.bottom,10)
+                    .padding(.vertical)
+                    .sheet(isPresented: $showIDCard) {
+                        IDcardDetailView()
+                    }
                     //게시판 기능
                     NavigationLink {
                         //NoticeView(boardViewModel: $boardViewModel)

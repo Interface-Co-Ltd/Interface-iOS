@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Idcard: View {
+struct SubIDCardView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 1){
             HStack(alignment: .bottom){
@@ -42,13 +42,12 @@ struct Idcard: View {
         .padding()
         .background(Image("logo-background").resizable())
         .cornerRadius(15)
-        Image("logo-background")
     }
 }
 
 struct Idcard_Previews: PreviewProvider {
     static var previews: some View {
-        Idcard()
+        SubIDCardView()
     }
 }
 
