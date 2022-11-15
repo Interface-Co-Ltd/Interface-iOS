@@ -22,6 +22,8 @@
 		01065CB8291C173B0067C9AC /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CB4291C173B0067C9AC /* Notice.swift */; };
 		01065CBA291C215F0067C9AC /* SubRecommendedRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CB9291C215F0067C9AC /* SubRecommendedRestaurantView.swift */; };
 		01065CBC291C244E0067C9AC /* SubNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CBB291C244E0067C9AC /* SubNoticeView.swift */; };
+		B931B591292349B700059E4B /* IdcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931B590292349B700059E4B /* IdcardView.swift */; };
+		B931B59329234EB300059E4B /* IDcardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931B59229234EB300059E4B /* IDcardDetailView.swift */; };
 		C54A44D4291AA22700DAF5FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C54A44D3291AA22700DAF5FB /* LaunchScreen.storyboard */; };
 		C57A0293291D387F00D585D6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57A0292291D387F00D585D6 /* SearchView.swift */; };
 		C5B823472913ADCF0021FAF6 /* InterfaceCoLtdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B823462913ADCF0021FAF6 /* InterfaceCoLtdApp.swift */; };
@@ -81,6 +83,8 @@
 		01065CB4291C173B0067C9AC /* Notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		01065CB9291C215F0067C9AC /* SubRecommendedRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubRecommendedRestaurantView.swift; sourceTree = "<group>"; };
 		01065CBB291C244E0067C9AC /* SubNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubNoticeView.swift; sourceTree = "<group>"; };
+		B931B590292349B700059E4B /* IdcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdcardView.swift; sourceTree = "<group>"; };
+		B931B59229234EB300059E4B /* IDcardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDcardDetailView.swift; sourceTree = "<group>"; };
 		C54A44D3291AA22700DAF5FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C54A44D5291AA63000DAF5FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C57A0292291D387F00D585D6 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 				01065CA7291C17320067C9AC /* RecommendedRestaurantDetailView.swift */,
 				01065CA5291C17320067C9AC /* RecommendedRestaurantCategoryView.swift */,
 				C57A0292291D387F00D585D6 /* SearchView.swift */,
+				B931B590292349B700059E4B /* IdcardView.swift */,
+				B931B59229234EB300059E4B /* IDcardDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B931B591292349B700059E4B /* IdcardView.swift in Sources */,
 				01065CA9291C17320067C9AC /* RecommendedRestaurantCell.swift in Sources */,
 				01065CAF291C17320067C9AC /* MenuView.swift in Sources */,
 				C5B823952913AF5D0021FAF6 /* InformationWithSelectionView.swift in Sources */,
@@ -418,6 +425,7 @@
 				01065CAE291C17320067C9AC /* RecommendedRestaurantCategoryView.swift in Sources */,
 				01065CAC291C17320067C9AC /* NoticeView.swift in Sources */,
 				C5B823862913AE980021FAF6 /* Board.swift in Sources */,
+				B931B59329234EB300059E4B /* IDcardDetailView.swift in Sources */,
 				01065CB7291C173B0067C9AC /* NoticeModel.swift in Sources */,
 				C5B8237F2913AE640021FAF6 /* CustomModifier.swift in Sources */,
 				01065CAD291C17320067C9AC /* NoticeDetailView.swift in Sources */,
