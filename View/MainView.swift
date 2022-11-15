@@ -45,7 +45,7 @@ struct MainView: View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: columns) {
-                    //신분증 기능, 만들면 주석 해제 ㄱ
+//
 //                    Button {
 //                        showIDCard.toggle()
 //                    } label: {
@@ -56,7 +56,12 @@ struct MainView: View {
 //                    .padding(.top)
 //                    .padding(.bottom, 10)
 //                    .padding(.vertical)
-                    
+//                    Button{
+//                        showIDCard.toggle()
+//                    } label:{
+//                    }
+//                    .sheet(isPresented: $showIDCard) {
+//                    }
                     //게시판 기능
                     NavigationLink {
                         //NoticeView(boardViewModel: $boardViewModel)
