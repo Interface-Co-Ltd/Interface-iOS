@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoticeDetailView: View {
     @ObservedObject var notice: Notice
-    @EnvironmentObject var store: NoticeModel
+    @EnvironmentObject var store: NoticeViewModel
     
     
     var body: some View {
@@ -55,6 +55,6 @@ struct NoticeDetailView_Previews: PreviewProvider {
 ✅ 기한 : 9월 30일까지
 """
                                   , insertDate: Date()))
-            .environmentObject(NoticeModel())
+            .environmentObject(NoticeViewModel())
     }
 }

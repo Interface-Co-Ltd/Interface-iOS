@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SubNoticeView: View {
-    @EnvironmentObject var store: NoticeModel
+    @EnvironmentObject var store: NoticeViewModel
     
     var body: some View {
         VStack {
@@ -66,6 +66,6 @@ struct SubNoticeView: View {
 
 struct SubNoticeView_Previews: PreviewProvider {
     static var previews: some View {
-        SubNoticeView().environmentObject(NoticeModel())
+        SubNoticeView().environmentObject(NoticeViewModel())
     }
 }

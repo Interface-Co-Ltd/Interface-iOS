@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct RecommendedRestaurantView: View {
-    @EnvironmentObject var store: RecommendedRestaurantModel
+    @EnvironmentObject var store: RecommendedRestaurantViewModel
+    @State var writer = "동기창"
     
     var body: some View {
         VStack {
-            
-            RecommendedRestaurantCategoryView()
             
             ScrollView {
                 ForEach(store.list) { recommendedRestaurant in
@@ -27,14 +26,14 @@ struct RecommendedRestaurantView: View {
                     .buttonStyle(PlainButtonStyle())
                 }
             }
-        }.navigationTitle("맛집 추천")
+        }.navigationTitle(writer + "님의 맛집")
     }
 }
 
 struct RecommendedRestaurantView_Previews: PreviewProvider {
     static var previews: some View {
         RecommendedRestaurantView()
-            .environmentObject(RecommendedRestaurantModel())
+            .environmentObject(RecommendedRestaurantViewModel())
             
     }
 }

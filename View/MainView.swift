@@ -67,10 +67,10 @@ struct MainView: View {
                     //게시판 기능
                     NavigationLink {
                         //NoticeView(boardViewModel: $boardViewModel)
-                        NoticeView().environmentObject(NoticeModel())
+                        NoticeView().environmentObject(NoticeViewModel())
                     } label: {
                         //SubNoticeView(boardService: $boardViewModel)
-                        SubNoticeView().environmentObject(NoticeModel())
+                        SubNoticeView().environmentObject(NoticeViewModel())
                     }
                     .buttonStyle(ScaledButtonStyle())
                     .foregroundColor(.primary)
@@ -93,8 +93,7 @@ struct MainView: View {
                     
                     //추천 맛집 기능
                     NavigationLink {
-                        RecommendedRestaurantView()
-                            .environmentObject(RecommendedRestaurantModel())
+                        RecommendedRestaurantUserView()
                     } label: {
                         SubRecommendedRestaurantView()
                     }

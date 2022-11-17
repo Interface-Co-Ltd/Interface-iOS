@@ -39,7 +39,7 @@ struct NoticeView: View {
 struct NoticeView_Previews: PreviewProvider {
     static var previews: some View {
         NoticeView()
-            .environmentObject(NoticeModel())
+            .environmentObject(NoticeViewModel())
             
     }
 }

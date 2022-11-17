@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NoticeModel: ObservableObject {
+class NoticeViewModel: ObservableObject {
     @Published var list: [Notice]   // binding view auto update
     
     init() {

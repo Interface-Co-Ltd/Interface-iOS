@@ -7,12 +7,13 @@
 
 import Foundation
 
-class RecommendedRestaurantModel: ObservableObject {
+class RecommendedRestaurantViewModel: ObservableObject {
     @Published var list: [RecommendedRestaurant]   // binding view auto update
     
     init() {
         list = [
-            RecommendedRestaurant(title: "컴포즈커피 세종대점",
+            RecommendedRestaurant(writer: "동기창",
+                       title: "컴포즈커피 세종대점",
                        category: "디저트",
                        content: "와플이 맛있어요🤤",
                        location: "서울 광진구 능동로 195-16 김원관 1층",
@@ -39,7 +40,8 @@ class RecommendedRestaurantModel: ObservableObject {
                         ]
                       ),
             
-            RecommendedRestaurant(title: "스시붐",
+            RecommendedRestaurant(writer: "동기창",
+                       title: "스시붐",
                        category: "일식",
                        content: "따연초 맛집",
                        location: "서울 광진구 광나루로17길 14-5",
@@ -80,7 +82,8 @@ class RecommendedRestaurantModel: ObservableObject {
                         ]
                       ),
             
-            RecommendedRestaurant(title: "미식반점",
+            RecommendedRestaurant(writer: "동기창",
+                       title: "미식반점",
                        category: "중식",
                        content: "동글동글 탕후루 탕수육이 맛있는 중식당",
                        location: "서울 광진구 군자로 70 1층",
@@ -130,7 +133,8 @@ class RecommendedRestaurantModel: ObservableObject {
                             ("미식볶음밥(곱배기)", "8,500")
                         ]
                       ),
-            RecommendedRestaurant(title: "방이샤브샤브칼국수 세종대점",
+            RecommendedRestaurant(writer: "동기창",
+                       title: "방이샤브샤브칼국수 세종대점",
                        category: "기타",
                        content: "야채 듬뿍 고기 듬뿍",
                        location: "서울 광진구 군자로 106 1층",
@@ -168,7 +172,8 @@ class RecommendedRestaurantModel: ObservableObject {
                             ("샤브세트", "12,000")
                         ]
                       ),
-            RecommendedRestaurant(title: "뱃놈",
+            RecommendedRestaurant(writer: "동기창",
+                       title: "뱃놈",
                        category: "기타",
                        content: "웨이팅을 감수할만한 어린이대공원 조개구이 맛집",
                        location: "서울 광진구 광나루로19길 9 1층",
@@ -209,17 +214,18 @@ class RecommendedRestaurantModel: ObservableObject {
         ]
     }
     
-    func insert(title: String, category: String, content: String, location: String, phone: String, operatingTime: String, menu: Array<(String, String)>) {
-        list.insert(RecommendedRestaurant(title: title, category: category, content: content, location: location, phone: phone, operatingTime: operatingTime, menu: menu), at: 0)
+    func insert(writer: String, title: String, category: String, content: String, location: String, phone: String, operatingTime: String, menu: Array<(String, String)>) {
+        list.insert(RecommendedRestaurant(writer: writer, title: title, category: category, content: content, location: location, phone: phone, operatingTime: operatingTime, menu: menu), at: 0)
     }
     
-    func update(recommendedRestaurant: RecommendedRestaurant?, title: String, category: String, content: String, location: String, phone: String, operatingTime: String, menu: Array<(String, String)>) {
+    func update(recommendedRestaurant: RecommendedRestaurant?, writer: String, title: String, category: String, content: String, location: String, phone: String, operatingTime: String, menu: Array<(String, String)>) {
         guard let recommendedRestaurant = recommendedRestaurant else {
             return
         }
-        recommendedRestaurant.content = content
-        recommendedRestaurant.category = category
+        recommendedRestaurant.writer = writer
         recommendedRestaurant.title = title
+        recommendedRestaurant.category = category
+        recommendedRestaurant.content = content
         recommendedRestaurant.location = location
         recommendedRestaurant.phone = phone
         recommendedRestaurant.operatingTime = operatingTime
