@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NoticeView: View {
-    @EnvironmentObject var store: NoticeModel
+    @EnvironmentObject var store: NoticeViewModel
     @State var isLoading = true
     
     var body: some View {
