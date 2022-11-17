@@ -1,8 +1,8 @@
 //
 //  CustomModifier.swift
-//  PrototypeIF2.0
+//  InterfaceCoLtd
 //
-//  Created by 김도형 on 2022/09/29.
+//  Created by 김도형 on 2022/11/17.
 //
 
 import SwiftUI
