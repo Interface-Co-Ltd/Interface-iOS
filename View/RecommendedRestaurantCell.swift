@@ -43,16 +43,13 @@ struct RecommendedRestaurantCell: View {
         .padding(20)
         .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg")))
         
-//        .background(Color(.sRGB, red: 220.0/255.0, green: 226.0/255.0, blue: 240.0/255.0, opacity: 1.0))
-//        .cornerRadius(15)
-//        .shadow(radius: 1)
-        
     }
 }
 
 struct RecommendedRestaurantCell_Previews: PreviewProvider {
     static var previews: some View {
-        RecommendedRestaurantCell(recommendedRestaurant: RecommendedRestaurant(title: "컴포즈커피 세종대점",
+        RecommendedRestaurantCell(recommendedRestaurant: RecommendedRestaurant(writer: "동기창",
+                                              title: "컴포즈커피 세종대점",
                                               category: "디저트",
                                               content: "와플이 맛있어요🤤",
                                               location: "서울 광진구 능동로 195-16 김원관 1층",

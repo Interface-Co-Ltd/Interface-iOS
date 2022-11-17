@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecommendedRestaurantDetailView: View {
     @ObservedObject var recommendedRestaurant: RecommendedRestaurant
-    @EnvironmentObject var store: RecommendedRestaurantModel
+    @EnvironmentObject var store: RecommendedRestaurantViewModel
     
     var body: some View {
         
@@ -113,7 +113,7 @@ struct RecommendedRestaurantDetailView: View {
 
 struct RecommendedRestaurantDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RecommendedRestaurantDetailView(recommendedRestaurant: RecommendedRestaurant(title: "컴포즈커피 세종대점",
+        RecommendedRestaurantDetailView(recommendedRestaurant: RecommendedRestaurant(writer: "동기창",                                 title: "컴포즈커피 세종대점",
                                                     category: "디저트",
                                                     content: "와플이 맛있어요🤤",
                                                     location: "서울 광진구 능동로 195-16 김원관 1층",
@@ -139,6 +139,6 @@ struct RecommendedRestaurantDetailView_Previews: PreviewProvider {
                                                             ("레몬에이드", "3,500")
                                                         ]
                                                    ))
-        .environmentObject(RecommendedRestaurantModel())
+        .environmentObject(RecommendedRestaurantViewModel())
     }
 }

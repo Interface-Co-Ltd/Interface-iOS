@@ -33,9 +33,7 @@ struct NoticeCell: View {
         .padding(20)
         .padding(.top, 20)
         .padding(.bottom, 20)
-        .background(Color(.sRGB, red: 220.0/255.0, green: 226.0/255.0, blue: 240.0/255.0, opacity: 1.0))
-        .cornerRadius(15)
-        .shadow(radius: 1)
+        .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg")))
         
     }
 }
