@@ -10,6 +10,9 @@ import SwiftUI
 struct MainView: View {
     @State private var showIDCard = false
     @State private var isSearching = false
+    @State private var isUserDataLoading = true
+    @State private var isBoardDataLoading = true
+    @State private var isScheduleDataLoading = true
     
     //    @State private var currentTranslation = CGSize.zero
     
@@ -58,6 +61,8 @@ struct MainView: View {
                         IDcardDetailView()
                     }
                     .shadow(radius: 20)
+                    .disabled(isUserDataLoading)
+                    .redacted(reason: isUserDataLoading ? .placeholder : [])
                     
                     //게시판 기능
                     NavigationLink {
@@ -70,6 +75,8 @@ struct MainView: View {
                     .buttonStyle(ScaledButtonStyle())
                     .foregroundColor(.primary)
                     .padding(.vertical, 10)
+                    .disabled(isBoardDataLoading)
+                    .redacted(reason: isBoardDataLoading ? .placeholder : [])
                     
                     NavigationLink {
                         if let schedules = scheduleViewModel.scheduleList {
@@ -81,6 +88,8 @@ struct MainView: View {
                     .foregroundColor(.primary)
                     .buttonStyle(ScaledButtonStyle())
                     .padding(.vertical, 10)
+                    .disabled(isScheduleDataLoading)
+                    .redacted(reason: isScheduleDataLoading ? .placeholder : [])
                     
                     //추천 맛집 기능
                     NavigationLink {
@@ -99,7 +108,7 @@ struct MainView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Button {
-                            withAnimation(.easeInOut) {
+                            withAnimation(.spring()) {
                                 isSearching = true
                             }
                         } label: {
@@ -123,7 +132,15 @@ struct MainView: View {
             .background(Color("bkg").ignoresSafeArea())
             
         }
+        .overlay(Color.black.opacity(isSearching ? 0.8 : 0))
         .scaleEffect(isSearching ? 0.9 : 1)
+        .onAppear() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                isUserDataLoading = false
+                isBoardDataLoading = false
+                isScheduleDataLoading = false
+            }
+        }
     }
 }
 

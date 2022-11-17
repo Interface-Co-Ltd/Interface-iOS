@@ -38,6 +38,6 @@ struct User: Identifiable {
 //preview용 사용자 모델 생성자 사용시 코드 "User.preview"
 extension User {
     static var preview: User {
-        return User(userId: "HayunKwon", userName: "권하윤", gender: "male", studentId: "19010769", major: "전자정보통신공학과", generation: "32", phone: "01094570043", birthday: "980809", password: "1234", auth: "회장")
+        return User(userId: "HayunKwon", userName: "권하윤", gender: "male", studentId: "19010769", major: "전자정보통신공학과", generation: "32", phone: "01094570043", birthday: "980809", password: "8642", auth: "회장")
     }
 }

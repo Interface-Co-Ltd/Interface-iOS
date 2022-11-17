@@ -11,7 +11,6 @@ class BoardViewModel:  ObservableObject {
     
     @Published var boardList: [Board]?
     @Published var lastError: String?
-//    @Published var filteredBoardList: [Board] = []
     
     let isPreviewViewModel: Bool
     
@@ -24,6 +23,7 @@ class BoardViewModel:  ObservableObject {
     static var preview: BoardViewModel {
         let viewModel = BoardViewModel(preview: true)
         viewModel.boardList = (0..<10).map({ _ in
+            
             Board.preview
         })
         
@@ -40,15 +40,4 @@ class BoardViewModel:  ObservableObject {
             return
         }
     }
-    
-    //검색기능(보류)
-//    func filterBoardList(searchhKeyword: String){
-//        if searchhKeyword == "" {
-//            filteredBoardList = []
-//        } else {
-//            filteredBoardList = self.boardList.filter {
-//                $0.title.localizedCaseInsensitiveContains(searchhKeyword) || $0.content.localizedCaseInsensitiveContains(searchhKeyword) || $0.userID.localizedCaseInsensitiveContains(searchhKeyword)
-//            }
-//        }
-//    }
 }

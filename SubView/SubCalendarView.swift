@@ -51,6 +51,7 @@ struct SubCalendarView: View {
                 Text("이번주 인페 일정")
                     .font(.headline)
                     .fontWeight(.semibold)
+                    .unredacted()
                 Spacer()
             }
             .padding(.leading)
@@ -101,13 +102,12 @@ struct SubCalendarView: View {
                                 
                                 Text("이번주엔 일정이 없어요.")
                                     .font(.subheadline)
+                                    .unredacted()
                                 
                                 Spacer()
                             }
                         }
-                    }
-                    
-                }
+                    }                }
             }
             .padding(.all, 25)
             .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg")))

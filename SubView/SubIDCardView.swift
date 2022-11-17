@@ -36,12 +36,13 @@ struct SubIDCardView: View {
                 .resizable().frame(width: 75, height: 85.35)
                 .position(x: 280, y: -35)
                 .opacity(0.6)
+                .unredacted()
                 
         }
         .frame(maxHeight: 100)
 //        .frame(width:330, height: 100, alignment: .leading)
         .padding(25)
-        .background(Image("logo-background").resizable())
+        .background(Image("logo-background").resizable().unredacted())
         .cornerRadius(20)
     }
 }

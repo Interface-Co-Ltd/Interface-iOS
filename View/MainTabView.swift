@@ -40,7 +40,7 @@ struct MainTabView: View {
             }
             .modifier(VersionedTabBarColorModifier(color: Color("bkg")))
         }
-    }
+    }  
 }
 
 struct MainTabView_Previews: PreviewProvider {

@@ -117,3 +117,18 @@ struct VersionedUltraThinMaterialEffect: ViewModifier {
         }
     }
 }
+
+@available(iOS 15.0, *)
+struct AutoTextFieldFocusModifier: ViewModifier {
+    @FocusState var textFieldFocused: Bool
+    
+    @Binding var focused: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .focused($textFieldFocused)
+            .onAppear() {
+                textFieldFocused = focused
+            }
+    }
+}

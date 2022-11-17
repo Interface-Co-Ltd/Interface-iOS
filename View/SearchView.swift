@@ -22,6 +22,7 @@ struct SearchView: View {
     @State private var searchType: SearchType = .board
     @State private var isEmptyTextField: Bool = true
     @State private var keyword = ""
+    @State private var textFieldFocused = true
     
     @State private var matchedBoardList: [Board] = []
     @State private var matchedScheduleList: [Schedule] = []
@@ -35,6 +36,7 @@ struct SearchView: View {
                             .textFieldStyle(.roundedBorder)
                             .textInputAutocapitalization(.never)
                             .disableAutocorrection(true)
+                            .modifier(AutoTextFieldFocusModifier(focused: $textFieldFocused))
                     } else {
                         TextField("검색", text: $keyword)
                             .textFieldStyle(.roundedBorder)
@@ -53,7 +55,7 @@ struct SearchView: View {
                 }
                 .padding([.horizontal, .top])
                 
-                HStack(spacing: 15) {
+                HStack(spacing: 15) { 
                     Button {
                         withAnimation(.easeInOut) {
                             searchType = searchType == .board ? .schedule : .board
