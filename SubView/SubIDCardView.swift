@@ -34,14 +34,16 @@ struct SubIDCardView: View {
                 .padding(5)
             Image("interface-logo-white")
                 .resizable().frame(width: 75, height: 85.35)
-                .position(x: 280, y: -20)
+                .position(x: 280, y: -35)
                 .opacity(0.6)
+                .unredacted()
                 
         }
-        .frame(width:330, height: 100, alignment: .leading)
-        .padding()
-        .background(Image("logo-background").resizable())
-        .cornerRadius(15)
+        .frame(maxHeight: 100)
+//        .frame(width:330, height: 100, alignment: .leading)
+        .padding(25)
+        .background(Image("logo-background").resizable().unredacted())
+        .cornerRadius(20)
     }
 }
 

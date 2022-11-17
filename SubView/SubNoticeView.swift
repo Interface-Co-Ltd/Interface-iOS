@@ -16,6 +16,7 @@ struct SubNoticeView: View {
                 Text("필독! 인페 공지")
                     .font(.title3)
                     .fontWeight(.semibold)
+                    .unredacted()
                 Spacer()
             }
             .padding(.leading)

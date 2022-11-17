@@ -10,6 +10,9 @@ import SwiftUI
 struct MainView: View {
     @State private var showIDCard = false
     @State private var isSearching = false
+    @State private var isUserDataLoading = true
+    @State private var isBoardDataLoading = true
+    @State private var isScheduleDataLoading = true
     
     //    @State private var currentTranslation = CGSize.zero
     
@@ -45,7 +48,6 @@ struct MainView: View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: columns) {
-                    
                     Button{
                         showIDCard.toggle()
                     } label: {
@@ -59,6 +61,8 @@ struct MainView: View {
                         IDcardDetailView()
                     }
                     .shadow(radius: 20)
+                    .disabled(isUserDataLoading)
+                    .redacted(reason: isUserDataLoading ? .placeholder : [])
                     
                     //게시판 기능
                     NavigationLink {
@@ -71,15 +75,21 @@ struct MainView: View {
                     .buttonStyle(ScaledButtonStyle())
                     .foregroundColor(.primary)
                     .padding(.vertical, 10)
+                    .disabled(isBoardDataLoading)
+                    .redacted(reason: isBoardDataLoading ? .placeholder : [])
                     
                     NavigationLink {
-                        InformationWithSelectionView(schedule: scheduleViewModel.scheduleList)
+                        if let schedules = scheduleViewModel.scheduleList {
+                            InformationWithSelectionView(schedule: schedules)
+                        }
                     } label: {
                         SubCalendarView()
                     }
                     .foregroundColor(.primary)
                     .buttonStyle(ScaledButtonStyle())
                     .padding(.vertical, 10)
+                    .disabled(isScheduleDataLoading)
+                    .redacted(reason: isScheduleDataLoading ? .placeholder : [])
                     
                     //추천 맛집 기능
                     NavigationLink {
@@ -89,7 +99,7 @@ struct MainView: View {
                     }
                     .buttonStyle(ScaledButtonStyle())
                     .foregroundColor(.primary)
-                    .padding(.vertical)
+                    .padding(.vertical, 10)
                 }
                 .padding(.horizontal)
             }
@@ -97,7 +107,7 @@ struct MainView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Button {
-                            withAnimation(.easeInOut) {
+                            withAnimation(.spring()) {
                                 isSearching = true
                             }
                         } label: {
@@ -106,6 +116,13 @@ struct MainView: View {
                                 .foregroundColor(.gray)
                         }
                         .buttonStyle(ScaledButtonStyle())
+                        .fullScreenCover(isPresented: $isSearching) {
+                            withAnimation(.easeInOut) {
+                                SearchView(isSearching: $isSearching)
+                            }
+                            //                .offset(currentTranslation)
+                            //                .gesture(dragSearchView)
+                        }
                     }
                 }
             }
@@ -114,15 +131,14 @@ struct MainView: View {
             .background(Color("bkg").ignoresSafeArea())
             
         }
+        .overlay(Color.black.opacity(isSearching ? 0.8 : 0))
         .scaleEffect(isSearching ? 0.9 : 1)
-        .fullScreenCover(isPresented: $isSearching) {
-            SearchView(isSearching: $isSearching)
-            //                .offset(currentTranslation)
-            //                .gesture(dragSearchView)
-        }
-        //신분증 시트, 만들면 주석 해제 ㄱ
-        .sheet(isPresented: $showIDCard) {
-            IDcardDetailView()
+        .onAppear() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                isUserDataLoading = false
+                isBoardDataLoading = false
+                isScheduleDataLoading = false
+            }
         }
     }
 }
@@ -130,8 +146,8 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .environmentObject(BoardViewModel(range: 0..<10))
-            .environmentObject(UserViewModel(serverId: "ddonguri", serverPassword: "1234"))
-            .environmentObject(ScheduleViewModel())
+            .environmentObject(BoardViewModel.preview)
+            .environmentObject(UserViewModel.preview)
+            .environmentObject(ScheduleViewModel.preview)
     }
 }
