@@ -8,37 +8,15 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var boardViewModel: BoardViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
+    
     @State private var showIDCard = false
     @State private var isSearching = false
     @State private var isUserDataLoading = true
     @State private var isBoardDataLoading = true
     @State private var isScheduleDataLoading = true
-    
-    //    @State private var currentTranslation = CGSize.zero
-    
-    @EnvironmentObject var boardViewModel: BoardViewModel
-    @EnvironmentObject var userViewModel: UserViewModel
-    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
-    
-    //    private var dragSearchView: some Gesture {
-    //        DragGesture()
-    //            .onChanged { value in
-    //                withAnimation(.interactiveSpring()) {
-    //                    currentTranslation = value.translation
-    //                    currentTranslation.width = 0
-    //                }
-    //            }
-    //            .onEnded { value in
-    //                withAnimation(.interactiveSpring()) {
-    //                    if currentTranslation.height > UIScreen.main.bounds.height / 4 {
-    //                        currentTranslation = .zero
-    //                        isSearching = false
-    //                    } else {
-    //                        currentTranslation = .zero
-    //                    }
-    //                }
-    //            }
-    //    }
     
     private let columns = [
         GridItem(.adaptive(minimum: 350, maximum: .infinity), spacing: nil, alignment: .top)
@@ -78,6 +56,7 @@ struct MainView: View {
                     .disabled(isBoardDataLoading)
                     .redacted(reason: isBoardDataLoading ? .placeholder : [])
                     
+                    //일정 기능
                     NavigationLink {
                         if let schedules = scheduleViewModel.scheduleList {
                             InformationWithSelectionView(schedule: schedules)
@@ -99,29 +78,42 @@ struct MainView: View {
                     }
                     .buttonStyle(ScaledButtonStyle())
                     .foregroundColor(.primary)
-                    .padding(.vertical, 10)
                 }
                 .padding(.horizontal)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
                     HStack {
-                        Button {
-                            withAnimation(.spring()) {
-                                isSearching = true
+                        if #available(iOS 15.0, *) {
+                            Button {
+                                withAnimation(.spring()) {
+                                    isSearching = true
+                                }
+                            } label: {
+                                Image(systemName: "magnifyingglass")
+                                    .font(.title2)
+                                    .foregroundColor(.gray)
                             }
-                        } label: {
-                            Image(systemName: "magnifyingglass")
-                                .font(.title2)
-                                .foregroundColor(.gray)
-                        }
-                        .buttonStyle(ScaledButtonStyle())
-                        .fullScreenCover(isPresented: $isSearching) {
-                            withAnimation(.easeInOut) {
+                            .buttonStyle(ScaledButtonStyle())
+                            .fullScreenCover(isPresented: $isSearching) {
+                                withAnimation(.easeInOut) {
+                                    NavigationView {
+                                        SearchView(isSearching: $isSearching)
+                                    }
+                                }
+                            }
+                            
+                        } else {
+                            Spacer()
+                            
+                            NavigationLink {
                                 SearchView(isSearching: $isSearching)
+                            } label: {
+                                Image(systemName: "magnifyingglass")
+                                    .font(.title2)
+                                    .foregroundColor(.gray)
                             }
-                            //                .offset(currentTranslation)
-                            //                .gesture(dragSearchView)
+                            .buttonStyle(ScaledButtonStyle())
                         }
                     }
                 }
@@ -129,10 +121,9 @@ struct MainView: View {
             .navigationTitle("인터페이스")
             .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
             .background(Color("bkg").ignoresSafeArea())
-            
         }
-        .overlay(Color.black.opacity(isSearching ? 0.8 : 0))
         .scaleEffect(isSearching ? 0.9 : 1)
+        .modifier(VersionedSearchViewTransitionModifier(isSearching: $isSearching))
         .onAppear() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 isUserDataLoading = false
