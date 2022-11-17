@@ -24,6 +24,7 @@
 		01065CBC291C244E0067C9AC /* SubNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CBB291C244E0067C9AC /* SubNoticeView.swift */; };
 		B931B591292349B700059E4B /* SubIDCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931B590292349B700059E4B /* SubIDCardView.swift */; };
 		B931B59329234EB300059E4B /* IDcardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931B59229234EB300059E4B /* IDcardDetailView.swift */; };
+		B9675BE0292610870031D4B2 /* NotificationHistroyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9675BDF292610870031D4B2 /* NotificationHistroyView.swift */; };
 		C54A44D4291AA22700DAF5FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C54A44D3291AA22700DAF5FB /* LaunchScreen.storyboard */; };
 		C551703A2923D6910052763B /* CodableBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55170392923D6910052763B /* CodableBoard.swift */; };
 		C551703C2923D8900052763B /* BoardViewModel+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = C551703B2923D8900052763B /* BoardViewModel+Api.swift */; };
@@ -93,6 +94,7 @@
 		01065CBB291C244E0067C9AC /* SubNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubNoticeView.swift; sourceTree = "<group>"; };
 		B931B590292349B700059E4B /* SubIDCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubIDCardView.swift; sourceTree = "<group>"; };
 		B931B59229234EB300059E4B /* IDcardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDcardDetailView.swift; sourceTree = "<group>"; };
+		B9675BDF292610870031D4B2 /* NotificationHistroyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHistroyView.swift; sourceTree = "<group>"; };
 		C54A44D3291AA22700DAF5FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C54A44D5291AA63000DAF5FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C55170392923D6910052763B /* CodableBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableBoard.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				C5B823972913D0E40021FAF6 /* MainTabView.swift in Sources */,
 				01065CB0291C17320067C9AC /* RecommendedRestaurantDetailView.swift in Sources */,
 				C5B823882913AE980021FAF6 /* Cooperation.swift in Sources */,
+				B9675BE0292610870031D4B2 /* NotificationHistroyView.swift in Sources */,
 				C551703A2923D6910052763B /* CodableBoard.swift in Sources */,
 				C55170472923E9C50052763B /* CodableCooperation.swift in Sources */,
 				C55170452923E9800052763B /* CooperationViewModel+Api.swift in Sources */,
