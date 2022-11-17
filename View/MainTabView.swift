@@ -19,14 +19,14 @@ struct MainTabView: View {
                 //커뮤니티 탭, 추후 지원
                 CommunityView()
                     .tabItem {
-                        Label("커뮤티니", systemImage: "person.2")
+                        Label("커뮤니티", systemImage: "person.2")
                     }
                 
                 //알림내역 탭, 만들면 주석 해제 ㄱ
-//                NotificationHistoryView()
-//                    .tabItem {
-//                        Label("알림내역", systemImage: "bell")
-//                    }
+                NotificationHistoryView()
+                    .tabItem {
+                        Label("알림내역", systemImage: "bell")
+                    }
                 
                 //설정 탭, 만들면 주석 해제 ㄱ
                 MenuView()
