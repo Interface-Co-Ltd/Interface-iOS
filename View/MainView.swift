@@ -100,7 +100,7 @@ struct MainView: View {
                     }
                     .buttonStyle(ScaledButtonStyle())
                     .foregroundColor(.primary)
-                    .padding(.vertical)
+                    .padding(.vertical, 10)
                 }
                 .padding(.horizontal)
             }
