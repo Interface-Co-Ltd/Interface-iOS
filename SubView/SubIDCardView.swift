@@ -8,30 +8,34 @@
 import SwiftUI
 
 struct SubIDCardView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 1){
-            HStack(alignment: .bottom){
-                Text("동기창")
+            if let user = userViewModel.currentUser {
+                HStack(alignment: .bottom){
+                    Text(user.userName)
+                        .font(.system(size: 20))
+                        .foregroundColor(.white)
+                        .bold()
+                    Text(user.auth)
+                        .font(.system(size: 12))
+                        .foregroundColor(.white)
+                    Text("\(user.generation)th")
+                        .font(.system(size: 15))
+                        .foregroundColor(.green)
+                        .bold()
+                }
+                .padding(5)
+                Text(user.major)
                     .font(.system(size: 20))
                     .foregroundColor(.white)
-                    .bold()
-                Text("회장")
+                    .padding(5)
+                Text(user.studentId)
                     .font(.system(size: 12))
                     .foregroundColor(.white)
-                Text("32th")
-                    .font(.system(size: 15))
-                    .foregroundColor(.green)
-                    .bold()
+                    .padding(5)
             }
-            .padding(5)
-            Text("컴퓨터공학과")
-                .font(.system(size: 20))
-                .foregroundColor(.white)
-                .padding(5)
-            Text("20010655")
-                .font(.system(size: 12))
-                .foregroundColor(.white)
-                .padding(5)
             Image("interface-logo-white")
                 .resizable().frame(width: 75, height: 85.35)
                 .position(x: 280, y: -35)
@@ -50,6 +54,7 @@ struct SubIDCardView: View {
 struct SubIDCardView_Previews: PreviewProvider {
     static var previews: some View {
         SubIDCardView()
+            .environmentObject(UserViewModel.preview)
     }
 }
 

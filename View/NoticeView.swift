@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NoticeView: View {
     @EnvironmentObject var store: NoticeModel
+    @State var isLoading = true
     
     var body: some View {
         VStack {
@@ -25,6 +26,13 @@ struct NoticeView: View {
                 }
             }
         }.navigationTitle("공지사항")
+            .redacted(reason: isLoading ? .placeholder : [])
+            .onAppear() {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    isLoading = false
+                }
+            }
+
     }
 }
 
