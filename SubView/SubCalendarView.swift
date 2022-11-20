@@ -58,8 +58,7 @@ struct SubCalendarView: View {
             
             VStack(alignment: .leading, spacing: 20) {
                 Section {
-                    if let scheduleList = scheduleViewModel.scheduleList {
-                        if scheduleList.count != 0 {
+                    if scheduleViewModel.subViewSchdules.count != 0 {
                             ForEach(scheduleViewModel.subViewSchdules) { schdl in
                                 HStack {
                                     VStack(alignment: .trailing, spacing: 2) {
@@ -107,7 +106,7 @@ struct SubCalendarView: View {
                                 Spacer()
                             }
                         }
-                    }                }
+                    }
             }
             .padding(.all, 25)
             .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg")))
