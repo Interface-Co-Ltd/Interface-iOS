@@ -150,37 +150,45 @@ struct SearchView: View {
                 } else {
                     LazyVStack {
                         ForEach(matchedScheduleList) { item in
-                            VStack(spacing: 10) {
-                                Rectangle()
-                                    .frame(height: 1)
-                                    .foregroundColor(.secondary.opacity(0.1))
-                                
-                                HStack {
-                                    VStack(alignment: .trailing, spacing: 2) {
-                                        Image(item.div == .sejong ? "sejong-univ-logo" : "interface-logo")
-                                            .resizable()
-                                            .frame(width: 15, height: 15)
-                                            .opacity(0.7)
-                                    }
+                            NavigationLink {
+                                if let scheduleList = scheduleViewModel.scheduleList {
+                                    InformationWithSelectionView(schedule: scheduleList, currentDate: item.startDate)
+                                }
+                            } label: {
+                                VStack(spacing: 10) {
+                                    Rectangle()
+                                        .frame(height: 1)
+                                        .foregroundColor(.secondary.opacity(0.1))
                                     
-                                    HStack(spacing: 5) {
-                                        Text(item.content)
-                                            .allowsTightening(true)
+                                    HStack {
+                                        VStack(alignment: .trailing, spacing: 2) {
+                                            Image(item.div == "세종대학교" ? "sejong-univ-logo" : "interface-logo")
+                                                .resizable()
+                                                .frame(width: 15, height: 15)
+                                                .opacity(0.7)
+                                        }
                                         
-                                        Spacer()
-                                        
-                                        if item.startDate == item.endDate {
-                                            Text(item.getStartDateString())
-                                                .font(.caption)
-                                                .foregroundColor(.secondary)
-                                        } else {
-                                            Text("\(item.getStartDateString())~\(item.getEndDateString())")
-                                                .font(.caption)
-                                                .foregroundColor(.secondary)
+                                        HStack(spacing: 5) {
+                                            Text(item.content)
+                                                .allowsTightening(true)
+                                            
+                                            Spacer()
+                                            
+                                            if item.startDate == item.endDate {
+                                                Text(item.getStartDateString())
+                                                    .font(.caption)
+                                                    .foregroundColor(.secondary)
+                                            } else {
+                                                Text("\(item.getStartDateString())~\(item.getEndDateString())")
+                                                    .font(.caption)
+                                                    .foregroundColor(.secondary)
+                                            }
                                         }
                                     }
                                 }
                             }
+                            .foregroundColor(.primary)
+
                         }
                         .padding(.horizontal)
                         .onChange(of: keyword) { newValue in
@@ -237,6 +245,6 @@ struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView(isSearching: .constant(true))
             .environmentObject(BoardViewModel.preview)
-            .environmentObject(ScheduleViewModel())
+            .environmentObject(ScheduleViewModel.preview)
     }
 }
