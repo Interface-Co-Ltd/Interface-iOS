@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Cooperation: Identifiable {
+struct Cooperation: Codable, Identifiable {
     var id = UUID()
     
     let cooperationName: String

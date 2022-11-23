@@ -59,7 +59,11 @@ struct MainView: View {
                     //일정 기능
                     NavigationLink {
                         if let schedules = scheduleViewModel.scheduleList {
-                            InformationWithSelectionView(schedule: schedules)
+                            if #available(iOS 15, *) {
+                                InformationWithSelectionView(schedule: schedules, currentDate: .now)
+                            } else {
+                                InformationWithSelectionView(schedule: schedules, currentDate: NSDate.now as Date)
+                            }
                         }
                     } label: {
                         SubCalendarView()
@@ -125,6 +129,8 @@ struct MainView: View {
         .scaleEffect(isSearching ? 0.9 : 1)
         .modifier(VersionedSearchViewTransitionModifier(isSearching: $isSearching))
         .onAppear() {
+            scheduleViewModel.fetch()
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 isUserDataLoading = false
                 isBoardDataLoading = false

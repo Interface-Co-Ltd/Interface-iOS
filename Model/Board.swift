@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Board: Identifiable {
+struct Board: Codable, Identifiable {
     var id = UUID()
     
     let title: String

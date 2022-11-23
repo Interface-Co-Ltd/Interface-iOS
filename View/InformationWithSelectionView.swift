@@ -18,27 +18,39 @@ extension YearMonthDay: Hashable {
 
 struct InformationWithSelectionView: View {
     @ObservedObject var controller = CalendarController()
+    
     var informations = [YearMonthDay: [(String, Color)]]()
+    
     @State var focusDate: YearMonthDay? = nil
     @State var focusInfo: [(String, Color)]? = nil
-    
     @State var schedule: [Schedule]
     
-    init(schedule: [Schedule]) {
+    init(schedule: [Schedule], currentDate: Date) {
         self.schedule = schedule
-        var date = YearMonthDay.current
+
+        let year = Calendar.current.component(.year, from: currentDate)
+        let month = Calendar.current.component(.month, from: currentDate)
+        let day = Calendar.current.component(.day, from: currentDate)
         
+        var date = YearMonthDay.current
+
+
         schedule.forEach { scheduleDate in
             scheduleDate.fromNowCurrentDate().forEach { day in
                 date = date.addDay(value: day)
                 if informations[date] == nil {
                     informations[date] = []
                 }
-                
-                informations[date]?.append((scheduleDate.content, scheduleDate.div == .sejong ? Color(red: 0.986, green: 0.107, blue: 0.281) : Color(hue: 0.581, saturation: 0.728, brightness: 0.98)))
+
+                informations[date]?.append((scheduleDate.content, scheduleDate.div == "세종대학교" ? Color(red: 0.986, green: 0.107, blue: 0.281) : Color(hue: 0.581, saturation: 0.728, brightness: 0.98)))
                 date = YearMonthDay.current
             }
         }
+        
+        controller.scrollTo(year: year, month: month)
+        
+        focusDate = YearMonthDay(year: year, month: month, day: day)
+        focusInfo = informations[YearMonthDay(year: year, month: month, day: day)]
     }
     
     var body: some View {
@@ -172,6 +184,6 @@ extension YearMonth {
 
 struct InformationWithSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        InformationWithSelectionView(schedule: ScheduleViewModel.preview.scheduleList ?? [])
+        InformationWithSelectionView(schedule: ScheduleViewModel.preview.scheduleList ?? [], currentDate: NSDate.now as Date)
     }
 }
