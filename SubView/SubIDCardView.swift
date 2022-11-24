@@ -8,27 +8,28 @@
 import SwiftUI
 
 struct SubIDCardView: View {
+    @EnvironmentObject var store: UserViewModel
     var body: some View {
         VStack(alignment: .leading, spacing: 1){
             HStack(alignment: .bottom){
-                Text("동기창")
+                Text(store.currentUser.userName)
                     .font(.system(size: 20))
                     .foregroundColor(.white)
                     .bold()
-                Text("회장")
+                Text(store.currentUser.auth)
                     .font(.system(size: 12))
                     .foregroundColor(.white)
-                Text("32th")
+                Text(store.currentUser.generation)
                     .font(.system(size: 15))
                     .foregroundColor(.green)
                     .bold()
             }
             .padding(5)
-            Text("컴퓨터공학과")
+            Text(store.currentUser.major)
                 .font(.system(size: 20))
                 .foregroundColor(.white)
                 .padding(5)
-            Text("20010655")
+            Text(store.currentUser.studentId)
                 .font(.system(size: 12))
                 .foregroundColor(.white)
                 .padding(5)

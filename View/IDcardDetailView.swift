@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct IDcardDetailView: View {
+    @EnvironmentObject var store: UserViewModel
     var body: some View {
         ZStack{
             Image("logo-background").resizable().aspectRatio(contentMode:.fill)
@@ -21,15 +22,15 @@ struct IDcardDetailView: View {
                     .opacity(0.3)
             }
             VStack(spacing: 30){
-                Text("김인페")
+                Text(store.currentUser.userName)
                     .font(.system(size: 25))
                     .foregroundColor(.white)
                     .bold()
-                Text("컴퓨터공학과")
+                Text(store.currentUser.major)
                     .font(.system(size: 25))
                     .foregroundColor(.white)
                     .bold()
-                Text("20010655")
+                Text(store.currentUser.studentId)
                     .font(.system(size: 25))
                     .foregroundColor(.white)
                     .bold()
