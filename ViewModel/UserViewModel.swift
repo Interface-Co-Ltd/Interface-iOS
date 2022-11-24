@@ -14,6 +14,7 @@ class UserViewModel: ObservableObject {
     
     @Published var currentUser: User?
     @Published var lastError: String?
+    @Published var fetchCompleted = false
     
     let isPreviewViewModel: Bool
     public private(set) var inputId: String = ""
@@ -54,7 +55,10 @@ class UserViewModel: ObservableObject {
                         print("sink finished")
                 }
             } receiveValue: { user in
-                self.currentUser = user
+                DispatchQueue.main.async {
+                    self.currentUser = user
+                    self.fetchCompleted = true
+                }
             }
             .store(in: &subscriptions)
             

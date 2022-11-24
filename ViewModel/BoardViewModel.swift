@@ -15,6 +15,7 @@ class BoardViewModel:  ObservableObject {
     
     @Published var boardList: [Board]?
     @Published var lastError: String?
+    @Published var fetchCompleted = false
     
     let isPreviewViewModel: Bool
     
@@ -52,7 +53,10 @@ class BoardViewModel:  ObservableObject {
                         print("sink finished")
                 }
             } receiveValue: { boards in
-                self.boardList = boards
+                DispatchQueue.main.async {
+                    self.boardList = boards
+                    self.fetchCompleted = true
+                }
             }
             .store(in: &subscriptions)
             
