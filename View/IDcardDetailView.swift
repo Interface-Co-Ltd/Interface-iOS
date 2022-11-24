@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct IDcardDetailView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+    @State var isLoading = true
+    
     var body: some View {
         ZStack{
             Image("logo-background").resizable().aspectRatio(contentMode:.fill)
@@ -20,23 +23,32 @@ struct IDcardDetailView: View {
                     .frame(width:298,height: 300)
                     .opacity(0.3)
             }
+            
             VStack(spacing: 30){
-                Text("김인페")
-                    .font(.system(size: 25))
-                    .foregroundColor(.white)
-                    .bold()
-                Text("컴퓨터공학과")
-                    .font(.system(size: 25))
-                    .foregroundColor(.white)
-                    .bold()
-                Text("20010655")
-                    .font(.system(size: 25))
-                    .foregroundColor(.white)
-                    .bold()
-                Text("인터페이스")
-                    .font(.system(size: 25))
-                    .foregroundColor(.white)
-                    .bold()
+                if let user = userViewModel.currentUser{
+                    Text(user.userName)
+                        .font(.system(size: 25))
+                        .foregroundColor(.white)
+                        .bold()
+                    Text(user.major)
+                        .font(.system(size: 25))
+                        .foregroundColor(.white)
+                        .bold()
+                    Text(user.studentId)
+                        .font(.system(size: 25))
+                        .foregroundColor(.white)
+                        .bold()
+                    Text("인터페이스")
+                        .font(.system(size: 25))
+                        .foregroundColor(.white)
+                        .bold()
+                }
+            }
+            .redacted(reason: isLoading ? .placeholder : [])
+            .onAppear() {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    isLoading = false
+                }
             }
         }
     }

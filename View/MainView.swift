@@ -40,7 +40,7 @@ struct MainView: View {
                     }
                     .shadow(radius: 20)
                     .disabled(isUserDataLoading)
-                    .redacted(reason: isUserDataLoading ? .placeholder : [])
+//                    .redacted(reason: isUserDataLoading ? .placeholder : [])
                     
                     //게시판 기능
                     NavigationLink {
