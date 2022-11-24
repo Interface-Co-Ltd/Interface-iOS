@@ -51,18 +51,18 @@ struct SubCalendarView: View {
                 Text("이번주 인페 일정")
                     .font(.headline)
                     .fontWeight(.semibold)
+                    .unredacted()
                 Spacer()
             }
             .padding(.leading)
             
             VStack(alignment: .leading, spacing: 20) {
                 Section {
-                    if let scheduleList = scheduleViewModel.scheduleList {
-                        if scheduleList.count != 0 {
+                    if scheduleViewModel.subViewSchdules.count != 0 {
                             ForEach(scheduleViewModel.subViewSchdules) { schdl in
                                 HStack {
                                     VStack(alignment: .trailing, spacing: 2) {
-                                        Image(schdl.div == .sejong ? "sejong-univ-logo" : "interface-logo")
+                                        Image(schdl.div == "세종대학교" ? "sejong-univ-logo" : "interface-logo")
                                             .resizable()
                                             .frame(width: 20, height: 20)
                                             .opacity(0.7)
@@ -77,6 +77,12 @@ struct SubCalendarView: View {
                                         if schdl.startDate.timeIntervalSinceNow <= 0 && schdl.endDate.timeIntervalSinceNow + 3600 * 24 >= 0 {
                                             Text("진행중!")
                                                 .foregroundColor(.red)
+                                                .font(.caption2)
+                                        }
+                                        
+                                        if schdl.startDate.timeIntervalSinceNow > SubCalendarView.nowSinceSunday() {
+                                            Text("다음주")
+                                                .foregroundColor(.blue)
                                                 .font(.caption2)
                                         }
                                         
@@ -101,13 +107,12 @@ struct SubCalendarView: View {
                                 
                                 Text("이번주엔 일정이 없어요.")
                                     .font(.subheadline)
+                                    .unredacted()
                                 
                                 Spacer()
                             }
                         }
                     }
-                    
-                }
             }
             .padding(.all, 25)
             .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg")))

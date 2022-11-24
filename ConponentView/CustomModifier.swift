@@ -1,8 +1,8 @@
 //
 //  CustomModifier.swift
-//  PrototypeIF2.0
+//  InterfaceCoLtd
 //
-//  Created by 김도형 on 2022/09/29.
+//  Created by 김도형 on 2022/11/17.
 //
 
 import SwiftUI
@@ -112,6 +112,40 @@ struct VersionedUltraThinMaterialEffect: ViewModifier {
         if #available(iOS 15.0, *) {
             content
                 .background(.ultraThinMaterial)
+        } else {
+            content
+        }
+    }
+}
+
+@available(iOS 15.0, *)
+struct AutoTextFieldFocusModifier: ViewModifier {
+    @FocusState var textFieldFocused: Bool
+    
+    @Binding var focused: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .focused($textFieldFocused)
+            .onAppear() {
+                textFieldFocused = focused
+            }
+    }
+}
+
+struct VersionedSearchViewTransitionModifier: ViewModifier {
+    @Environment(\.colorScheme) var displayMode
+    
+    @Binding var isSearching: Bool
+    
+    func body(content: Content) -> some View {
+        if #available(iOS 15.0, *) {
+            content
+                .overlay {
+                    if isSearching {
+                        displayMode == .light ? Color.gray.opacity(0.5).ignoresSafeArea() : Color.black.opacity(0.9).ignoresSafeArea()
+                    }
+                }
         } else {
             content
         }
