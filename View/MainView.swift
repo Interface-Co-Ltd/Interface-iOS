@@ -45,11 +45,14 @@ struct MainView: View {
                     
                     //게시판 기능
                     NavigationLink {
-                        //NoticeView(boardViewModel: $boardViewModel)
-                        NoticeView().environmentObject(NoticeViewModel())
+                        if let notices = boardViewModel.boardList {
+                            NoticeView(store: notices)
+                        }
                     } label: {
-                        //SubNoticeView(boardService: $boardViewModel)
-                        SubNoticeView().environmentObject(NoticeViewModel())
+                        if let notices = boardViewModel.boardList {
+                            SubNoticeView(store: notices)
+                        }
+                        
                     }
                     .buttonStyle(ScaledButtonStyle())
                     .foregroundColor(.primary)
