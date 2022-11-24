@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SubNoticeView: View {
-    @EnvironmentObject var store: NoticeViewModel
+    @State var store: [Board]
     
     var body: some View {
         VStack {
@@ -25,14 +25,14 @@ struct SubNoticeView: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        let notice: Notice = (store.list.first)!
+                        let notice: Board = (store.first)!
                         Text(notice.title)
                             .bold()
                             .lineLimit(1)
                             .padding(.bottom, 1)
                         HStack {
-                            Text(notice.insertDate, style: .date)
-                            Text("| 작성자: " + notice.writer)
+                            Text(notice.createdDate, style: .date)
+                            Text("| 작성자: " + notice.userID)
                             
                         }.font(.caption)
                             .foregroundColor(.secondary)
@@ -42,14 +42,14 @@ struct SubNoticeView: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        let notice: Notice = store.list[store.list.index(after: store.list.startIndex)]
+                        let notice: Board = store[store.index(after: store.startIndex)]
                         Text(notice.title)
                             .bold()
                             .lineLimit(1)
                             .padding(.bottom, 1)
                         HStack {
-                            Text(notice.insertDate, style: .date)
-                            Text("| 작성자: " + notice.writer)
+                            Text(notice.createdDate, style: .date)
+                            Text("| 작성자: " + notice.userID)
                             
                         }.font(.caption)
                             .foregroundColor(.secondary)
@@ -66,6 +66,6 @@ struct SubNoticeView: View {
 
 struct SubNoticeView_Previews: PreviewProvider {
     static var previews: some View {
-        SubNoticeView().environmentObject(NoticeViewModel())
+        SubNoticeView(store: BoardViewModel.preview.boardList!)
     }
 }
