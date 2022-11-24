@@ -16,6 +16,7 @@ class ScheduleViewModel: ObservableObject {
     @Published var scheduleList: [Schedule]?
     @Published var subViewSchdules: [Schedule] = []
     @Published var lastError: String?
+    @Published var fetchCompleted = false
     
     let isPreviewViewModel: Bool
     
@@ -62,6 +63,7 @@ class ScheduleViewModel: ObservableObject {
             } receiveValue: { schedules in
                 DispatchQueue.main.async {
                     self.scheduleList = schedules
+                    self.fetchCompleted = true
                 }
             }.store(in: &subscriptions)
         } catch ApiError.invalidUrl {

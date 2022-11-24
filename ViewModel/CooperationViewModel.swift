@@ -15,6 +15,7 @@ class CooperationViewModel: ObservableObject {
     
     @Published var cooperationList: [Cooperation]?
     @Published var lastError: String?
+    @Published var fetchCompleted = false
     
     let isPreviewViewModel: Bool
     
@@ -44,7 +45,10 @@ class CooperationViewModel: ObservableObject {
                         print("sink finished")
                 }
             } receiveValue: { cooperations in
-                self.cooperationList = cooperations
+                DispatchQueue.main.async {
+                    self.cooperationList = cooperations
+                    self.fetchCompleted = true
+                }
             }
             .store(in: &subscriptions)
             
