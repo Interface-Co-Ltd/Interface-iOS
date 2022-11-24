@@ -34,6 +34,7 @@ struct MainView: View {
                     .buttonStyle(ScaledButtonStyle())
                     .foregroundColor(.primary)
                     .padding(.top)
+                    .padding(.vertical)
                     .padding(.bottom,10)
                     .sheet(isPresented: $showIDCard) {
                         IDcardDetailView()
