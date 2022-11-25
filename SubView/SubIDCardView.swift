@@ -8,48 +8,78 @@
 import SwiftUI
 
 struct SubIDCardView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+    @Environment(\.colorScheme) var scheme
+    @State var isLoading = true
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 1){
-            HStack(alignment: .bottom){
-                Text("동기창")
-                    .font(.system(size: 20))
-                    .foregroundColor(.white)
-                    .bold()
-                Text("회장")
-                    .font(.system(size: 12))
-                    .foregroundColor(.white)
-                Text("32th")
-                    .font(.system(size: 15))
-                    .foregroundColor(.green)
-                    .bold()
+        ZStack{
+            ZStack{
+                Image("logo-background")
+                    .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .shadow(radius: 10)
+                    .opacity(scheme == .light ? 1.0 : 0.65)
+                VStack{
+                    Spacer(minLength: 50)
+                    
+                    HStack{
+                        Spacer()
+                        
+                        Image("interface-logo-white")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .opacity(0.6)
+                    }
+                }
             }
-            .padding(5)
-            Text("컴퓨터공학과")
-                .font(.system(size: 20))
+            HStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    if let user = userViewModel.currentUser{
+                        HStack(alignment: .bottom, spacing: 10) {
+                            HStack(alignment: .bottom, spacing: 5) {
+                                Text(user.userName)
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                
+                                Text(user.auth)
+                                    .font(.footnote)
+                            }
+                            
+                            Text("\(user.generation)th")
+                                .font(.headline)
+                                .foregroundColor(.green)
+                            
+                            Spacer()
+                        }
+                        
+                        Text(user.major)
+                            .font(.title3)
+                        
+                        Text(user.studentId)
+                            .font(.subheadline)
+                    }
+                }
                 .foregroundColor(.white)
-                .padding(5)
-            Text("20010655")
-                .font(.system(size: 12))
-                .foregroundColor(.white)
-                .padding(5)
-            Image("interface-logo-white")
-                .resizable().frame(width: 75, height: 85.35)
-                .position(x: 280, y: -35)
-                .opacity(0.6)
-                .unredacted()
+                .padding(25)
                 
+                Spacer()
+            }
+            .redacted(reason: isLoading ? .placeholder : [])
+            .onAppear() {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    isLoading = false
+                }
+            }
         }
         .frame(maxHeight: 100)
-//        .frame(width:330, height: 100, alignment: .leading)
-        .padding(25)
-        .background(Image("logo-background").resizable().unredacted())
-        .cornerRadius(20)
     }
 }
 
 struct SubIDCardView_Previews: PreviewProvider {
     static var previews: some View {
         SubIDCardView()
+            .environmentObject(UserViewModel.preview)
     }
 }
 

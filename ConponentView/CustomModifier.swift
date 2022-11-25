@@ -132,3 +132,22 @@ struct AutoTextFieldFocusModifier: ViewModifier {
             }
     }
 }
+
+struct VersionedSearchViewTransitionModifier: ViewModifier {
+    @Environment(\.colorScheme) var displayMode
+    
+    @Binding var isSearching: Bool
+    
+    func body(content: Content) -> some View {
+        if #available(iOS 15.0, *) {
+            content
+                .overlay {
+                    if isSearching {
+                        displayMode == .light ? Color.gray.opacity(0.5).ignoresSafeArea() : Color.black.opacity(0.9).ignoresSafeArea()
+                    }
+                }
+        } else {
+            content
+        }
+    }
+}

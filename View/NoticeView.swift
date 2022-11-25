@@ -8,31 +8,68 @@
 import SwiftUI
 
 struct NoticeView: View {
-    @EnvironmentObject var store: NoticeViewModel
+    @State var isLoading = true
+    @State var store: [Board]
     
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(store.list) { notice in
-                    NavigationLink {
-                        NoticeDetailView(notice: notice)
-                    } label: {
-                        NoticeCell(notice: notice)
+                LazyVStack(alignment: .leading, spacing: 35) {
+                    ForEach(store) { board in
+                        NavigationLink {
+                            NoticeDetailView(notice: board)
+                        } label: {
+                            VStack(alignment: .leading, spacing: 5) {
+                                HStack(spacing: 0) {
+                                    Text(board.title)
+                                        .font(.title3)
+                                        .fontWeight(.semibold)
+                                    
+                                    Spacer()
+                                }
+                                
+                                Spacer()
+                                
+                                Text(board.content)
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(3)
+                                    .font(.footnote)
+                                Spacer()
+                                
+                                HStack {
+                                    Text(board.stringCreatedDate())
+                                    
+                                    Text("작성자 : \(board.userID)")
+                                }
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                            }
+                            .padding(.all, 25)
+                            .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg-accent")))
+                        }
+                        .navigationTitle("공지사항")
+                        .buttonStyle(ScaledButtonStyle())
+                        .foregroundColor(.primary)
                     }
-                    .padding(10)
-                    .padding(.bottom, 20)
-                    .buttonStyle(PlainButtonStyle())
                 }
+                
+                .padding()
             }
         }.navigationTitle("공지사항")
+            .redacted(reason: isLoading ? .placeholder : [])
+            .onAppear() {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    isLoading = false
+                }
+            }
     }
 }
 
+
+
 struct NoticeView_Previews: PreviewProvider {
     static var previews: some View {
-        NoticeView()
-            .environmentObject(NoticeViewModel())
-            
+        NoticeView(store: BoardViewModel.preview.boardList!)
     }
 }
 
