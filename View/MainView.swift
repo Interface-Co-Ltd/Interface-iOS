@@ -133,7 +133,9 @@ struct MainView: View {
         .scaleEffect(isSearching ? 0.9 : 1)
         .modifier(VersionedSearchViewTransitionModifier(isSearching: $isSearching))
         .onAppear() {
-            scheduleViewModel.fetch()
+//            scheduleViewModel.fetch()
+            boardViewModel.fetch()
+            print("fail \(boardViewModel.lastError ?? "none error")")
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 isUserDataLoading = false
