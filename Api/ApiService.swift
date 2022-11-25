@@ -14,27 +14,26 @@ enum API {
     case fetchUser
     case fetchCooperations
     
-    var url: URL? {
+    var url: URL {
         switch self {
             case .fetchBoards:
-                return URL(string: "")
+                return URL(string: "")!
             case .fetchSchedules:
-                return URL(string: "https://637b8bb210a6f23f7fac1c5b.mockapi.io/schedule")
+                return URL(string: "https://637b8bb210a6f23f7fac1c5b.mockapi.io/schedule")!
             case .fetchUser:
-                return URL(string: "")
+                return URL(string: "")!
             case .fetchCooperations:
-                return URL(string: "")
+                return URL(string: "")!
         }
     }
 }
 
 enum ApiService {
-    static func fetchBoards() throws -> AnyPublisher<[Board], Error> {
-        guard let url = API.fetchBoards.url else {
-            throw ApiError.invalidUrl(API.fetchBoards.url?.host ?? "")
-        }
+    static func fetchBoards() -> AnyPublisher<[Board], ApiError> {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         
-        return URLSession.shared.dataTaskPublisher(for: url).tryMap {
+        return URLSession.shared.dataTaskPublisher(for: API.fetchBoards.url).tryMap {
             guard let httpResponse = $0.response as? HTTPURLResponse else {
                 throw ApiError.invalidResponse
             }
@@ -45,19 +44,18 @@ enum ApiService {
             
             return $0.data
         }
-        .decode(type: [Board].self, decoder: JSONDecoder())
+        .decode(type: [Board].self, decoder: decoder)
+        .mapError {error in
+            ApiError.convert(error: error)
+        }
         .eraseToAnyPublisher()
     }
     
-    static func fetchSchedules() throws -> AnyPublisher<[Schedule], Error> {
-        guard let url = API.fetchSchedules.url else {
-            throw ApiError.invalidUrl("잘못된 URL입니다.")
-        }
-        
+    static func fetchSchedules() -> AnyPublisher<[Schedule], ApiError> {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         
-        return URLSession.shared.dataTaskPublisher(for: url).tryMap {
+        return URLSession.shared.dataTaskPublisher(for: API.fetchSchedules.url).tryMap {
             guard let httpResponse = $0.response as? HTTPURLResponse else {
                 throw ApiError.invalidResponse
             }
@@ -69,15 +67,14 @@ enum ApiService {
             return $0.data
         }
         .decode(type: [Schedule].self, decoder: decoder)
+        .mapError { error in
+            ApiError.convert(error: error)
+        }
         .eraseToAnyPublisher()
     }
     
-    static func fetchUser() throws -> AnyPublisher<User, Error> {
-        guard let url = API.fetchUser.url else {
-            throw ApiError.invalidUrl("잘못된 URL입니다.")
-        }
-        
-        return URLSession.shared.dataTaskPublisher(for: url).tryMap {
+    static func fetchUser() -> AnyPublisher<User, ApiError> {
+        return URLSession.shared.dataTaskPublisher(for: API.fetchUser.url).tryMap {
             guard let httpResponse = $0.response as? HTTPURLResponse else {
                 throw ApiError.invalidResponse
             }
@@ -89,15 +86,17 @@ enum ApiService {
             return $0.data
         }
         .decode(type: User.self, decoder: JSONDecoder())
+        .mapError { error in
+            ApiError.convert(error: error)
+        }
         .eraseToAnyPublisher()
     }
     
-    static func fetchCooperations() throws -> AnyPublisher<[Cooperation], Error> {
-        guard let url = API.fetchCooperations.url else {
-            throw ApiError.invalidUrl("잘못된 URL입니다.")
-        }
+    static func fetchCooperations() -> AnyPublisher<[Cooperation], ApiError> {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         
-        return URLSession.shared.dataTaskPublisher(for: url).tryMap {
+        return URLSession.shared.dataTaskPublisher(for: API.fetchCooperations.url).tryMap {
             guard let httpResponse = $0.response as? HTTPURLResponse else {
                 throw ApiError.invalidResponse
             }
@@ -109,6 +108,9 @@ enum ApiService {
             return $0.data
         }
         .decode(type: [Cooperation].self, decoder: JSONDecoder())
+        .mapError { error in
+            ApiError.convert(error: error)
+        }
         .eraseToAnyPublisher()
     }
 }
