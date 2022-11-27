@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    var delegate: AppDelegate
+    
     @EnvironmentObject var boardViewModel: BoardViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
@@ -41,7 +43,6 @@ struct MainView: View {
                     }
                     .shadow(radius: 20)
                     .disabled(isUserDataLoading)
-//                    .redacted(reason: isUserDataLoading ? .placeholder : [])
                     
                     //게시판 기능
                     NavigationLink {
@@ -63,11 +64,7 @@ struct MainView: View {
                     //일정 기능
                     NavigationLink {
                         if let schedules = scheduleViewModel.scheduleList {
-                            if #available(iOS 15, *) {
-                                InformationWithSelectionView(schedule: schedules, currentDate: .now)
-                            } else {
-                                InformationWithSelectionView(schedule: schedules, currentDate: NSDate.now as Date)
-                            }
+                            InformationWithSelectionView(schedule: schedules, currentDate: nil)
                         }
                     } label: {
                         SubCalendarView()
@@ -146,7 +143,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(delegate: AppDelegate())
             .environmentObject(BoardViewModel.preview)
             .environmentObject(UserViewModel.preview)
             .environmentObject(ScheduleViewModel.preview)

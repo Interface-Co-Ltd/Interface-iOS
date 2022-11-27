@@ -20,20 +20,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="interface-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="2gD-We-4Vc">
-                                <rect key="frame" x="61" y="272" width="272" height="308"/>
+                                <rect key="frame" x="71" y="301" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="P8U-x6-hHD"/>
+                                    <constraint firstAttribute="width" constant="250" id="haF-gt-TRm"/>
+                                    <constraint firstAttribute="height" constant="250" id="vgs-9a-Ttf"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="zSV-Hj-ykC"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="2gD-We-4Vc" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="213" id="CH8-QY-W1x"/>
-                            <constraint firstItem="t7V-K8-ML8" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="GwM-GR-Zp5"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="2gD-We-4Vc" secondAttribute="trailing" constant="60" id="IFY-OA-Hra"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="2gD-We-4Vc" secondAttribute="bottom" constant="238" id="VFE-Gg-ePC"/>
-                            <constraint firstAttribute="bottom" secondItem="t7V-K8-ML8" secondAttribute="bottom" id="VW9-0B-uIC"/>
-                            <constraint firstItem="2gD-We-4Vc" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="61" id="YrE-V5-Nvb"/>
-                            <constraint firstItem="t7V-K8-ML8" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="hn2-di-Bap"/>
-                            <constraint firstItem="t7V-K8-ML8" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ve3-zV-ohr"/>
+                            <constraint firstItem="t7V-K8-ML8" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="0cr-eS-12G"/>
+                            <constraint firstItem="t7V-K8-ML8" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Shq-9j-Xac"/>
+                            <constraint firstItem="t7V-K8-ML8" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="atR-8m-sda"/>
+                            <constraint firstItem="2gD-We-4Vc" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="71" id="d5j-0Q-LHZ"/>
+                            <constraint firstItem="2gD-We-4Vc" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="242" id="d9E-e1-pVj"/>
+                            <constraint firstAttribute="bottom" secondItem="t7V-K8-ML8" secondAttribute="bottom" id="gZT-nA-JCr"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="2gD-We-4Vc" secondAttribute="bottom" constant="267" id="nAg-hT-gcj"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="2gD-We-4Vc" secondAttribute="trailing" constant="72" id="pku-CV-JXX"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -11,9 +11,10 @@ struct MenuView: View {
     @State private var showStyleDialog = false
     @State private var showLogoutDialog = false
     
+    @Binding var displayStyle: UIUserInterfaceStyle
+    
     //AppStorage로 바꿀 것
-    @State private var currnetDisplayStyle = "시스템 기본값"
-    @State private var displayStyle = UIUserInterfaceStyle.unspecified
+    @AppStorage("displayModeString") private var currnetDisplayStyle = "시스템 기본값"
     
     var body: some View {
         NavigationView {
@@ -178,6 +179,6 @@ struct MenuView: View {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        MenuView(displayStyle: .constant(.unspecified))
     }
 }
