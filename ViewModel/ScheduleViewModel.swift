@@ -47,35 +47,63 @@ class ScheduleViewModel: ObservableObject {
         return viewModel
     }
     
-    func fetch() {
+    func fetch(token: String) {
         guard !isPreviewViewModel else {
             return
         }
         
-        do {
-            try ApiService.fetchSchedules().sink { completion in
-                switch completion {
-                    case .failure(let error):
-                        print("sink fail!! - \(error)")
-                    case .finished:
-                        print("sink finished")
-                }
-            } receiveValue: { schedules in
-                DispatchQueue.main.async {
-                    self.scheduleList = schedules
-                    self.fetchCompleted = true
-                }
-            }.store(in: &subscriptions)
-        } catch ApiError.invalidUrl {
-            lastError = "잘못된 URL"
-        } catch ApiError.failed(let statusCode) {
-            lastError = "네트워크 응답 오류(\(statusCode)"
-        } catch ApiError.invalidResponse {
-            lastError = "네트워크 응답 없음"
-        } catch {
-            lastError = "알 수 없는 오류 발생"
-        }
+        ApiService.fetchSchedules(token: token).sink { completion in
+            switch completion {
+                case .failure(let error):
+                    switch error {
+                        case .invalidUrl(_):
+                            self.lastError = "잘못된 URL"
+                            break
+                        case .failed(let statusCode):
+                            self.lastError = "네트워크 응답 오류(\(statusCode)"
+                            break
+                        case .invalidResponse:
+                            self.lastError = "네트워크 응답 없음"
+                            break
+                        default:
+                            self.lastError = "알 수 없는 오류 발생"
+                            break
+                    }
+                    print("sink fail!! - \(error)")
+                case .finished:
+                    print("sink finished")
+            }
+        } receiveValue: { schedules in
+            DispatchQueue.main.async {
+                self.scheduleList = schedules
+                self.fetchCompleted = true
+            }
+        }.store(in: &subscriptions)
         
+//        do {
+//            try ApiService.fetchSchedules().sink { completion in
+//                switch completion {
+//                    case .failure(let error):
+//                        print("sink fail!! - \(error)")
+//                    case .finished:
+//                        print("sink finished")
+//                }
+//            } receiveValue: { schedules in
+//                DispatchQueue.main.async {
+//                    self.scheduleList = schedules
+//                    self.fetchCompleted = true
+//                }
+//            }.store(in: &subscriptions)
+//        } catch ApiError.invalidUrl {
+//            lastError = "잘못된 URL"
+//        } catch ApiError.failed(let statusCode) {
+//            lastError = "네트워크 응답 오류(\(statusCode)"
+//        } catch ApiError.invalidResponse {
+//            lastError = "네트워크 응답 없음"
+//        } catch {
+//            lastError = "알 수 없는 오류 발생"
+//        }
+//
         print(lastError ?? "")
         
         if let schedules = self.scheduleList {

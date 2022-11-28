@@ -24,7 +24,7 @@ enum ApiError: Error, CustomStringConvertible {
                 return .unknown(error)
         }
     }
-            
+    
     var description: String {
         return ""
     }
