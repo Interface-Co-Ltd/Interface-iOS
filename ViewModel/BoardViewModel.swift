@@ -39,36 +39,40 @@ class BoardViewModel:  ObservableObject {
         return viewModel
     }
     
-    func fetch() {
+    func fetch(token: String) {
         guard !isPreviewViewModel else {
             return
         }
         
-        do {
-            try ApiService.fetchBoards().sink { completion in
-                switch completion {
-                    case .failure(let error):
-                        print("sink fail!! - \(error)")
-                    case .finished:
-                        print("sink finished")
-                }
-            } receiveValue: { boards in
-                DispatchQueue.main.async {
-                    self.boardList = boards
-                    self.fetchCompleted = true
-                }
+        ApiService.fetchBoards(token: token).sink { completion in
+            switch completion {
+                case .failure(let error):
+                    switch error {
+                        case .invalidUrl(_):
+                            self.lastError = "잘못된 URL"
+                            break
+                        case .failed(let statusCode):
+                            self.lastError = "네트워크 응답 오류(\(statusCode)"
+                            break
+                        case .invalidResponse:
+                            self.lastError = "네트워크 응답 없음"
+                            break
+                        default:
+                            self.lastError = "알 수 없는 오류 발생"
+                            break
+                    }
+                    print("sink fail!! - \(error)")
+                case .finished:
+                    print("sink finished")
             }
-            .store(in: &subscriptions)
-            
-        } catch ApiError.invalidUrl {
-            lastError = "잘못된 URL"
-        } catch ApiError.failed(let statusCode) {
-            lastError = "네트워크 응답 오류(\(statusCode)"
-        } catch ApiError.invalidResponse {
-            lastError = "네트워크 응답 없음"
-        } catch {
-            lastError = "알 수 없는 오류 발생"
+        } receiveValue: { boards in
+            DispatchQueue.main.async {
+                self.boardList = boards
+                self.fetchCompleted = true
+            }
         }
+        .store(in: &subscriptions)
 
     }
 }
+

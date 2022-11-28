@@ -130,6 +130,7 @@ struct Schedule: Codable, Identifiable {
 //preview용 일정 모델 리스트 생성자 사용시 코드 "Schedule.preview"
 extension Schedule {
     static var preview: [Schedule] {
+        
         var scheduleList: [Schedule] = []
         
         scheduleList.append(Schedule(content: "개강총회", startDate: "22/09/02", endDate: "22/09/02", place: "센B116", allDay: true, scheduleType: "인터페이스"))

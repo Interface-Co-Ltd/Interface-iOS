@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SubCalendarView: View {
-//    @Binding var schedule: [Schedule]
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     
     @State var isCurrentWeek = true

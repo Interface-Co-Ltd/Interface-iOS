@@ -10,7 +10,6 @@ import SwiftUI
 struct NoticeDetailView: View {
     @State var notice: Board
     
-    
     var body: some View {
         VStack {
             ScrollView {

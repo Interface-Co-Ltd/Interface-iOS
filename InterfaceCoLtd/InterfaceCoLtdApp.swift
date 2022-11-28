@@ -6,21 +6,47 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct InterfaceCoLtdApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    @AppStorage("displayMode") private var displayStyle = UIUserInterfaceStyle.unspecified
+        
     @StateObject var boardViewModel = BoardViewModel.preview
     @StateObject var userViewModel = UserViewModel.preview
     @StateObject var scheduleViewModel = ScheduleViewModel.preview
     @StateObject var cooperationViewModel = CooperationViewModel.preview
+                
+    @StateObject private var loginViewModel = LoginViewModel.preview
+    
+    @AppStorage("autoLogin") private var autoLogin: Bool = false
+    
+    @AppStorage("showLoginView") var showLoginView: Bool = true
     
     var body: some Scene {
         WindowGroup {
-            MainTabView()
-                .environmentObject(boardViewModel)
-                .environmentObject(userViewModel)
-                .environmentObject(scheduleViewModel)
-                .environmentObject(cooperationViewModel)
+            if showLoginView {
+                LoginView(autoLogin: $autoLogin, showLoginView: $showLoginView)
+                    .environmentObject(loginViewModel)
+//                    .onAppear() {
+//                            loginViewModel.logout()
+//                    }
+            } else {
+                MainTabView(delegate: delegate, displayStyle: $displayStyle, showLoginView: $showLoginView)
+                    .environmentObject(boardViewModel)
+                    .environmentObject(userViewModel)
+                    .environmentObject(scheduleViewModel)
+                    .environmentObject(cooperationViewModel)
+                    .onAppear() {
+                        UIApplication.shared.windows.forEach { window in
+                            window.overrideUserInterfaceStyle = displayStyle
+                        }
+                    }
+            }
         }
+        
     }
 }
+

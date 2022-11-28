@@ -101,28 +101,35 @@ struct SearchView: View {
                 if searchType == .board {
                     LazyVStack {
                         ForEach(matchedBoardList) { item in
-                            VStack(spacing: 10) {
-                                Rectangle()
-                                    .frame(height: 1)
-                                    .foregroundColor(.secondary.opacity(0.1))
-                                
-                                HStack {
-                                    VStack(alignment: .leading, spacing: 10) {
-                                        Text(item.title)
+                            NavigationLink {
+                                NoticeDetailView(notice: item)
+                            } label: {
+                                VStack(spacing: 10) {
+                                    Rectangle()
+                                        .frame(height: 1)
+                                        .foregroundColor(.secondary.opacity(0.1))
+                                    
+                                    HStack {
+                                        VStack(alignment: .leading, spacing: 10) {
+                                            Text(item.title)
+                                            
+                                            Text(item.stringCreatedDate())
+                                                .font(.caption2)
+                                                .foregroundColor(.secondary)
+                                        }
                                         
-                                        Text(item.stringCreatedDate())
+                                        Spacer()
+                                        
+                                        Text("작성자 : \(item.userID)")
                                             .font(.caption2)
                                             .foregroundColor(.secondary)
                                     }
-                                    
-                                    Spacer()
-                                    
-                                    Text("작성자 : \(item.userID)")
-                                        .font(.caption2)
-                                        .foregroundColor(.secondary)
                                 }
                             }
                         }
+                        .foregroundColor(.primary)
+                        
+                        
                     }
                     .padding(.horizontal)
                     .onChange(of: keyword) { newValue in
