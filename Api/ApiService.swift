@@ -20,7 +20,7 @@ enum API {
             case .fetchBoards:
                 return URL(string: "")!
             case .fetchSchedules:
-                return URL(string: "https://637b8bb210a6f23f7fac1c5b.mockapi.io/schedule")!
+                return URL(string: "")!
             case .fetchUser:
                 return URL(string: "")!
             case .fetchCooperations:
