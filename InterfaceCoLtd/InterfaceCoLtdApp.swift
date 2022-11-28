@@ -12,6 +12,7 @@ struct InterfaceCoLtdApp: App {
     @StateObject var boardViewModel = BoardViewModel.preview
     @StateObject var userViewModel = UserViewModel.preview
     @StateObject var scheduleViewModel = ScheduleViewModel.preview
+    @StateObject var cooperationViewModel = CooperationViewModel.preview
     
     var body: some Scene {
         WindowGroup {
@@ -19,6 +20,7 @@ struct InterfaceCoLtdApp: App {
                 .environmentObject(boardViewModel)
                 .environmentObject(userViewModel)
                 .environmentObject(scheduleViewModel)
+                .environmentObject(cooperationViewModel)
         }
     }
 }

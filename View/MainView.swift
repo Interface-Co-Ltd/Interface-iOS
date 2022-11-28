@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var boardViewModel: BoardViewModel
+    @EnvironmentObject var cooperationViewModel: CooperationViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     
@@ -80,7 +81,9 @@ struct MainView: View {
                     
                     //추천 맛집 기능
                     NavigationLink {
-                        RecommendedRestaurantUserView()
+                        if let recommendedRestaurants = cooperationViewModel.cooperationList {
+                            RecommendedRestaurantUserView(store: recommendedRestaurants)
+                        }
                     } label: {
                         SubRecommendedRestaurantView()
                     }
@@ -150,5 +153,6 @@ struct MainView_Previews: PreviewProvider {
             .environmentObject(BoardViewModel.preview)
             .environmentObject(UserViewModel.preview)
             .environmentObject(ScheduleViewModel.preview)
+            .environmentObject(CooperationViewModel.preview)
     }
 }
