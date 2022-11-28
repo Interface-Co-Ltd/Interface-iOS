@@ -37,7 +37,9 @@
 		C5A58CF829333575001D1CB1 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A58CF729333575001D1CB1 /* Notification.swift */; };
 		C5A58CFA293365E3001D1CB1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A58CF9293365E3001D1CB1 /* LoginView.swift */; };
 		C5A58CFE293366C2001D1CB1 /* LoginTextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A58CFD293366C2001D1CB1 /* LoginTextfieldView.swift */; };
-		C5A58D0029339BB0001D1CB1 /* LoginInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A58CFF29339BB0001D1CB1 /* LoginInformation.swift */; };
+		C5A58D0029339BB0001D1CB1 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A58CFF29339BB0001D1CB1 /* LoginRequest.swift */; };
+		C5A58D022933A9D4001D1CB1 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A58D012933A9D4001D1CB1 /* LoginResponse.swift */; };
+		C5A58D042933AB6B001D1CB1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A58D032933AB6B001D1CB1 /* LoginViewModel.swift */; };
 		C5B823472913ADCF0021FAF6 /* InterfaceCoLtdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B823462913ADCF0021FAF6 /* InterfaceCoLtdApp.swift */; };
 		C5B8234B2913ADD00021FAF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B8234A2913ADD00021FAF6 /* Assets.xcassets */; };
 		C5B8234F2913ADD00021FAF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B8234E2913ADD00021FAF6 /* Preview Assets.xcassets */; };
@@ -110,7 +112,9 @@
 		C5A58CF729333575001D1CB1 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		C5A58CF9293365E3001D1CB1 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C5A58CFD293366C2001D1CB1 /* LoginTextfieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextfieldView.swift; sourceTree = "<group>"; };
-		C5A58CFF29339BB0001D1CB1 /* LoginInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInformation.swift; sourceTree = "<group>"; };
+		C5A58CFF29339BB0001D1CB1 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		C5A58D012933A9D4001D1CB1 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		C5A58D032933AB6B001D1CB1 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C5B823432913ADCF0021FAF6 /* InterfaceCoLtd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterfaceCoLtd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B823462913ADCF0021FAF6 /* InterfaceCoLtdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceCoLtdApp.swift; sourceTree = "<group>"; };
 		C5B8234A2913ADD00021FAF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -252,6 +256,7 @@
 				C5B823722913AE460021FAF6 /* UserViewModel.swift */,
 				01065CB3291C173B0067C9AC /* NoticeViewModel.swift */,
 				01065CB1291C173A0067C9AC /* RecommendedRestaurantViewModel.swift */,
+				C5A58D032933AB6B001D1CB1 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -276,7 +281,8 @@
 				01065CB4291C173B0067C9AC /* Notice.swift */,
 				01065CB2291C173B0067C9AC /* RecommendedRestaurant.swift */,
 				C5A58CF729333575001D1CB1 /* Notification.swift */,
-				C5A58CFF29339BB0001D1CB1 /* LoginInformation.swift */,
+				C5A58CFF29339BB0001D1CB1 /* LoginRequest.swift */,
+				C5A58D012933A9D4001D1CB1 /* LoginResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -475,6 +481,7 @@
 				010E508D292526950027D3D9 /* RecommendedRestaurantUserCell.swift in Sources */,
 				C5B823952913AF5D0021FAF6 /* InformationWithSelectionView.swift in Sources */,
 				C5B823892913AE980021FAF6 /* User.swift in Sources */,
+				C5A58D042933AB6B001D1CB1 /* LoginViewModel.swift in Sources */,
 				01065CBA291C215F0067C9AC /* SubRecommendedRestaurantView.swift in Sources */,
 				C5B823772913AE460021FAF6 /* CooperationViewModel.swift in Sources */,
 				C5A58CFE293366C2001D1CB1 /* LoginTextfieldView.swift in Sources */,
@@ -491,7 +498,7 @@
 				01065CB7291C173B0067C9AC /* NoticeViewModel.swift in Sources */,
 				01065CAD291C17320067C9AC /* NoticeDetailView.swift in Sources */,
 				C5A58CF529320036001D1CB1 /* AppDelegate.swift in Sources */,
-				C5A58D0029339BB0001D1CB1 /* LoginInformation.swift in Sources */,
+				C5A58D0029339BB0001D1CB1 /* LoginRequest.swift in Sources */,
 				C5B823792913AE460021FAF6 /* ScheduleViewModel.swift in Sources */,
 				01065CAA291C17320067C9AC /* RecommendedRestaurantView.swift in Sources */,
 				C5B823972913D0E40021FAF6 /* MainTabView.swift in Sources */,
@@ -509,6 +516,7 @@
 				C5DF7F2B292CFA1600BF3712 /* ApiService.swift in Sources */,
 				01065CBC291C244E0067C9AC /* SubNoticeView.swift in Sources */,
 				C5B8237E2913AE640021FAF6 /* DrawingCheckmarkView.swift in Sources */,
+				C5A58D022933A9D4001D1CB1 /* LoginResponse.swift in Sources */,
 				01065CB6291C173B0067C9AC /* RecommendedRestaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

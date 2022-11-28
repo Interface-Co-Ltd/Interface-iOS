@@ -31,12 +31,12 @@ class CooperationViewModel: ObservableObject {
         return viewModel
     }
     
-    func fetch() {
+    func fetch(token: String) {
         guard !isPreviewViewModel else {
             return
         }
         
-        ApiService.fetchCooperations().sink { completion in
+        ApiService.fetchCooperations(token: token).sink { completion in
             switch completion {
                 case .failure(let error):
                     switch error {
@@ -65,31 +65,5 @@ class CooperationViewModel: ObservableObject {
             }
         }
         .store(in: &subscriptions)
-        
-        do {
-            try ApiService.fetchCooperations().sink { completion in
-                switch completion {
-                    case .failure(let error):
-                        print("sink fail!! - \(error)")
-                    case .finished:
-                        print("sink finished")
-                }
-            } receiveValue: { cooperations in
-                DispatchQueue.main.async {
-                    self.cooperationList = cooperations
-                    self.fetchCompleted = true
-                }
-            }
-            .store(in: &subscriptions)
-            
-        } catch ApiError.invalidUrl {
-            lastError = "잘못된 URL"
-        } catch ApiError.failed(let statusCode) {
-            lastError = "네트워크 응답 오류(\(statusCode)"
-        } catch ApiError.invalidResponse {
-            lastError = "네트워크 응답 없음"
-        } catch {
-            lastError = "알 수 없는 오류 발생"
-        }
     }
 }

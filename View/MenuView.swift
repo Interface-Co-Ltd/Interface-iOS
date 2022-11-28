@@ -12,6 +12,7 @@ struct MenuView: View {
     @State private var showLogoutDialog = false
     
     @Binding var displayStyle: UIUserInterfaceStyle
+    @Binding var showLoginView: Bool
     
     //AppStorage로 바꿀 것
     @AppStorage("displayModeString") private var currnetDisplayStyle = "시스템 기본값"
@@ -159,7 +160,7 @@ struct MenuView: View {
                             Text("로그아웃")
                         }
                         .foregroundColor(Color.red)
-                        .modifier(VersionedLogoutButtonOnMenu(showLogoutDialog: $showLogoutDialog))
+                        .modifier(VersionedLogoutButtonOnMenu(showLogoutDialog: $showLogoutDialog, showLoginView: $showLoginView))
                     } header: {
                         Text("계정")
                     }.listRowBackground(Color("sub-view-bkg-accent"))
@@ -179,6 +180,6 @@ struct MenuView: View {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView(displayStyle: .constant(.unspecified))
+        MenuView(displayStyle: .constant(.unspecified), showLoginView: .constant(false))
     }
 }

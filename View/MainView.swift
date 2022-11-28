@@ -130,7 +130,7 @@ struct MainView: View {
         .scaleEffect(isSearching ? 0.9 : 1)
         .modifier(VersionedSearchViewTransitionModifier(isSearching: $isSearching))
         .onAppear() {
-            scheduleViewModel.fetch()
+//            scheduleViewModel.fetch()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 isUserDataLoading = false

@@ -18,7 +18,8 @@ enum ApiError: Error, CustomStringConvertible {
         switch error {
             case is URLError: return .invalidUrl(error as? URLError)
             case is ApiError: return error as! ApiError
-            default: return .unknown(error)
+            default:
+                return .unknown(error)
         }
     }
     

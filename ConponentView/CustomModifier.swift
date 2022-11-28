@@ -77,13 +77,16 @@ struct VersionedSubViewBackgroundModifier: ViewModifier {
 
 struct VersionedLogoutButtonOnMenu: ViewModifier {
     @Binding var showLogoutDialog: Bool
+    @Binding var showLoginView: Bool
     
     func body(content: Content) -> some View {
         if #available(iOS 15.0, *) {
             content
                 .confirmationDialog("로그아웃", isPresented: $showLogoutDialog) {
                     Button(role: .destructive) {
-                        
+                        withAnimation(.easeIn(duration: 0.5)) {
+                            showLoginView = true
+                        }
                     } label: {
                         Text("로그아웃")
                     }

@@ -9,23 +9,20 @@ import SwiftUI
 
 struct LoginTextfieldView: View {
     @Binding var showLoginView: Bool
-    @Binding var id: String
-    @Binding var wrongId: Bool
+    @Binding var studentID: String
     @Binding var password: String
-    @Binding var idStore: Bool
-    @Binding var passwordStore: Bool
     
-    //@Environment(\.dismiss) var dismiss
+    @EnvironmentObject var loginViewModel: LoginViewModel
     
     var body: some View {
         VStack {
             if #available(iOS 15.0, *) {
-                TextField("아이디", text: $id, prompt: !wrongId ? Text("아이디") : Text("아이디 오류").foregroundColor(.red))
+                TextField("아이디", text: $studentID, prompt: Text("아이디"))
                     .textFieldStyle(.roundedBorder)
                     .textContentType(.username)
                     .padding()
             } else {
-                TextField("아이디", text: $id)
+                TextField("아이디", text: $studentID)
                     .textFieldStyle(.roundedBorder)
                     .textContentType(.username)
                     .padding()
@@ -45,16 +42,14 @@ struct LoginTextfieldView: View {
             }
             
             Button {
-                if idStore == false {
-                    id = ""
-                }
+                loginViewModel.studentID = studentID
+                loginViewModel.password = password
+                loginViewModel.login()
                 
-                if passwordStore == false {
-                    password = ""
-                }
-                
-                withAnimation(.easeOut(duration: 0.5)) {
-                    showLoginView = false
+                if loginViewModel.isAuthenticated {
+                    withAnimation(.easeOut(duration: 0.5)) {
+                        showLoginView = false
+                    }
                 }
             } label: {
                 Text("로그인")
@@ -69,6 +64,7 @@ struct LoginTextfieldView: View {
 
 struct LoginTextfieldView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginTextfieldView(showLoginView: .constant(true), id: .constant(""), wrongId: .constant(false), password: .constant(""), idStore: .constant(false), passwordStore: .constant(false))
+        LoginTextfieldView(showLoginView: .constant(true), studentID: .constant(""), password: .constant(""))
+            .environmentObject(LoginViewModel.preview)
     }
 }

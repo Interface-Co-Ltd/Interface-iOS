@@ -39,12 +39,12 @@ class BoardViewModel:  ObservableObject {
         return viewModel
     }
     
-    func fetch() {
+    func fetch(token: String) {
         guard !isPreviewViewModel else {
             return
         }
         
-        ApiService.fetchBoards().sink { completion in
+        ApiService.fetchBoards(token: token).sink { completion in
             switch completion {
                 case .failure(let error):
                     switch error {

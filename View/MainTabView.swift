@@ -12,7 +12,7 @@ struct MainTabView: View {
     
     @Binding var displayStyle: UIUserInterfaceStyle
     
-    @State private var showLoginView = true
+    @Binding var showLoginView: Bool
     var body: some View {
         TabView {
             Group {
@@ -34,7 +34,7 @@ struct MainTabView: View {
                     }
                 
                 //설정 탭, 만들면 주석 해제 ㄱ
-                MenuView(displayStyle: $displayStyle)
+                MenuView(displayStyle: $displayStyle, showLoginView: $showLoginView)
                     .tabItem {
                         if #available(iOS 15.0, *) {
                             Label("메뉴", systemImage: "line.3.horizontal")
@@ -50,7 +50,7 @@ struct MainTabView: View {
 
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView(delegate: AppDelegate(), displayStyle: .constant(.unspecified))
+        MainTabView(delegate: AppDelegate(), displayStyle: .constant(.unspecified), showLoginView: .constant(false))
             .environmentObject(BoardViewModel.preview)
             .environmentObject(UserViewModel.preview)
             .environmentObject(ScheduleViewModel.preview)

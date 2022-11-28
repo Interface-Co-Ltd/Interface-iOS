@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct LoginView: View {
-    @AppStorage("idStore") private var idStore: Bool = false
-    @AppStorage("passwordStore") private var passwordStore: Bool = false
+//    @AppStorage("idStore") private var idStore: Bool = false
+//    @AppStorage("passwordStore") private var passwordStore: Bool = false
     
     @Binding var autoLogin: Bool
     @Binding var showLoginView: Bool
     
-    @State var id: String = ""
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    
+    @State var studentID: String = ""
     @State var password: String = ""
     @State private var loginToggle = false
-    @State private var wrongId = false
-    @State private var wrongPassword = false
     @State private var showLoginTextfieldView = false
     
     var body: some View {
@@ -39,7 +39,8 @@ struct LoginView: View {
                 if showLoginTextfieldView {
                     Spacer()
                     
-                    LoginTextfieldView(showLoginView: $showLoginView, id: $id, wrongId: $wrongId, password: $password, idStore: $idStore, passwordStore: $passwordStore)
+                    LoginTextfieldView(showLoginView: $showLoginView, studentID: $loginViewModel.studentID, password: $password)
+                        .environmentObject(loginViewModel)
                     
                     Spacer()
                     
@@ -70,5 +71,6 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView(autoLogin: .constant(false), showLoginView: .constant(true))
+            .environmentObject(LoginViewModel.preview)
     }
 }

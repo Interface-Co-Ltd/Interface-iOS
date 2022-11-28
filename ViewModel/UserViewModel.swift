@@ -41,12 +41,12 @@ class UserViewModel: ObservableObject {
         return viewModel
     }
     
-    func fetch() {
+    func fetch(token: String) {
         guard !isPreviewViewModel else {
             return
         }
         
-        ApiService.fetchUser().sink { completion in
+        ApiService.fetchUser(token: token).sink { completion in
             switch completion {
                 case .failure(let error):
                     switch error {

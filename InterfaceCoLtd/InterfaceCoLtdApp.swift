@@ -17,17 +17,22 @@ struct InterfaceCoLtdApp: App {
     @StateObject var boardViewModel = BoardViewModel.preview
     @StateObject var userViewModel = UserViewModel.preview
     @StateObject var scheduleViewModel = ScheduleViewModel.preview
+    @StateObject private var loginViewModel = LoginViewModel.preview
     
     @AppStorage("autoLogin") private var autoLogin: Bool = false
     
-    @State private var showLoginView = true
+    @AppStorage("showLoginView") var showLoginView: Bool = true
     
     var body: some Scene {
         WindowGroup {
             if showLoginView {
                 LoginView(autoLogin: $autoLogin, showLoginView: $showLoginView)
+                    .environmentObject(loginViewModel)
+//                    .onAppear() {
+//                            loginViewModel.logout()
+//                    }
             } else {
-                MainTabView(delegate: delegate, displayStyle: $displayStyle)
+                MainTabView(delegate: delegate, displayStyle: $displayStyle, showLoginView: $showLoginView)
                     .environmentObject(boardViewModel)
                     .environmentObject(userViewModel)
                     .environmentObject(scheduleViewModel)
