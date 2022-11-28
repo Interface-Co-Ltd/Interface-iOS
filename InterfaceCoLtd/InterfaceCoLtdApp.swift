@@ -17,6 +17,8 @@ struct InterfaceCoLtdApp: App {
     @StateObject var boardViewModel = BoardViewModel.preview
     @StateObject var userViewModel = UserViewModel.preview
     @StateObject var scheduleViewModel = ScheduleViewModel.preview
+    @StateObject var cooperationViewModel = CooperationViewModel.preview
+                
     @StateObject private var loginViewModel = LoginViewModel.preview
     
     @AppStorage("autoLogin") private var autoLogin: Bool = false
@@ -36,6 +38,7 @@ struct InterfaceCoLtdApp: App {
                     .environmentObject(boardViewModel)
                     .environmentObject(userViewModel)
                     .environmentObject(scheduleViewModel)
+                    .environmentObject(cooperationViewModel)
                     .onAppear() {
                         UIApplication.shared.windows.forEach { window in
                             window.overrideUserInterfaceStyle = displayStyle

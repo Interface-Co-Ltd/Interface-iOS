@@ -54,5 +54,6 @@ struct MainTabView_Previews: PreviewProvider {
             .environmentObject(BoardViewModel.preview)
             .environmentObject(UserViewModel.preview)
             .environmentObject(ScheduleViewModel.preview)
+            .environmentObject(CooperationViewModel.preview)
     }
 }
