@@ -16,28 +16,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="logo-background" translatesAutoresizingMaskIntoConstraints="NO" id="t7V-K8-ML8">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="logo-background" translatesAutoresizingMaskIntoConstraints="NO" id="t7V-K8-ML8">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="interface-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="2gD-We-4Vc">
-                                <rect key="frame" x="96" y="326" width="200" height="201"/>
+                                <rect key="frame" x="71.666666666666686" y="301" width="250" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="4hG-Aa-LYY"/>
-                                    <constraint firstAttribute="height" constant="250" id="csK-BT-J8E"/>
+                                    <constraint firstAttribute="height" constant="250" id="aBr-L5-qlf"/>
+                                    <constraint firstAttribute="width" constant="250" id="ffQ-Ip-ZQH"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="2gD-We-4Vc" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="213" id="CH8-QY-W1x"/>
-                            <constraint firstItem="t7V-K8-ML8" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="GwM-GR-Zp5"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="2gD-We-4Vc" secondAttribute="trailing" constant="60" id="IFY-OA-Hra"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="2gD-We-4Vc" secondAttribute="bottom" constant="238" id="VFE-Gg-ePC"/>
-                            <constraint firstAttribute="bottom" secondItem="t7V-K8-ML8" secondAttribute="bottom" id="VW9-0B-uIC"/>
-                            <constraint firstItem="2gD-We-4Vc" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="61" id="YrE-V5-Nvb"/>
-                            <constraint firstItem="t7V-K8-ML8" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="hn2-di-Bap"/>
-                            <constraint firstItem="t7V-K8-ML8" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ve3-zV-ohr"/>
+                            <constraint firstItem="t7V-K8-ML8" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="BjM-dN-Meu"/>
+                            <constraint firstItem="2gD-We-4Vc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ENu-VZ-b4Y"/>
+                            <constraint firstItem="t7V-K8-ML8" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="PzJ-d8-WeB"/>
+                            <constraint firstItem="t7V-K8-ML8" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="TBT-zF-VDj"/>
+                            <constraint firstAttribute="bottom" secondItem="t7V-K8-ML8" secondAttribute="bottom" id="eK2-p4-GSE"/>
+                            <constraint firstItem="2gD-We-4Vc" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="oke-MC-dFE"/>
                         </constraints>
                     </view>
                 </viewController>

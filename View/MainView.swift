@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct MainView: View {
+    var delegate: AppDelegate
+    
     @EnvironmentObject var boardViewModel: BoardViewModel
+    @EnvironmentObject var cooperationViewModel: CooperationViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     
@@ -41,7 +44,6 @@ struct MainView: View {
                     }
                     .shadow(radius: 20)
                     .disabled(isUserDataLoading)
-//                    .redacted(reason: isUserDataLoading ? .placeholder : [])
                     
                     //게시판 기능
                     NavigationLink {
@@ -63,11 +65,7 @@ struct MainView: View {
                     //일정 기능
                     NavigationLink {
                         if let schedules = scheduleViewModel.scheduleList {
-                            if #available(iOS 15, *) {
-                                InformationWithSelectionView(schedule: schedules, currentDate: .now)
-                            } else {
-                                InformationWithSelectionView(schedule: schedules, currentDate: NSDate.now as Date)
-                            }
+                            InformationWithSelectionView(schedule: schedules, currentDate: nil)
                         }
                     } label: {
                         SubCalendarView()
@@ -76,11 +74,13 @@ struct MainView: View {
                     .buttonStyle(ScaledButtonStyle())
                     .padding(.vertical, 10)
                     .disabled(isScheduleDataLoading)
-                    .redacted(reason: isScheduleDataLoading ? .placeholder : [])
+                    .redacted(reason: scheduleViewModel.fetchCompleted ? [] : .placeholder)
                     
-                    //추천 맛집 기능
+                    //추천 맛집 기능. isSet 수정!!
                     NavigationLink {
-                        RecommendedRestaurantUserView()
+                        if let recommendedRestaurants = cooperationViewModel.cooperationList {
+                            RecommendedRestaurantUserView(store: recommendedRestaurants)
+                        }
                     } label: {
                         SubRecommendedRestaurantView()
                     }
@@ -133,9 +133,6 @@ struct MainView: View {
         .scaleEffect(isSearching ? 0.9 : 1)
         .modifier(VersionedSearchViewTransitionModifier(isSearching: $isSearching))
         .onAppear() {
-//            scheduleViewModel.fetch()
-            boardViewModel.fetch()
-            print("fail \(boardViewModel.lastError ?? "none error")")
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 isUserDataLoading = false
@@ -148,9 +145,10 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(delegate: AppDelegate())
             .environmentObject(BoardViewModel.preview)
             .environmentObject(UserViewModel.preview)
             .environmentObject(ScheduleViewModel.preview)
+            .environmentObject(CooperationViewModel.preview)
     }
 }

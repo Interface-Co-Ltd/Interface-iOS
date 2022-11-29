@@ -25,8 +25,8 @@ class UserViewModel: ObservableObject {
     }
     
     static var preview: UserViewModel {
-//        let serverId = "HayunKwon"
-//        let serverPassword = "8642"
+        //        let serverId = "HayunKwon"
+        //        let serverPassword = "8642"
         let viewModel = UserViewModel(preview: true)
         
         viewModel.inputId = "HayunKwon"
@@ -41,35 +41,46 @@ class UserViewModel: ObservableObject {
         return viewModel
     }
     
-    func fetch() {
+    func fetch(token: String) {
         guard !isPreviewViewModel else {
             return
         }
         
-        do {
-            try ApiService.fetchUser().sink { completion in
-                switch completion {
-                    case .failure(let error):
-                        print("sink fail!! - \(error)")
-                    case .finished:
-                        print("sink finished")
-                }
-            } receiveValue: { user in
-                DispatchQueue.main.async {
-                    self.currentUser = user
-                    self.fetchCompleted = true
-                }
+        ApiService.fetchUser(token: token).sink { completion in
+            switch completion {
+                case .failure(let error):
+                    switch error {
+                        case .invalidUrl(_):
+                            DispatchQueue.main.async {
+                                self.lastError = "잘못된 URL"
+                            }
+                            break
+                        case .failed(let statusCode):
+                            DispatchQueue.main.async {
+                                self.lastError = "네트워크 응답 오류(\(statusCode)"
+                            }
+                            break
+                        case .invalidResponse:
+                            DispatchQueue.main.async {
+                                self.lastError = "네트워크 응답 없음"
+                            }
+                            break
+                        default:
+                            DispatchQueue.main.async {
+                                self.lastError = "알 수 없는 오류 발생"
+                            }
+                            break
+                    }
+                    print("sink fail!! - \(error)")
+                case .finished:
+                    print("sink finished")
             }
-            .store(in: &subscriptions)
-            
-        } catch ApiError.invalidUrl {
-            lastError = "잘못된 URL"
-        } catch ApiError.failed(let statusCode) {
-            lastError = "네트워크 응답 오류(\(statusCode)"
-        } catch ApiError.invalidResponse {
-            lastError = "네트워크 응답 없음"
-        } catch {
-            lastError = "알 수 없는 오류 발생"
+        } receiveValue: { user in
+            DispatchQueue.main.async {
+                self.currentUser = user
+                self.fetchCompleted = true
+            }
         }
+        .store(in: &subscriptions)
     }
 }

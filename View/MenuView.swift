@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct MenuView: View {
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    
     @State private var showStyleDialog = false
     @State private var showLogoutDialog = false
     
+    @Binding var displayStyle: UIUserInterfaceStyle
+    @Binding var showLoginView: Bool
+    
     //AppStorage로 바꿀 것
-    @State private var currnetDisplayStyle = "시스템 기본값"
-    @State private var displayStyle = UIUserInterfaceStyle.unspecified
+    @AppStorage("displayModeString") private var currnetDisplayStyle = "시스템 기본값"
     
     var body: some View {
         NavigationView {
@@ -158,7 +162,7 @@ struct MenuView: View {
                             Text("로그아웃")
                         }
                         .foregroundColor(Color.red)
-                        .modifier(VersionedLogoutButtonOnMenu(showLogoutDialog: $showLogoutDialog))
+                        .modifier(VersionedLogoutButtonOnMenu(showLogoutDialog: $showLogoutDialog, showLoginView: $showLoginView, isAuthenticated: $loginViewModel.isAuthenticated, token: $loginViewModel.token))
                     } header: {
                         Text("계정")
                     }.listRowBackground(Color("sub-view-bkg-accent"))
@@ -178,6 +182,7 @@ struct MenuView: View {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        MenuView(displayStyle: .constant(.unspecified), showLoginView: .constant(false))
+            .environmentObject(LoginViewModel.preview)
     }
 }

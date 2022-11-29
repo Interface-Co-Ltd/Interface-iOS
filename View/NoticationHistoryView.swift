@@ -7,6 +7,8 @@
 import SwiftUI
 
 struct NotificationHistoryView: View {
+//    @AppStorage("NotificationList") private var notificationList = [Notification]()
+    
     var body: some View {
         NavigationView {
             ScrollView {

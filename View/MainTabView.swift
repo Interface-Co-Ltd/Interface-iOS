@@ -8,10 +8,17 @@
 import SwiftUI
 
 struct MainTabView: View {
+    var delegate: AppDelegate
+    
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    
+    @Binding var displayStyle: UIUserInterfaceStyle
+    @Binding var showLoginView: Bool
+    
     var body: some View {
         TabView {
             Group {
-                MainView()
+                MainView(delegate: delegate)
                     .tabItem {
                         Label("메인", systemImage: "house")
                     }
@@ -29,7 +36,8 @@ struct MainTabView: View {
                     }
                 
                 //설정 탭, 만들면 주석 해제 ㄱ
-                MenuView()
+                MenuView(displayStyle: $displayStyle, showLoginView: $showLoginView)
+                    .environmentObject(loginViewModel)
                     .tabItem {
                         if #available(iOS 15.0, *) {
                             Label("메뉴", systemImage: "line.3.horizontal")
@@ -45,9 +53,11 @@ struct MainTabView: View {
 
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView()
+        MainTabView(delegate: AppDelegate(), displayStyle: .constant(.unspecified), showLoginView: .constant(false))
             .environmentObject(BoardViewModel.preview)
             .environmentObject(UserViewModel.preview)
             .environmentObject(ScheduleViewModel.preview)
+            .environmentObject(CooperationViewModel.preview)
+            .environmentObject(LoginViewModel.preview)
     }
 }
