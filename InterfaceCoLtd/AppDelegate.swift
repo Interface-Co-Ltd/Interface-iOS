@@ -19,6 +19,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     let aps = "aps"
     let data1Key = "DATA1"
     let data2Key = "DATA2"
+    var fcmToken: String = ""
     var notificationType: NotificationType = .none
     
     //앱이 실행됐을 때 발동
@@ -77,6 +78,11 @@ extension AppDelegate : UNUserNotificationCenterDelegate{
             print("apsData: \(apsData)")
         }
         
+//        if UIApplication.shared.haveDynamicIsland {
+//            completionHandler([.sound, .badge])
+//        } else {
+//            completionHandler([.banner, .badge, .sound])
+//        }
         completionHandler([.banner, .badge, .sound])
     }
     
@@ -114,5 +120,11 @@ extension AppDelegate: MessagingDelegate {
         print("messaging")
         let deviceToken: [String: String] = ["token": fcmToken ?? ""]
         print("Device token: ", deviceToken)
+        
+        guard let token = fcmToken else {
+            return
+        }
+        
+        self.fcmToken = token
     }
 }

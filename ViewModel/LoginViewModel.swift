@@ -14,12 +14,15 @@ class LoginViewModel: ObservableObject {
     var password: String = ""
     let isPreviewViewModel: Bool
     
+    var fcmToken: String = ""
+    
     private var subscriptions = Set<AnyCancellable>()
     
-    @Published var isAuthenticated: Bool = false
+   
     @Published var lastError: String?
     
     @AppStorage("token") var token: String = ""
+    @AppStorage("isAuthenticated") var isAuthenticated: Bool = false
     
     init(preview: Bool = false) {
         isPreviewViewModel = preview
@@ -43,22 +46,38 @@ class LoginViewModel: ObservableObject {
             return
         }
         
-        ApiService.fetchLogin(studentID: studentID, password: password).sink { completion in
+        ApiService.fetchLogin(studentID: studentID, password: password, fcmToken: fcmToken).sink { completion in
             switch completion {
                 case .failure(let error):
                     switch error {
                         case .invalidUrl(_):
-                            self.lastError = "잘못된 URL"
+                            DispatchQueue.main.async {
+                                self.lastError = "잘못된 URL"
+                            }
                             break
                         case .invalidCredentials:
-                            self.lastError = "아이디 또는 비밀번호가 틀렸습니다."
+                            DispatchQueue.main.async {
+                                withAnimation(.easeInOut) {
+                                    self.lastError = "아이디 또는 비밀번호가 틀렸습니다."
+                                }
+                            }
                             break
                         default:
-                            self.lastError = "알 수 없는 오류 발생"
+                            DispatchQueue.main.async {
+                                self.lastError = "알 수 없는 오류 발생"
+                            }
                             break
                     }
                 case .finished:
                     print("sink finished")
+                    
+                    DispatchQueue.main.async {
+                        self.isAuthenticated = true
+                        print(self.isAuthenticated)
+                        print("loginvViewModelfcmToken: \(self.fcmToken)")
+                    }
+                    
+                    
             }
         } receiveValue: { loginResponse in
             guard let token = loginResponse.token else {
@@ -68,7 +87,13 @@ class LoginViewModel: ObservableObject {
                 return
             }
             
-            guard let statusCode = loginResponse.statusCode, statusCode != 400 else {
+            print("token : \(token)")
+            
+            DispatchQueue.main.async {
+                self.token = token
+            }
+            
+            guard let _ = loginResponse.statusCode else {
                 DispatchQueue.main.async {
                     self.lastError = "서버 접근 권한이 없습니다."
                 }
@@ -84,37 +109,19 @@ class LoginViewModel: ObservableObject {
                 return
             }
             
-            DispatchQueue.main.async {
-                self.token = token
-                self.isAuthenticated = true
-            }
+            
         }.store(in: &subscriptions)
-
         
-//        ApiService.login(studentID: studentID, password: password) { result in
-//            switch result {
-//                case .success(let token):
-//                    self.token = token
-//
-//                    DispatchQueue.main.async {
-//                        self.isAuthenticated = true
-//                    }
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//            }
-//        }
+        if let error = lastError {
+            print(error)
+        }
     }
     
-    func logout() {
-        guard !isPreviewViewModel else {
-            isAuthenticated = false
-            
-            return
-        }
-        token = ""
-        
-        DispatchQueue.main.async {
-            self.isAuthenticated = false
-        }
-    }
+//    func logout() {
+//        token = ""
+//        
+//        self.isAuthenticated = false
+//        
+//        print(isAuthenticated)
+//    }
 }

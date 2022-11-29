@@ -74,7 +74,7 @@ struct MainView: View {
                     .buttonStyle(ScaledButtonStyle())
                     .padding(.vertical, 10)
                     .disabled(isScheduleDataLoading)
-                    .redacted(reason: isScheduleDataLoading ? .placeholder : [])
+                    .redacted(reason: scheduleViewModel.fetchCompleted ? [] : .placeholder)
                     
                     //추천 맛집 기능. isSet 수정!!
                     NavigationLink {
@@ -133,7 +133,6 @@ struct MainView: View {
         .scaleEffect(isSearching ? 0.9 : 1)
         .modifier(VersionedSearchViewTransitionModifier(isSearching: $isSearching))
         .onAppear() {
-//            scheduleViewModel.fetch()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 isUserDataLoading = false

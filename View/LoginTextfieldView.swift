@@ -41,16 +41,17 @@ struct LoginTextfieldView: View {
                     .padding()
             }
             
+            if let error = loginViewModel.lastError, error == "아이디 또는 비밀번호가 틀렸습니다." {
+                Text("아이디 또는 비밀번호가 잘못되었어요.")
+                    .font(.subheadline)
+                    .foregroundColor(.red)
+                    .padding()
+            }
+            
             Button {
                 loginViewModel.studentID = studentID
                 loginViewModel.password = password
                 loginViewModel.login()
-                
-                if loginViewModel.isAuthenticated {
-                    withAnimation(.easeOut(duration: 0.5)) {
-                        showLoginView = false
-                    }
-                }
             } label: {
                 Text("로그인")
                     .font(.title2)
@@ -58,6 +59,13 @@ struct LoginTextfieldView: View {
                     .padding(.horizontal)
             }
             .padding()
+        }
+        .onChange(of: loginViewModel.isAuthenticated) {
+            if $0 {
+                withAnimation(.easeOut) {
+                    showLoginView = false
+                }
+            }
         }
     }
 }
