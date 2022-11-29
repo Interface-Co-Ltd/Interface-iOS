@@ -24,12 +24,15 @@
 		C54A44D4291AA22700DAF5FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C54A44D3291AA22700DAF5FB /* LaunchScreen.storyboard */; };
 		C551703E2923D8D50052763B /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C551703D2923D8D50052763B /* ApiError.swift */; };
 		C57A0293291D387F00D585D6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57A0292291D387F00D585D6 /* SearchView.swift */; };
+		C58251FC29351D47006F7BF8 /* DynamicIslandNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58251FB29351D47006F7BF8 /* DynamicIslandNotification.swift */; };
+		C58251FE293522AB006F7BF8 /* NotificationValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58251FD293522AB006F7BF8 /* NotificationValue.swift */; };
+		C58252002935409B006F7BF8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58251FF2935409B006F7BF8 /* NetworkManager.swift */; };
+		C5825202293619CF006F7BF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5825201293619CF006F7BF8 /* GoogleService-Info.plist */; };
 		C58F4D272925FB55004A53CD /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F4D262925FB55004A53CD /* CommunityView.swift */; };
 		C59D918F292622E0007B179E /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D918E292622E0007B179E /* CustomModifier.swift */; };
 		C59D919129262392007B179E /* NoticationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D919029262392007B179E /* NoticationHistoryView.swift */; };
 		C5A58CED2931F434001D1CB1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C5A58CEC2931F434001D1CB1 /* FirebaseAnalytics */; };
 		C5A58CEF2931F434001D1CB1 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C5A58CEE2931F434001D1CB1 /* FirebaseMessaging */; };
-		C5A58CF32931FBB0001D1CB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5A58CF22931FBB0001D1CB1 /* GoogleService-Info.plist */; };
 		C5A58CF529320036001D1CB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A58CF429320036001D1CB1 /* AppDelegate.swift */; };
 		C5A58CF829333575001D1CB1 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A58CF729333575001D1CB1 /* Notification.swift */; };
 		C5A58CFA293365E3001D1CB1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A58CF9293365E3001D1CB1 /* LoginView.swift */; };
@@ -98,10 +101,13 @@
 		C54A44D5291AA63000DAF5FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C551703D2923D8D50052763B /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		C57A0292291D387F00D585D6 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		C58251FB29351D47006F7BF8 /* DynamicIslandNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIslandNotification.swift; sourceTree = "<group>"; };
+		C58251FD293522AB006F7BF8 /* NotificationValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationValue.swift; sourceTree = "<group>"; };
+		C58251FF2935409B006F7BF8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C5825201293619CF006F7BF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C58F4D262925FB55004A53CD /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		C59D918E292622E0007B179E /* CustomModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
 		C59D919029262392007B179E /* NoticationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticationHistoryView.swift; sourceTree = "<group>"; };
-		C5A58CF22931FBB0001D1CB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C5A58CF429320036001D1CB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5A58CF729333575001D1CB1 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		C5A58CF9293365E3001D1CB1 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -204,13 +210,13 @@
 			isa = PBXGroup;
 			children = (
 				C5EB7AA82915647E00B786DE /* Info.plist */,
-				C5A58CF22931FBB0001D1CB1 /* GoogleService-Info.plist */,
 				C5B823462913ADCF0021FAF6 /* InterfaceCoLtdApp.swift */,
 				C5B8234A2913ADD00021FAF6 /* Assets.xcassets */,
 				C5B8234C2913ADD00021FAF6 /* InterfaceCoLtd.entitlements */,
 				C5B8234D2913ADD00021FAF6 /* Preview Content */,
 				C54A44D3291AA22700DAF5FB /* LaunchScreen.storyboard */,
 				C5A58CF429320036001D1CB1 /* AppDelegate.swift */,
+				C5825201293619CF006F7BF8 /* GoogleService-Info.plist */,
 			);
 			path = InterfaceCoLtd;
 			sourceTree = "<group>";
@@ -261,6 +267,8 @@
 				C5B8237B2913AE640021FAF6 /* DrawingCheckmarkView.swift */,
 				C5B8237D2913AE640021FAF6 /* ScaledButtonStyle.swift */,
 				C59D918E292622E0007B179E /* CustomModifier.swift */,
+				C58251FB29351D47006F7BF8 /* DynamicIslandNotification.swift */,
+				C58251FF2935409B006F7BF8 /* NetworkManager.swift */,
 			);
 			path = ConponentView;
 			sourceTree = "<group>";
@@ -277,6 +285,7 @@
 				C5A58CF729333575001D1CB1 /* Notification.swift */,
 				C5A58CFF29339BB0001D1CB1 /* LoginRequest.swift */,
 				C5A58D012933A9D4001D1CB1 /* LoginResponse.swift */,
+				C58251FD293522AB006F7BF8 /* NotificationValue.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -437,7 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C54A44D4291AA22700DAF5FB /* LaunchScreen.storyboard in Resources */,
-				C5A58CF32931FBB0001D1CB1 /* GoogleService-Info.plist in Resources */,
+				C5825202293619CF006F7BF8 /* GoogleService-Info.plist in Resources */,
 				C5B8234F2913ADD00021FAF6 /* Preview Assets.xcassets in Resources */,
 				C5B8234B2913ADD00021FAF6 /* Assets.xcassets in Resources */,
 			);
@@ -474,6 +483,7 @@
 				01065CBA291C215F0067C9AC /* SubRecommendedRestaurantView.swift in Sources */,
 				C5B823772913AE460021FAF6 /* CooperationViewModel.swift in Sources */,
 				C5A58CFE293366C2001D1CB1 /* LoginTextfieldView.swift in Sources */,
+				C58251FC29351D47006F7BF8 /* DynamicIslandNotification.swift in Sources */,
 				C59D919129262392007B179E /* NoticationHistoryView.swift in Sources */,
 				C5B823802913AE640021FAF6 /* ScaledButtonStyle.swift in Sources */,
 				01065CB8291C173B0067C9AC /* Notice.swift in Sources */,
@@ -490,6 +500,7 @@
 				C5A58D0029339BB0001D1CB1 /* LoginRequest.swift in Sources */,
 				C5B823792913AE460021FAF6 /* ScheduleViewModel.swift in Sources */,
 				C5B823972913D0E40021FAF6 /* MainTabView.swift in Sources */,
+				C58252002935409B006F7BF8 /* NetworkManager.swift in Sources */,
 				C5B823882913AE980021FAF6 /* Cooperation.swift in Sources */,
 				C59D918F292622E0007B179E /* CustomModifier.swift in Sources */,
 				C5B8238E2913AEE60021FAF6 /* SubCalendarView.swift in Sources */,
@@ -505,6 +516,7 @@
 				01065CBC291C244E0067C9AC /* SubNoticeView.swift in Sources */,
 				C5B8237E2913AE640021FAF6 /* DrawingCheckmarkView.swift in Sources */,
 				C5A58D022933A9D4001D1CB1 /* LoginResponse.swift in Sources */,
+				C58251FE293522AB006F7BF8 /* NotificationValue.swift in Sources */,
 				01065CB6291C173B0067C9AC /* RecommendedRestaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

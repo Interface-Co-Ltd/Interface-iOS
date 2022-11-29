@@ -143,7 +143,7 @@ struct InformationWithSelectionView: View {
                             informations[date] = []
                         }
                         
-                        informations[date]?.append((scheduleDate.content, scheduleDate.div == "세종대학교" ? Color(red: 0.986, green: 0.107, blue: 0.281) : Color(hue: 0.581, saturation: 0.728, brightness: 0.98)))
+                        informations[date]?.append((scheduleDate.content, scheduleDate.div == "sejong" ? Color(red: 0.986, green: 0.107, blue: 0.281) : Color(hue: 0.581, saturation: 0.728, brightness: 0.98)))
                         date = YearMonthDay.current
                     }
                 }

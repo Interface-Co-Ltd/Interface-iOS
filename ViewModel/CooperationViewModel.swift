@@ -41,16 +41,24 @@ class CooperationViewModel: ObservableObject {
                 case .failure(let error):
                     switch error {
                         case .invalidUrl(_):
-                            self.lastError = "잘못된 URL"
+                            DispatchQueue.main.async {
+                                self.lastError = "잘못된 URL"
+                            }
                             break
                         case .failed(let statusCode):
-                            self.lastError = "네트워크 응답 오류(\(statusCode)"
+                            DispatchQueue.main.async {
+                                self.lastError = "네트워크 응답 오류(\(statusCode)"
+                            }
                             break
                         case .invalidResponse:
-                            self.lastError = "네트워크 응답 없음"
+                            DispatchQueue.main.async {
+                                self.lastError = "네트워크 응답 없음"
+                            }
                             break
                         default:
-                            self.lastError = "알 수 없는 오류 발생"
+                            DispatchQueue.main.async {
+                                self.lastError = "알 수 없는 오류 발생"
+                            }
                             break
                     }
                     

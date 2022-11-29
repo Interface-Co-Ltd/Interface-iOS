@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MenuView: View {
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    
     @State private var showStyleDialog = false
     @State private var showLogoutDialog = false
     
@@ -160,7 +162,7 @@ struct MenuView: View {
                             Text("로그아웃")
                         }
                         .foregroundColor(Color.red)
-                        .modifier(VersionedLogoutButtonOnMenu(showLogoutDialog: $showLogoutDialog, showLoginView: $showLoginView))
+                        .modifier(VersionedLogoutButtonOnMenu(showLogoutDialog: $showLogoutDialog, showLoginView: $showLoginView, isAuthenticated: $loginViewModel.isAuthenticated, token: $loginViewModel.token))
                     } header: {
                         Text("계정")
                     }.listRowBackground(Color("sub-view-bkg-accent"))
@@ -181,5 +183,6 @@ struct MenuView: View {
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuView(displayStyle: .constant(.unspecified), showLoginView: .constant(false))
+            .environmentObject(LoginViewModel.preview)
     }
 }

@@ -57,48 +57,48 @@ struct SubCalendarView: View {
             
             VStack(alignment: .leading, spacing: 20) {
                 Section {
-                    if scheduleViewModel.subViewSchdules.count != 0 {
-                            ForEach(scheduleViewModel.subViewSchdules) { schdl in
+                    if scheduleViewModel.subViewNoneDateSchedules.count != 0 {
+                            ForEach(scheduleViewModel.subViewNoneDateSchedules) { schdl in
                                 HStack {
                                     VStack(alignment: .trailing, spacing: 2) {
-                                        Image(schdl.div == "세종대학교" ? "sejong-univ-logo" : "interface-logo")
+                                        Image(schdl.div == "sejong" ? "sejong-univ-logo" : "interface-logo")
                                             .resizable()
                                             .frame(width: 20, height: 20)
                                             .opacity(0.7)
                                     }
-                                    
+
                                     HStack(spacing: 5) {
                                         Text(schdl.content)
                                             .font(.subheadline)
                                             .lineLimit(1)
                                             .allowsTightening(true)
-                                        
-                                        if schdl.startDate.timeIntervalSinceNow <= 0 && schdl.endDate.timeIntervalSinceNow + 3600 * 24 >= 0 {
+
+                                        if schdl.getStartDate().timeIntervalSinceNow <= 0 && schdl.getEndDate().timeIntervalSinceNow + 3600 * 24 >= 0 {
                                             Text("진행중!")
                                                 .foregroundColor(.red)
                                                 .font(.caption2)
                                         }
-                                        
-                                        if schdl.startDate.timeIntervalSinceNow > SubCalendarView.nowSinceSunday() {
+
+                                        if schdl.getStartDate().timeIntervalSinceNow > SubCalendarView.nowSinceSunday() {
                                             Text("다음주")
                                                 .foregroundColor(.blue)
                                                 .font(.caption2)
                                         }
-                                        
+
                                         Spacer()
-                                        
-                                        if schdl.startDate == schdl.endDate {
-                                            Text(schdl.getStartDateString())
+
+                                        if schdl.getStartDate() == schdl.getEndDate() {
+                                            Text(schdl.startDate)
                                                 .font(.caption)
                                                 .foregroundColor(.secondary)
                                         } else {
-                                            Text("\(schdl.getStartDateString())~\(schdl.getEndDateString())")
+                                            Text("\(schdl.startDate)~\(schdl.endDate)")
                                                 .font(.caption)
                                                 .foregroundColor(.secondary)
                                         }
                                     }
                                 }
-                                .opacity(schdl.startDate.timeIntervalSinceNow <= SubCalendarView.nowSinceSunday() ? 1 : 0.5)
+                                .opacity(schdl.getStartDate().timeIntervalSinceNow <= SubCalendarView.nowSinceSunday() ? 1 : 0.5)
                             }
                         } else {
                             HStack {

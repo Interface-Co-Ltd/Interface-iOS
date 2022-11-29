@@ -78,6 +78,8 @@ struct VersionedSubViewBackgroundModifier: ViewModifier {
 struct VersionedLogoutButtonOnMenu: ViewModifier {
     @Binding var showLogoutDialog: Bool
     @Binding var showLoginView: Bool
+    @Binding var isAuthenticated: Bool
+    @Binding var token: String
     
     func body(content: Content) -> some View {
         if #available(iOS 15.0, *) {
@@ -85,6 +87,8 @@ struct VersionedLogoutButtonOnMenu: ViewModifier {
                 .confirmationDialog("로그아웃", isPresented: $showLogoutDialog) {
                     Button(role: .destructive) {
                         withAnimation(.easeIn(duration: 0.5)) {
+                            isAuthenticated = false
+                            token = ""
                             showLoginView = true
                         }
                     } label: {
@@ -147,6 +151,57 @@ struct VersionedSearchViewTransitionModifier: ViewModifier {
                 .overlay {
                     if isSearching {
                         displayMode == .light ? Color.gray.opacity(0.5).ignoresSafeArea() : Color.black.opacity(0.9).ignoresSafeArea()
+                    }
+                }
+        } else {
+            content
+        }
+    }
+}
+
+struct DynamicIslandNotificationModifier: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        if #available(iOS 15.0, *) {
+            content
+                .overlay(alignment: .top) {
+                    GeometryReader { reader in
+                        let size = reader.size
+                        
+                        DynamicIslandNotification(size: size)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                    }
+                    .ignoresSafeArea()
+                }
+        } else {
+            content
+        }
+    }
+}
+
+struct VersionedNetworkDisconnetedAlert: ViewModifier {
+    @Binding var isConnected: Bool
+    
+    func body(content: Content) -> some View {
+        if #available(iOS 15.0, *) {
+            content
+                .overlay {
+                    if !isConnected {
+                        GeometryReader { reader in
+                            VStack {
+                                HStack {
+                                    Spacer()
+                                    
+                                    Text("인터넷 연결이 필요해요.")
+                                        .font(.subheadline)
+                                        .foregroundColor(.red)
+                                        .padding(5)
+                                    
+                                    Spacer()
+                                }
+                                .background(Color.secondary)
+                            }
+                        }
                     }
                 }
         } else {
