@@ -16,6 +16,8 @@ struct RecommendedRestaurantUserView: View {
                 ForEach(store) { store in
                     NavigationLink {
                         MyWebView(urlToLoad: store.cooperationLink!.absoluteString)
+                            .navigationTitle("\(store.cooperationName)의 Pick")
+                            .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
                     } label: {
                         
                         HStack {

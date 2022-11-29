@@ -58,5 +58,6 @@ struct MainTabView_Previews: PreviewProvider {
             .environmentObject(UserViewModel.preview)
             .environmentObject(ScheduleViewModel.preview)
             .environmentObject(CooperationViewModel.preview)
+            .environmentObject(LoginViewModel.preview)
     }
 }

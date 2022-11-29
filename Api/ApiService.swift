@@ -110,8 +110,8 @@ enum ApiService {
 //        let formatter = DateFormatter()
 //        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
 //
-//        let decoder = JSONDecoder()
-//        decoder.dateDecodingStrategy = .formatted(formatter)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         
         return URLSession.shared.dataTaskPublisher(for: request).tryMap {
             guard let httpResponse = $0.response as? HTTPURLResponse else {

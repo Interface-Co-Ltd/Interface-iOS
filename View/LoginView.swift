@@ -41,6 +41,7 @@ struct LoginView: View {
                     
                     LoginTextfieldView(showLoginView: $showLoginView, studentID: $loginViewModel.studentID, password: $password)
                         .environmentObject(loginViewModel)
+//                        .preferredColorScheme(.dark)
                     
                     Spacer()
                     
@@ -57,7 +58,7 @@ struct LoginView: View {
             .frame(maxWidth: 300)
         }
         .ignoresSafeArea(showLoginTextfieldView ? [] : .all)
-        .preferredColorScheme(.light)
+//        .preferredColorScheme(.light)
         .onAppear() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation(.easeInOut) {
