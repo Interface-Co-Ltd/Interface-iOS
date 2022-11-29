@@ -76,7 +76,7 @@ struct MainView: View {
                     .disabled(isScheduleDataLoading)
                     .redacted(reason: isScheduleDataLoading ? .placeholder : [])
                     
-                    //추천 맛집 기능
+                    //추천 맛집 기능. isSet 수정!!
                     NavigationLink {
                         if let recommendedRestaurants = cooperationViewModel.cooperationList {
                             RecommendedRestaurantUserView(store: recommendedRestaurants)

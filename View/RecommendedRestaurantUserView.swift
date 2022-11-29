@@ -8,20 +8,21 @@
 import SwiftUI
 
 struct RecommendedRestaurantUserView: View {
+
     @State var store: [Cooperation]
     
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(store) { store in
+                ForEach(store.indices) { index in
                     NavigationLink {
-                        MyWebView(urlToLoad: store.cooperationLink!.absoluteString)
+                        MyWebView(urlToLoad: store[index].cooperationLink!.absoluteString)
                     } label: {
                         
                         HStack {
                             VStack(alignment: .leading, spacing: 10){
                                 HStack(alignment: .center){
-                                    Text("\(store.cooperationName)의 Pick")
+                                    Text("\(store[index].cooperationName)의 Pick")
                                         .font(.system(size: 20))
                                         .foregroundColor(.primary)
                                         .bold()
@@ -34,18 +35,15 @@ struct RecommendedRestaurantUserView: View {
                             }
             
                         Spacer()
-                            VStack {
-                                Image(systemName: "heart")
-                                Text("5")
-                            }
-                            
+                            FavoriteButton(isSet: store[index].favorites?.contains{
+                                $0.key == UUID()
+                            } ?? false, store: store, cooperation: index)
                         }
                         .cornerRadius(15)
                         .frame(width: UIScreen.main.bounds.size.width - 80)
                         .frame(height: 80)
                         .padding(20)
                     .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg")))
-                       
                         
                     }
                     .padding(10)

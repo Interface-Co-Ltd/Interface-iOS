@@ -9,6 +9,8 @@ import Foundation
 
 struct Cooperation: Codable, Identifiable {
     var id = UUID()
+    var favorites: [UUID: Bool]?
+    var favoriteCount: Int
     
     let cooperationName: String
     let cooperationLink: URL?
@@ -16,6 +18,7 @@ struct Cooperation: Codable, Identifiable {
     let modifiedDate: Date
     
     init(cooperationName: String, cooperationLink: URL?, createdDate: String, modifiedDate: String) {
+        self.favoriteCount = 0
         
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
