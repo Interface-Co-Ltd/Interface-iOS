@@ -120,7 +120,7 @@ struct SearchView: View {
                                         
                                         Spacer()
                                         
-                                        Text("작성자 : \(item.userID)")
+                                        Text("작성자 : \(item.user)")
                                             .font(.caption2)
                                             .foregroundColor(.secondary)
                                     }

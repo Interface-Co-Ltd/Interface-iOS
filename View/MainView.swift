@@ -60,7 +60,7 @@ struct MainView: View {
                     .foregroundColor(.primary)
                     .padding(.vertical, 10)
                     .disabled(isBoardDataLoading)
-                    .redacted(reason: isBoardDataLoading ? .placeholder : [])
+                    .redacted(reason: boardViewModel.fetchCompleted ? [] : .placeholder)
                     
                     //일정 기능
                     NavigationLink {
@@ -80,6 +80,7 @@ struct MainView: View {
                     NavigationLink {
                         if let recommendedRestaurants = cooperationViewModel.cooperationList {
                             RecommendedRestaurantUserView(store: recommendedRestaurants)
+                                .redacted(reason: cooperationViewModel.fetchCompleted ? [] : .placeholder)
                         }
                     } label: {
                         SubRecommendedRestaurantView()

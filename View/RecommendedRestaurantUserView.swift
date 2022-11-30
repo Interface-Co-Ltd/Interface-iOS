@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RecommendedRestaurantUserView: View {
-
     @State var store: [Cooperation]
     
     var body: some View {
@@ -16,13 +15,13 @@ struct RecommendedRestaurantUserView: View {
             ScrollView {
                 ForEach(store.indices) { index in
                     NavigationLink {
-                        MyWebView(urlToLoad: store[index].cooperationLink!.absoluteString)
+                        MyWebView(urlToLoad: store[index].link)
                     } label: {
                         
                         HStack {
                             VStack(alignment: .leading, spacing: 10){
                                 HStack(alignment: .center){
-                                    Text("\(store[index].cooperationName)의 Pick")
+                                    Text("\(store[index].name)의 Pick")
                                         .font(.system(size: 20))
                                         .foregroundColor(.primary)
                                         .bold()
@@ -31,7 +30,7 @@ struct RecommendedRestaurantUserView: View {
                                     
                                 }
                                 
-                                Text("나의 학교 맛집")
+                                Text("\(store[index].name)님의 세종대 맛집이에요.")
                             }
             
                         Spacer()

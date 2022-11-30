@@ -23,38 +23,24 @@ struct SubNoticeView: View {
             
             VStack(alignment: .leading, spacing: 20) {
                 
-                HStack {
-                    VStack(alignment: .leading) {
-                        let notice: Board = (store.first)!
-                        Text(notice.title)
-                            .bold()
-                            .lineLimit(1)
-                            .padding(.bottom, 1)
-                        HStack {
-                            Text(notice.createdDate, style: .date)
-                            Text("| 작성자: " + notice.userID)
-                            
-                        }.font(.caption)
-                            .foregroundColor(.secondary)
+                ForEach(store[0...1]) { item in
+                    HStack {
+                        VStack(alignment: .leading) {
+//                            let notice: Board = (store.first)!
+                            Text(item.title)
+                                .bold()
+                                .font(.subheadline)
+                                .lineLimit(1)
+                                .padding(.bottom, 1)
+                            HStack {
+                                Text(item.createdDate, style: .date)
+                                Text("| 작성자: " + item.user)
+                                
+                            }.font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
                     }
-                    Spacer()
-                }
-                
-                HStack {
-                    VStack(alignment: .leading) {
-                        let notice: Board = store[store.index(after: store.startIndex)]
-                        Text(notice.title)
-                            .bold()
-                            .lineLimit(1)
-                            .padding(.bottom, 1)
-                        HStack {
-                            Text(notice.createdDate, style: .date)
-                            Text("| 작성자: " + notice.userID)
-                            
-                        }.font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
                 }
                 
             }

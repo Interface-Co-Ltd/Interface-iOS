@@ -29,7 +29,7 @@ struct NoticeDetailView: View {
                     }
                     HStack {
                         Text(notice.createdDate, style: .date)
-                        Text("| 작성자: " + notice.userID)
+                        Text("| 작성자: " + notice.user)
                         Spacer()
                     }.font(.footnote)
                         .foregroundColor(.secondary)
@@ -43,6 +43,6 @@ struct NoticeDetailView: View {
 
 struct NoticeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        NoticeDetailView(notice: Board(title: "hi", content: "hi", createdDate: Date(), modifiedDate: Date(), userID: "hi"))
+        NoticeDetailView(notice: Board(title: "hi", content: "hi", type: "공지", user: "동기창", images: nil, createdDate: Date(), modifiedDate: Date()))
     }
 }

@@ -10,19 +10,20 @@ import SwiftUI
 import Combine
 
 class LoginViewModel: ObservableObject {
-    var studentID: String = ""
     var password: String = ""
     let isPreviewViewModel: Bool
-    
-    var fcmToken: String = ""
     
     private var subscriptions = Set<AnyCancellable>()
     
    
     @Published var lastError: String?
     
+    @AppStorage("studentId") var studentId: String = ""
     @AppStorage("token") var token: String = ""
     @AppStorage("isAuthenticated") var isAuthenticated: Bool = false
+    @AppStorage("fcmToken") var fcmToken: String = ""
+    
+    
     
     init(preview: Bool = false) {
         isPreviewViewModel = preview
@@ -46,7 +47,7 @@ class LoginViewModel: ObservableObject {
             return
         }
         
-        ApiService.fetchLogin(studentID: studentID, password: password, fcmToken: fcmToken).sink { completion in
+        ApiService.fetchLogin(studentID: studentId, password: password, fcmToken: fcmToken).sink { completion in
             switch completion {
                 case .failure(let error):
                     switch error {
@@ -73,7 +74,6 @@ class LoginViewModel: ObservableObject {
                     
                     DispatchQueue.main.async {
                         self.isAuthenticated = true
-                        print(self.isAuthenticated)
                         print("loginvViewModelfcmToken: \(self.fcmToken)")
                     }
                     

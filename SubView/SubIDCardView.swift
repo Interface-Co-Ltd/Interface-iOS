@@ -38,22 +38,22 @@ struct SubIDCardView: View {
                     if let user = userViewModel.currentUser{
                         HStack(alignment: .bottom, spacing: 10) {
                             HStack(alignment: .bottom, spacing: 5) {
-                                Text(user.userName)
+                                Text(user.name)
                                     .font(.title2)
                                     .fontWeight(.semibold)
                                 
-                                Text(user.auth)
+                                Text(user.auth == "ROLE_ADMIN" ? "집부" : "부원")
                                     .font(.footnote)
                             }
                             
-                            Text("\(user.generation)th")
-                                .font(.headline)
-                                .foregroundColor(.green)
+//                            Text("\(user.generation)th")
+//                                .font(.headline)
+//                                .foregroundColor(.green)
                             
                             Spacer()
                         }
                         
-                        Text(user.major)
+                        Text(user.email)
                             .font(.title3)
                         
                         Text(user.studentId)
@@ -65,12 +65,12 @@ struct SubIDCardView: View {
                 
                 Spacer()
             }
-            .redacted(reason: isLoading ? .placeholder : [])
-            .onAppear() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    isLoading = false
-                }
-            }
+            .redacted(reason: userViewModel.fetchCompleted ? [] : .placeholder)
+//            .onAppear() {
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                    isLoading = false
+//                }
+//            }
         }
         .frame(maxHeight: 100)
     }

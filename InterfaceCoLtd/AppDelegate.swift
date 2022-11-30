@@ -125,6 +125,10 @@ extension AppDelegate: MessagingDelegate {
             return
         }
         
+        LoginViewModel().fcmToken = token
+        print("token \(token)")
         self.fcmToken = token
+        print("fcmToken \(self.fcmToken)")
+        
     }
 }

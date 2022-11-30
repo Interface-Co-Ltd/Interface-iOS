@@ -37,7 +37,6 @@ struct MainTabView: View {
                 
                 //설정 탭, 만들면 주석 해제 ㄱ
                 MenuView(displayStyle: $displayStyle, showLoginView: $showLoginView)
-                    .environmentObject(loginViewModel)
                     .tabItem {
                         if #available(iOS 15.0, *) {
                             Label("메뉴", systemImage: "line.3.horizontal")
