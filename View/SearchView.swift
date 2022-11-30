@@ -159,7 +159,7 @@ struct SearchView: View {
                         ForEach(matchedScheduleList) { item in
                             NavigationLink {
                                 if let scheduleList = scheduleViewModel.scheduleList {
-//                                    InformationWithSelectionView(schedule: scheduleList, currentDate: item.start_date)
+                                    InformationWithSelectionView(schedule: scheduleList, currentDate: item.startDate)
                                 }
                             } label: {
                                 VStack(spacing: 10) {
