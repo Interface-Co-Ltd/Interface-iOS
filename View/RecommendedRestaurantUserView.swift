@@ -11,47 +11,51 @@ struct RecommendedRestaurantUserView: View {
     @State var store: [Cooperation]
     
     var body: some View {
-        VStack {
-            ScrollView {
-                ForEach(store.indices) { index in
-                    NavigationLink {
-                        MyWebView(urlToLoad: store[index].link)
-                    } label: {
+        ScrollView {
+            ForEach(store.indices) { index in
+                NavigationLink {
+                    MyWebView(urlToLoad: store[index].link)
+                        .navigationTitle("\(store[index].name)의 Pick")
+                        .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
+                        .background(Color("bkg").ignoresSafeArea())
                         
-                        HStack {
-                            VStack(alignment: .leading, spacing: 10){
-                                HStack(alignment: .center){
-                                    Text("\(store[index].name)의 Pick")
-                                        .font(.system(size: 20))
-                                        .foregroundColor(.primary)
-                                        .bold()
-                                    
-                                    Spacer()
-                                    
-                                }
+                } label: {
+                    
+                    HStack {
+                        VStack(alignment: .leading, spacing: 10){
+                            HStack(alignment: .center){
+                                Text("\(store[index].name)의 Pick")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.primary)
+                                    .bold()
                                 
-                                Text("\(store[index].name)님의 세종대 맛집이에요.")
+                                Spacer()
+                                
                             }
-            
-                        Spacer()
-                            FavoriteButton(isSet: store[index].favorites?.contains{
-                                $0.key == UUID()
-                            } ?? false, store: store, cooperation: index)
+                            
+                            Text("\(store[index].name)님의 세종대 맛집이에요.")
                         }
-                        .cornerRadius(15)
-                        .frame(width: UIScreen.main.bounds.size.width - 80)
-                        .frame(height: 80)
-                        .padding(20)
-                    .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg")))
                         
+                        Spacer()
+                        FavoriteButton(isSet: store[index].favorites?.contains{
+                            $0.key == UUID()
+                        } ?? false, store: store, cooperation: index)
                     }
-                    .padding(10)
-                    .buttonStyle(PlainButtonStyle())
-                    .navigationTitle("맛집 추천")
+                    .cornerRadius(15)
+//                    .frame(width: UIScreen.main.bounds.size.width)
+//                    .frame(height: 80)
+                    .padding(20)
+                    .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg")))
+                    
                 }
+                .padding(10)
+                .buttonStyle(PlainButtonStyle())
+                
             }
-            
         }
+        .navigationTitle("맛집 추천")
+        .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
+        .background(Color("bkg").ignoresSafeArea())
     }
 }
 

@@ -19,8 +19,12 @@ struct MenuNotificationView: View {
                 Toggle("공지사항", isOn: $noticeIsOn)
                 Toggle("질문게시판", isOn: $QnAIsOn)
             }
-            .listRowBackground(Color(.sRGB, red: 220.0/255.0, green: 226.0/255.0, blue: 240.0/255.0, opacity: 1.0))
+            .listRowBackground(Color("sub-view-bkg-accent"))
         }
+        .navigationTitle("알림설정")
+        .navigationBarTitleDisplayMode(.inline)
+        .background(Color("bkg").ignoresSafeArea())
+        .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
     }
 }
 

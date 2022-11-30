@@ -56,6 +56,8 @@ struct NoticeView: View {
                 .padding()
             }
         }.navigationTitle("공지사항")
+            .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
+            .background(Color("bkg").ignoresSafeArea())
 //            .redacted(reason: isLoading ? .placeholder : [])
 //            .onAppear() {
 //                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

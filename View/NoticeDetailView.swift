@@ -37,6 +37,8 @@ struct NoticeDetailView: View {
                 }
             }
         }.navigationBarTitleDisplayMode(.inline)
+            .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
+            .background(Color("bkg").ignoresSafeArea())
     }
 }
 
