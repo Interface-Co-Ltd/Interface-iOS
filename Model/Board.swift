@@ -8,13 +8,16 @@
 import Foundation
 
 struct Board: Codable, Identifiable {
-    var id = UUID()
-    
-    let title: String
-    var content: String
-    let createdDate: Date
-    let modifiedDate: Date
-    let userID: String
+    let id = UUID()
+        let title, content, type, user: String
+        let images: [BoardImage]?
+        let createdDate, modifiedDate: Date
+
+        enum CodingKeys: String, CodingKey {
+            case id, title, content, type, user, images
+            case createdDate = "created_date"
+            case modifiedDate = "modified_date"
+        }
     
     //게시판 생성 날짜를 "22/11/03 오후 20:13"형태의 문자열로 반환
     func stringCreatedDate() -> String {
@@ -33,6 +36,11 @@ struct Board: Codable, Identifiable {
         
         return formatter.string(from: self.modifiedDate)
     }
+}
+
+struct BoardImage: Codable {
+    let uuid, uploadPath, fileName: String
+    let boardid: Int
 }
 
 //preview용 게시판 모델 생성자 사용시 코드 "Board.preview"
@@ -141,6 +149,8 @@ extension Board {
         mdt = cdt.addingTimeInterval(TimeInterval(3600 * 24 * Int.random(in: 0...1)))
         randomIndex = Int.random(in: 0..<4)
         
-        return Board(title: randomTitle[randomIndex], content: randomContent[randomIndex], createdDate: cdt, modifiedDate: mdt, userID: "동기창")
+//        return Board(title: randomTitle[randomIndex], content: randomContent[randomIndex], createdDate: cdt, modifiedDate: mdt, user: "동기창", type: "공지", images: nil)
+        
+        return Board(title: randomTitle[randomIndex], content: randomContent[randomIndex], type: "공지", user: "동기창", images: nil, createdDate: cdt, modifiedDate: mdt)
     }
 }

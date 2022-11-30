@@ -20,6 +20,8 @@ struct SubRecommendedRestaurantView: View {
                         .font(.subheadline)
                     
                     Spacer()
+                    
+                    Image(systemName: "chevron.right")
                 }
                 
             }

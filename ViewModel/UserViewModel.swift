@@ -16,9 +16,9 @@ class UserViewModel: ObservableObject {
     @Published var lastError: String?
     @Published var fetchCompleted = false
     
+    @Published var userList: [User] = []
+    
     let isPreviewViewModel: Bool
-    public private(set) var inputId: String = ""
-    public private(set) var inputPassword: String = ""
     
     init(preview: Bool = false) {
         isPreviewViewModel = preview
@@ -29,14 +29,7 @@ class UserViewModel: ObservableObject {
         //        let serverPassword = "8642"
         let viewModel = UserViewModel(preview: true)
         
-        viewModel.inputId = "HayunKwon"
-        viewModel.inputPassword = "8642"
-        
-        if viewModel.inputId == "HayunKwon" && viewModel.inputPassword == "8642" {
-            viewModel.currentUser = User.preview
-        } else {
-            viewModel.currentUser = User(userId: "알수없음", userName: "알수없음", gender: "알수없음", studentId: "알수없음", major: "알수없음", generation: "알수없음", phone: "알수없음", birthday: "알수없음", password: "알수없음", auth: "알수없음")
-        }
+        viewModel.currentUser = User.preview
         
         return viewModel
     }
@@ -75,9 +68,9 @@ class UserViewModel: ObservableObject {
                 case .finished:
                     print("sink finished")
             }
-        } receiveValue: { user in
+        } receiveValue: { users in
             DispatchQueue.main.async {
-                self.currentUser = user
+                self.userList = users
                 self.fetchCompleted = true
             }
         }

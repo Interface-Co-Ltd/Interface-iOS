@@ -8,21 +8,24 @@
 import SwiftUI
 
 struct LoginTextfieldView: View {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
     @Binding var showLoginView: Bool
-    @Binding var studentID: String
+    @Binding var studentId: String
     @Binding var password: String
     
     @EnvironmentObject var loginViewModel: LoginViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
         VStack {
             if #available(iOS 15.0, *) {
-                TextField("아이디", text: $studentID, prompt: Text("아이디"))
+                TextField("아이디", text: $studentId, prompt: Text("아이디"))
                     .textFieldStyle(.roundedBorder)
                     .textContentType(.username)
                     .padding()
             } else {
-                TextField("아이디", text: $studentID)
+                TextField("아이디", text: $studentId)
                     .textFieldStyle(.roundedBorder)
                     .textContentType(.username)
                     .padding()
@@ -49,8 +52,10 @@ struct LoginTextfieldView: View {
             }
             
             Button {
-                loginViewModel.studentID = studentID
+                loginViewModel.studentId = studentId
                 loginViewModel.password = password
+                loginViewModel.fcmToken = delegate.fcmToken
+                
                 loginViewModel.login()
             } label: {
                 Text("로그인")
@@ -72,7 +77,7 @@ struct LoginTextfieldView: View {
 
 struct LoginTextfieldView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginTextfieldView(showLoginView: .constant(true), studentID: .constant(""), password: .constant(""))
+        LoginTextfieldView(showLoginView: .constant(true), studentId: .constant(""), password: .constant(""))
             .environmentObject(LoginViewModel.preview)
     }
 }
