@@ -16,11 +16,11 @@ struct FavoriteButton: View {
         VStack {
             Button {
                 if isSet {
-                    store[cooperation].favoriteCount -= 1
+                    store[cooperation].favoriteCount? -= 1
                     store[cooperation].favorites?[UUID()] = nil
                     
                 } else {
-                    store[cooperation].favoriteCount += 1
+                    store[cooperation].favoriteCount? += 1
                     store[cooperation].favorites?[UUID()] = true
                 }
                 isSet.toggle()
@@ -30,8 +30,10 @@ struct FavoriteButton: View {
                     .foregroundColor(isSet ? .red: .gray)
             }
             
-            Text("\(store[cooperation].favoriteCount)")
-                .foregroundColor(.gray)
+            if let favoriteCount = store[cooperation].favoriteCount {
+                Text("\(favoriteCount)")
+                    .foregroundColor(.gray)
+            }
         }
     }
 }

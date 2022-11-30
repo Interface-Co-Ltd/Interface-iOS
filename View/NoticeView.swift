@@ -39,7 +39,7 @@ struct NoticeView: View {
                                 HStack {
                                     Text(board.stringCreatedDate())
                                     
-                                    Text("작성자 : \(board.userID)")
+                                    Text("작성자 : \(board.user)")
                                 }
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
@@ -56,12 +56,12 @@ struct NoticeView: View {
                 .padding()
             }
         }.navigationTitle("공지사항")
-            .redacted(reason: isLoading ? .placeholder : [])
-            .onAppear() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    isLoading = false
-                }
-            }
+//            .redacted(reason: isLoading ? .placeholder : [])
+//            .onAppear() {
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                    isLoading = false
+//                }
+//            }
     }
 }
 

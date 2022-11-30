@@ -18,13 +18,13 @@ enum API {
     var url: URL {
         switch self {
             case .fetchBoards:
-                return URL(string: "")!
+                return URL(string: "http://3.39.180.85:8080/api/v1/board")!
             case .fetchSchedules:
                 return URL(string: "http://3.39.180.85:8080/api/v1/schedule")!
             case .fetchUser:
-                return URL(string: "")!
+                return URL(string: "http://3.39.180.85:8080/api/v1/user")!
             case .fetchCooperations:
-                return URL(string: "")!
+                return URL(string: "http://3.39.180.85:8080/api/v1/cooperation")!
             case .fetchLogin:
                 return URL(string: "http://3.39.180.85:8080/api/v1/auth/login")!
         }
@@ -53,11 +53,14 @@ enum AuthenticationErorr: Error, CustomStringConvertible {
 
 enum ApiService {
     static func fetchBoards(token: String) -> AnyPublisher<[Board], ApiError> {
-        var request = URLRequest(url: API.fetchUser.url)
+        var request = URLRequest(url: API.fetchBoards.url)
         request.addValue(token, forHTTPHeaderField: "JWT")
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+        
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .formatted(formatter)
         
         return URLSession.shared.dataTaskPublisher(for: request).tryMap {
             guard let httpResponse = $0.response as? HTTPURLResponse else {
@@ -80,36 +83,7 @@ enum ApiService {
     static func fetchSchedules(token: String) -> AnyPublisher<[Schedule], ApiError> {
         var request = URLRequest(url: API.fetchSchedules.url)
         request.addValue(token, forHTTPHeaderField: "JWT")
-    
         
-//        let decoder = JSONDecoder()
-//        decoder.dateDecodingStrategy = .iso8601
-        
-        return URLSession.shared.dataTaskPublisher(for: request).tryMap {
-            guard let httpResponse = $0.response as? HTTPURLResponse else {
-                throw ApiError.invalidResponse
-            }
-            
-            guard httpResponse.statusCode == 200 else {
-                throw ApiError.failed(httpResponse.statusCode)
-            }
-            
-            return $0.data
-        }
-        .decode(type: [Schedule].self, decoder: JSONDecoder())
-        .mapError { error in
-            ApiError.convert(error: error)
-        }
-        .eraseToAnyPublisher()
-    }
-    
-    static func fetchNoneDateSchedules(token: String) -> AnyPublisher<[NoneDateSchedule], ApiError> {
-        var request = URLRequest(url: API.fetchSchedules.url)
-        request.addValue(token, forHTTPHeaderField: "JWT")
-        
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-//
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         
@@ -124,14 +98,14 @@ enum ApiService {
             
             return $0.data
         }
-        .decode(type: [NoneDateSchedule].self, decoder: JSONDecoder())
+        .decode(type: [Schedule].self, decoder: decoder)
         .mapError { error in
             ApiError.convert(error: error)
         }
         .eraseToAnyPublisher()
     }
     
-    static func fetchUser(token: String) -> AnyPublisher<User, ApiError> {
+    static func fetchUser(token: String) -> AnyPublisher<[User], ApiError> {
         var request = URLRequest(url: API.fetchUser.url)
         request.addValue(token, forHTTPHeaderField: "JWT")
         
@@ -146,7 +120,7 @@ enum ApiService {
             
             return $0.data
         }
-        .decode(type: User.self, decoder: JSONDecoder())
+        .decode(type: [User].self, decoder: JSONDecoder())
         .mapError { error in
             ApiError.convert(error: error)
         }
@@ -154,12 +128,12 @@ enum ApiService {
     }
 
     static func fetchCooperations(token: String) -> AnyPublisher<[Cooperation], ApiError> {
-        var request = URLRequest(url: API.fetchUser.url)
+        var request = URLRequest(url: API.fetchCooperations.url)
         request.addValue(token, forHTTPHeaderField: "JWT")
-        
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        
+//
+//        let decoder = JSONDecoder()
+//        decoder.dateDecodingStrategy = .iso8601
+//
         return URLSession.shared.dataTaskPublisher(for: request).tryMap {
             guard let httpResponse = $0.response as? HTTPURLResponse else {
                 throw ApiError.invalidResponse
@@ -171,7 +145,7 @@ enum ApiService {
             
             return $0.data
         }
-        .decode(type: [Cooperation].self, decoder: decoder)
+        .decode(type: [Cooperation].self, decoder: JSONDecoder())
         .mapError {error in
             ApiError.convert(error: error)
         }
@@ -205,34 +179,5 @@ enum ApiService {
             AuthenticationErorr.convert(error: error)
         }
         .eraseToAnyPublisher()
-    }
-}
-
-struct NoneDateSchedule: Codable, Identifiable {
-    let id = UUID()
-        let div, content, startDate, endDate: String
-        let allDay: Int
-
-        enum CodingKeys: String, CodingKey {
-            case id, div, content
-            case startDate = "start_date"
-            case endDate = "end_date"
-            case allDay = "all_day"
-        }
-    
-    func getStartDate() -> Date {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        
-        
-        return formatter.date(from: self.startDate) ?? NSDate.now as Date
-    }
-    
-    func getEndDate() -> Date {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        
-        
-        return formatter.date(from: self.endDate) ?? NSDate.now as Date
     }
 }
