@@ -29,7 +29,7 @@ struct SubNoticeView: View {
 //                            let notice: Board = (store.first)!
                             Text(item.title)
                                 .bold()
-                                .font(.subheadline)
+                                .font(.headline)
                                 .lineLimit(1)
                                 .padding(.bottom, 1)
                             HStack {
