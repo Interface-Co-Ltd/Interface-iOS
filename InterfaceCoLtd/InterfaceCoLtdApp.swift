@@ -48,18 +48,11 @@ struct InterfaceCoLtdApp: App {
                         }
                         
                         print("token : \(loginViewModel.token)")
-//                        userViewModel.studentId = loginViewModel.studentId
                         scheduleViewModel.fetch(token: loginViewModel.token)
                         boardViewModel.fetch(token: loginViewModel.token)
                         print(loginViewModel.studentId)
                         userViewModel.fetch(token: loginViewModel.token, studentId: loginViewModel.studentId)
                         cooperationViewModel.fetch(token: loginViewModel.token)
-                        
-//                        userViewModel.userList.forEach { user in
-//                            if user.studentId == loginViewModel.studentId {
-//                                userViewModel.currentUser = user
-//                            }
-//                        }
                     }
                     .modifier(VersionedNetworkDisconnetedAlert(isConnected: $networkManager.isConnected))
 //                    .frame(maxWidth: .infinity, maxHeight: .infinity)

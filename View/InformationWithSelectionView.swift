@@ -136,15 +136,17 @@ struct InformationWithSelectionView: View {
                 
                 //            self.isTapMainTabItem = isTapMainTabItem
                 
-                schedule.forEach { scheduleDate in
-                    scheduleDate.fromNowCurrentDate().forEach { day in
-                        date = date.addDay(value: day)
-                        if informations[date] == nil {
+                if informations[date] == nil {
+                    schedule.forEach { scheduleDate in
+                        scheduleDate.fromNowCurrentDate().forEach { day in
+                            date = date.addDay(value: day)
+                            //                        if informations[date] == nil {
                             informations[date] = []
+                            //                        }
+                            
+                            informations[date]?.append((scheduleDate.content, scheduleDate.div == "세종대학교" ? Color(red: 0.986, green: 0.107, blue: 0.281) : Color(hue: 0.581, saturation: 0.728, brightness: 0.98)))
+                            date = YearMonthDay.current
                         }
-                        
-                        informations[date]?.append((scheduleDate.content, scheduleDate.div == "세종대학교" ? Color(red: 0.986, green: 0.107, blue: 0.281) : Color(hue: 0.581, saturation: 0.728, brightness: 0.98)))
-                        date = YearMonthDay.current
                     }
                 }
                 

@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 class LoginViewModel: ObservableObject {
-    var password: String = ""
+    
     let isPreviewViewModel: Bool
     
     private var subscriptions = Set<AnyCancellable>()
@@ -19,6 +19,7 @@ class LoginViewModel: ObservableObject {
     @Published var lastError: String?
     
     @AppStorage("studentId") var studentId: String = ""
+    @AppStorage("password") var password: String = ""
     @AppStorage("token") var token: String = ""
     @AppStorage("isAuthenticated") var isAuthenticated: Bool = false
     @AppStorage("fcmToken") var fcmToken: String = ""

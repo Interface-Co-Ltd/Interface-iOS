@@ -9,11 +9,11 @@ import SwiftUI
 
 struct LoginView: View {
     @Binding var showLoginView: Bool
-    @State var studentId: String = ""
+    
     
     @EnvironmentObject var loginViewModel: LoginViewModel
     
-    
+    @State var studentId: String = ""
     @State var password: String = ""
     @State private var showLoginTextfieldView = false
     

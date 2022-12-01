@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct LoginTextfieldView: View {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
     @Binding var showLoginView: Bool
     @Binding var studentId: String
     @Binding var password: String
@@ -54,7 +52,6 @@ struct LoginTextfieldView: View {
             Button {
                 loginViewModel.studentId = studentId
                 loginViewModel.password = password
-                loginViewModel.fcmToken = delegate.fcmToken
                 
                 loginViewModel.login()
             } label: {
