@@ -11,7 +11,7 @@ import Combine
 enum API {
     case fetchBoards
     case fetchSchedules
-    case fetchUser
+    case fetchUser(studentId: String)
     case fetchCooperations
     case fetchLogin
     
@@ -21,8 +21,8 @@ enum API {
                 return URL(string: "http://3.39.180.85:8080/api/v1/board")!
             case .fetchSchedules:
                 return URL(string: "http://3.39.180.85:8080/api/v1/schedule")!
-            case .fetchUser:
-                return URL(string: "http://3.39.180.85:8080/api/v1/user")!
+            case .fetchUser(let stuendetId):
+                return URL(string: "http://3.39.180.85:8080/api/v1/user/findByStudentId?studentId=\(stuendetId)")!
             case .fetchCooperations:
                 return URL(string: "http://3.39.180.85:8080/api/v1/cooperation")!
             case .fetchLogin:
@@ -105,8 +105,9 @@ enum ApiService {
         .eraseToAnyPublisher()
     }
     
-    static func fetchUser(token: String) -> AnyPublisher<[User], ApiError> {
-        var request = URLRequest(url: API.fetchUser.url)
+    static func fetchUser(token: String, studentId: String) -> AnyPublisher<User, ApiError> {
+        print(API.fetchUser(studentId: studentId).url)
+        var request = URLRequest(url: API.fetchUser(studentId: studentId).url)
         request.addValue(token, forHTTPHeaderField: "JWT")
         
         return URLSession.shared.dataTaskPublisher(for: request).tryMap {
@@ -120,7 +121,7 @@ enum ApiService {
             
             return $0.data
         }
-        .decode(type: [User].self, decoder: JSONDecoder())
+        .decode(type: User.self, decoder: JSONDecoder())
         .mapError { error in
             ApiError.convert(error: error)
         }

@@ -16,7 +16,7 @@ class UserViewModel: ObservableObject {
     @Published var lastError: String?
     @Published var fetchCompleted = false
     
-    @Published var userList: [User] = []
+//    @Published var userList: [User] = []
     
     let isPreviewViewModel: Bool
     
@@ -34,12 +34,12 @@ class UserViewModel: ObservableObject {
         return viewModel
     }
     
-    func fetch(token: String) {
+    func fetch(token: String, studentId: String) {
         guard !isPreviewViewModel else {
             return
         }
         
-        ApiService.fetchUser(token: token).sink { completion in
+        ApiService.fetchUser(token: token, studentId: studentId).sink { completion in
             switch completion {
                 case .failure(let error):
                     switch error {
@@ -70,7 +70,8 @@ class UserViewModel: ObservableObject {
             }
         } receiveValue: { users in
             DispatchQueue.main.async {
-                self.userList = users
+//                self.userList = users
+                self.currentUser = users
                 self.fetchCompleted = true
             }
         }
