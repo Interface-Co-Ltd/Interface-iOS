@@ -16,8 +16,6 @@ class UserViewModel: ObservableObject {
     @Published var lastError: String?
     @Published var fetchCompleted = false
     
-//    @Published var userList: [User] = []
-    
     let isPreviewViewModel: Bool
     
     init(preview: Bool = false) {
@@ -25,8 +23,6 @@ class UserViewModel: ObservableObject {
     }
     
     static var preview: UserViewModel {
-        //        let serverId = "HayunKwon"
-        //        let serverPassword = "8642"
         let viewModel = UserViewModel(preview: true)
         
         viewModel.currentUser = User.preview
@@ -36,6 +32,7 @@ class UserViewModel: ObservableObject {
     
     func fetch(token: String, studentId: String) {
         guard !isPreviewViewModel else {
+            fetchCompleted = true
             return
         }
         
@@ -70,7 +67,6 @@ class UserViewModel: ObservableObject {
             }
         } receiveValue: { users in
             DispatchQueue.main.async {
-//                self.userList = users
                 self.currentUser = users
                 self.fetchCompleted = true
             }

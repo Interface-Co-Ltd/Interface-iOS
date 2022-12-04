@@ -16,6 +16,8 @@ enum SearchType {
 struct SearchView: View {
     @Binding var isSearching: Bool
     
+    @Environment(\.colorScheme) var displayMode
+    
     @EnvironmentObject var boardViewModel: BoardViewModel
     @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     
@@ -32,13 +34,19 @@ struct SearchView: View {
             HStack {
                 if #available(iOS 15.0, *) {
                     TextField("검색", text: $keyword, prompt: Text("검색어를 입력하세요."))
-                        .textFieldStyle(.roundedBorder)
+                        .padding(10)
+                        .background(displayMode == .dark ? Color("sub-view-bkg") : Color.white)
+                        .cornerRadius(15)
+                        .shadow(color: .black.opacity(0.15), radius: 3)
                         .textInputAutocapitalization(.never)
                         .disableAutocorrection(true)
                         .modifier(AutoTextFieldFocusModifier(focused: $textFieldFocused))
                 } else {
                     TextField("검색어를 입력하세요.", text: $keyword)
-                        .textFieldStyle(.roundedBorder)
+                        .padding(10)
+                        .background(displayMode == .dark ? Color("sub-view-bkg") : Color.white)
+                        .cornerRadius(15)
+                        .shadow(color: .black.opacity(0.15), radius: 3)
                         .disableAutocorrection(true)
                 }
                 

@@ -12,6 +12,8 @@ struct LoginTextfieldView: View {
     @Binding var studentId: String
     @Binding var password: String
     
+    @Environment(\.colorScheme) var displayMode
+    
     @EnvironmentObject var loginViewModel: LoginViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     
@@ -19,11 +21,20 @@ struct LoginTextfieldView: View {
         VStack {
             if #available(iOS 15.0, *) {
                 TextField("아이디", text: $studentId, prompt: Text("아이디"))
-                    .textFieldStyle(.roundedBorder)
+                    .padding(10)
+                    .background(displayMode == .dark ? Color("sub-view-bkg") : Color.white)
+                    .cornerRadius(15)
+                    .shadow(color: .black.opacity(0.15), radius: 3)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
                     .textContentType(.username)
                     .padding()
             } else {
                 TextField("아이디", text: $studentId)
+                    .padding(10)
+                    .background(displayMode == .dark ? Color("sub-view-bkg") : Color.white)
+                    .cornerRadius(15)
+                    .shadow(color: .black.opacity(0.15), radius: 3)
                     .textFieldStyle(.roundedBorder)
                     .textContentType(.username)
                     .padding()
@@ -32,13 +43,20 @@ struct LoginTextfieldView: View {
             
             if #available(iOS 15.0, *) {
                 SecureField("비밀번호", text: $password, prompt: Text("비밀번호"))
-                    .textFieldStyle(.roundedBorder)
+                    .padding(10)
+                    .background(displayMode == .dark ? Color("sub-view-bkg") : Color.white)
+                    .cornerRadius(15)
+                    .shadow(color: .black.opacity(0.15), radius: 3)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
                     .textContentType(.password)
                     .padding()
             } else {
                 SecureField("비밀번호", text: $password)
-                    .textFieldStyle(.roundedBorder)
-                    .textContentType(.password)
+                    .padding(10)
+                    .background(displayMode == .dark ? Color("sub-view-bkg") : Color.white)
+                    .cornerRadius(15)
+                    .shadow(color: .black.opacity(0.15), radius: 3)
                     .padding()
             }
             

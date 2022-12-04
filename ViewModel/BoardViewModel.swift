@@ -27,9 +27,7 @@ class BoardViewModel:  ObservableObject {
     
     static var preview: BoardViewModel {
         let viewModel = BoardViewModel(preview: true)
-        viewModel.boardList = (0..<10).map({ _ in
-            Board.preview
-        })
+        viewModel.boardList = Board.preview
         
         //게시판을 날짜 순으로 정렬
         viewModel.boardList?.sort { lhs, rhs in
@@ -41,6 +39,7 @@ class BoardViewModel:  ObservableObject {
     
     func fetch(token: String) {
         guard !isPreviewViewModel else {
+            fetchCompleted = true
             return
         }
         

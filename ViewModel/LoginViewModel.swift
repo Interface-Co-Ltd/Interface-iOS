@@ -117,12 +117,4 @@ class LoginViewModel: ObservableObject {
             print(error)
         }
     }
-    
-//    func logout() {
-//        token = ""
-//        
-//        self.isAuthenticated = false
-//        
-//        print(isAuthenticated)
-//    }
 }

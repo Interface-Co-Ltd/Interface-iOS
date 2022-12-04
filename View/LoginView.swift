@@ -10,7 +10,6 @@ import SwiftUI
 struct LoginView: View {
     @Binding var showLoginView: Bool
     
-    
     @EnvironmentObject var loginViewModel: LoginViewModel
     
     @State var studentId: String = ""
@@ -26,17 +25,15 @@ struct LoginView: View {
             VStack {
                 Spacer()
                 
-                Image("interface-logo-reverse")
+                Image("interface-logo-white")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .preferredColorScheme(.light)
                     .frame(width: 250, height: 250)
                 
                 if showLoginTextfieldView {
                     Spacer()
                     
                     LoginTextfieldView(showLoginView: $showLoginView, studentId: $studentId, password: $password)
-//                        .preferredColorScheme(.dark)
                     
                     Spacer()
                     
@@ -53,7 +50,6 @@ struct LoginView: View {
             .frame(maxWidth: 300)
         }
         .ignoresSafeArea(showLoginTextfieldView ? [] : .all)
-//        .preferredColorScheme(.light)
         .onAppear() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation(.easeInOut) {

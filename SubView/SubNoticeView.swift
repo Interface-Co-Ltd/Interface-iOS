@@ -33,7 +33,7 @@ struct SubNoticeView: View {
                                 .lineLimit(1)
                                 .padding(.bottom, 1)
                             HStack {
-                                Text(item.createdDate, style: .date)
+                                Text(item.stringCreatedDate())
                                 Text("| 작성자: " + item.user)
                                 
                             }.font(.caption)

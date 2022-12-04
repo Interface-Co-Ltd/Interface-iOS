@@ -33,6 +33,7 @@ class CooperationViewModel: ObservableObject {
     
     func fetch(token: String) {
         guard !isPreviewViewModel else {
+            fetchCompleted = true
             return
         }
         

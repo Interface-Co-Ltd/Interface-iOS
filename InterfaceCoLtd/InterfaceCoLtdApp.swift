@@ -15,15 +15,14 @@ struct InterfaceCoLtdApp: App {
     
     @AppStorage("displayMode") private var displayStyle = UIUserInterfaceStyle.unspecified
         
-    @StateObject var boardViewModel = BoardViewModel()
-    @StateObject var userViewModel = UserViewModel()
-    @StateObject var scheduleViewModel = ScheduleViewModel()
-    @StateObject var cooperationViewModel = CooperationViewModel()
-    @StateObject private var loginViewModel = LoginViewModel()
+    @StateObject var boardViewModel = BoardViewModel.preview
+    @StateObject var userViewModel = UserViewModel.preview
+    @StateObject var scheduleViewModel = ScheduleViewModel.preview
+    @StateObject var cooperationViewModel = CooperationViewModel.preview
+    @StateObject private var loginViewModel = LoginViewModel.preview
     @StateObject var networkManager = NetworkManager()
     
     @AppStorage("showLoginView") var showLoginView: Bool = true
-//    @AppStorage("studentId") var studentId: String = ""
     
     var body: some Scene {
         WindowGroup {
@@ -32,8 +31,16 @@ struct InterfaceCoLtdApp: App {
                     .environmentObject(loginViewModel)
                     .modifier(VersionedNetworkDisconnetedAlert(isConnected: $networkManager.isConnected))
                     .onAppear {
+                        UIApplication.shared.windows.forEach { window in
+                            window.overrideUserInterfaceStyle = displayStyle
+                        }
+                        
                         loginViewModel.fcmToken = delegate.fcmToken
                         print("onappear : \(delegate.fcmToken)")
+                        
+                        if loginViewModel.isAuthenticated {
+                            showLoginView = false
+                        }
                     }
             } else {
                 MainTabView(delegate: delegate, displayStyle: $displayStyle, showLoginView: $showLoginView)
@@ -48,15 +55,8 @@ struct InterfaceCoLtdApp: App {
                         }
                         
                         print("token : \(loginViewModel.token)")
-                        scheduleViewModel.fetch(token: loginViewModel.token)
-                        boardViewModel.fetch(token: loginViewModel.token)
-                        print(loginViewModel.studentId)
-                        userViewModel.fetch(token: loginViewModel.token, studentId: loginViewModel.studentId)
-                        cooperationViewModel.fetch(token: loginViewModel.token)
                     }
                     .modifier(VersionedNetworkDisconnetedAlert(isConnected: $networkManager.isConnected))
-//                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                    .modifier(DynamicIslandNotificationModifier())
             }
         }
         

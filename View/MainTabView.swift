@@ -10,6 +10,10 @@ import SwiftUI
 struct MainTabView: View {
     var delegate: AppDelegate
     
+    @EnvironmentObject var boardViewModel: BoardViewModel
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
+    @EnvironmentObject var cooperationViewModel: CooperationViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     @EnvironmentObject var loginViewModel: LoginViewModel
     
     @Binding var displayStyle: UIUserInterfaceStyle
@@ -19,6 +23,12 @@ struct MainTabView: View {
         TabView {
             Group {
                 MainView(delegate: delegate)
+                    .onAppear() {
+                        scheduleViewModel.fetch(token: loginViewModel.token)
+                        boardViewModel.fetch(token: loginViewModel.token)
+                        userViewModel.fetch(token: loginViewModel.token, studentId: loginViewModel.studentId)
+                        cooperationViewModel.fetch(token: loginViewModel.token)
+                    }
                     .tabItem {
                         Label("메인", systemImage: "house")
                     }

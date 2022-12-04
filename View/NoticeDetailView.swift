@@ -28,7 +28,7 @@ struct NoticeDetailView: View {
                         Spacer(minLength: 0)
                     }
                     HStack {
-                        Text(notice.createdDate, style: .date)
+                        Text(notice.stringCreatedDate())
                         Text("| 작성자: " + notice.user)
                         Spacer()
                     }.font(.footnote)
