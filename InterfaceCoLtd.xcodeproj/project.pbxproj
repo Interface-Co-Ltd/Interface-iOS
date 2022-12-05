@@ -59,6 +59,7 @@
 		C5B823932913AF500021FAF6 /* SwiftUICalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C5B823922913AF500021FAF6 /* SwiftUICalendar */; };
 		C5B823952913AF5D0021FAF6 /* InformationWithSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B823942913AF5D0021FAF6 /* InformationWithSelectionView.swift */; };
 		C5B823972913D0E40021FAF6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B823962913D0E30021FAF6 /* MainTabView.swift */; };
+		C5CE5E78293DC321004E10BE /* NoticeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CE5E77293DC321004E10BE /* NoticeCellView.swift */; };
 		C5DF7F2B292CFA1600BF3712 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DF7F2A292CFA1600BF3712 /* ApiService.swift */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +136,7 @@
 		C5B8238F2913AF1E0021FAF6 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C5B823942913AF5D0021FAF6 /* InformationWithSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationWithSelectionView.swift; sourceTree = "<group>"; };
 		C5B823962913D0E30021FAF6 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		C5CE5E77293DC321004E10BE /* NoticeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCellView.swift; sourceTree = "<group>"; };
 		C5DF7F2A292CFA1600BF3712 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		C5EB7AA82915647E00B786DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +180,8 @@
 		C5B8233A2913ADCF0021FAF6 = {
 			isa = PBXGroup;
 			children = (
+				C5CE5E76293DC2FD004E10BE /* CellView */,
+				C5B8237A2913AE500021FAF6 /* ConponentView */,
 				C5DF7F29292CF9F100BF3712 /* Api */,
 				C5B8238C2913AEC70021FAF6 /* SubView */,
 				C5B8238A2913AEA40021FAF6 /* View */,
@@ -278,7 +282,6 @@
 				C5A58CFF29339BB0001D1CB1 /* LoginRequest.swift */,
 				C5A58D012933A9D4001D1CB1 /* LoginResponse.swift */,
 				C58251FD293522AB006F7BF8 /* NotificationValue.swift */,
-				C5B8237A2913AE500021FAF6 /* ConponentView */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -315,6 +318,14 @@
 				B931B590292349B700059E4B /* SubIDCardView.swift */,
 			);
 			path = SubView;
+			sourceTree = "<group>";
+		};
+		C5CE5E76293DC2FD004E10BE /* CellView */ = {
+			isa = PBXGroup;
+			children = (
+				C5CE5E77293DC321004E10BE /* NoticeCellView.swift */,
+			);
+			path = CellView;
 			sourceTree = "<group>";
 		};
 		C5DF7F29292CF9F100BF3712 /* Api */ = {
@@ -483,6 +494,7 @@
 				C551703E2923D8D50052763B /* ApiError.swift in Sources */,
 				C58F4D272925FB55004A53CD /* CommunityView.swift in Sources */,
 				C5B823872913AE980021FAF6 /* Schedule.swift in Sources */,
+				C5CE5E78293DC321004E10BE /* NoticeCellView.swift in Sources */,
 				01065CAC291C17320067C9AC /* NoticeView.swift in Sources */,
 				C5B823862913AE980021FAF6 /* Board.swift in Sources */,
 				016EEB5029360DCF004C013A /* FavoriteButton.swift in Sources */,

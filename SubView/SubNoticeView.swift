@@ -26,7 +26,6 @@ struct SubNoticeView: View {
                 ForEach(store[0...1]) { item in
                     HStack {
                         VStack(alignment: .leading) {
-//                            let notice: Board = (store.first)!
                             Text(item.title)
                                 .bold()
                                 .font(.headline)
@@ -36,7 +35,7 @@ struct SubNoticeView: View {
                                 Text(item.stringCreatedDate())
                                 Text("| 작성자: " + item.user)
                                 
-                            }.font(.caption)
+                            }.font(.caption2)
                                 .foregroundColor(.secondary)
                         }
                         Spacer()

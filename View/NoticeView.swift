@@ -11,59 +11,32 @@ struct NoticeView: View {
     @State var isLoading = true
     @State var store: [Board]
     
+    private let columns = [
+        GridItem(.adaptive(minimum: 350, maximum: .infinity), spacing: nil, alignment: .top)
+    ]
+    
     var body: some View {
-        VStack {
+        GeometryReader { reader in
             ScrollView {
-                LazyVStack(alignment: .leading, spacing: 35) {
+                LazyVGrid(columns: columns, alignment: .leading, spacing: 30) {
+                    //            LazyVStack {
                     ForEach(store) { board in
                         NavigationLink {
                             NoticeDetailView(notice: board)
                         } label: {
-                            VStack(alignment: .leading, spacing: 5) {
-                                HStack(spacing: 0) {
-                                    Text(board.title)
-                                        .font(.title3)
-                                        .fontWeight(.semibold)
-                                    
-                                    Spacer()
-                                }
-                                
-                                Spacer()
-                                
-                                Text(board.content)
-                                    .multilineTextAlignment(.leading)
-                                    .lineLimit(3)
-                                    .font(.footnote)
-                                Spacer()
-                                
-                                HStack {
-                                    Text(board.stringCreatedDate())
-                                    
-                                    Text("작성자 : \(board.user)")
-                                }
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                            }
-                            .padding(.all, 25)
-                            .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg-accent")))
+                            NoticeCellView(notice: board)
                         }
                         .navigationTitle("공지사항")
                         .buttonStyle(ScaledButtonStyle())
                         .foregroundColor(.primary)
                     }
                 }
-                
                 .padding()
             }
-        }.navigationTitle("공지사항")
-            .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
-            .background(Color("bkg").ignoresSafeArea())
-//            .redacted(reason: isLoading ? .placeholder : [])
-//            .onAppear() {
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                    isLoading = false
-//                }
-//            }
+        }
+        .navigationTitle("공지사항")
+        .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
+        .background(Color("bkg").ignoresSafeArea())
     }
 }
 

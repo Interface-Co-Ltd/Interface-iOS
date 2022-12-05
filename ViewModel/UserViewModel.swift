@@ -36,7 +36,7 @@ class UserViewModel: ObservableObject {
             return
         }
         
-        ApiService.fetchUser(token: token, studentId: studentId).sink { completion in
+        ApiService.fetchUser(token: token, studentId: studentId).receive(on: DispatchQueue.global()).sink { completion in
             switch completion {
                 case .failure(let error):
                     switch error {

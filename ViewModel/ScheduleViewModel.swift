@@ -53,7 +53,7 @@ class ScheduleViewModel: ObservableObject {
             return
         }
         
-        ApiService.fetchSchedules(token: token).sink { completion in
+        ApiService.fetchSchedules(token: token).receive(on: DispatchQueue.global()).sink { completion in
             switch completion {
                 case .failure(let error):
                     switch error {

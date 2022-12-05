@@ -51,21 +51,17 @@ struct VersionedTabBarColorModifier: ViewModifier {
 
 //sub view 배경 지정 modifier
 struct VersionedSubViewBackgroundModifier: ViewModifier {
-    private let color: Color
-    
-    init(color: Color) {
-        self.color = color
-    }
+    let color: Color
     
     func body(content: Content) -> some View {
         //iOS 버전 분기
         if #available(iOS 15.0, *) {
             content
                 .background {
-                    RoundedRectangle(cornerRadius: 20.0)
-                        .foregroundColor(color)
-                        .shadow(color: .black.opacity(0.15), radius: 3)
-                }
+                        RoundedRectangle(cornerRadius: 20.0)
+                            .foregroundColor(color)
+                            .shadow(color: .black.opacity(0.15), radius: 3)
+                    }
         } else {
             content
                 .background(color)

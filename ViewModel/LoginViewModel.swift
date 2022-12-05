@@ -48,7 +48,7 @@ class LoginViewModel: ObservableObject {
             return
         }
         
-        ApiService.fetchLogin(studentID: studentId, password: password, fcmToken: fcmToken).sink { completion in
+        ApiService.fetchLogin(studentID: studentId, password: password, fcmToken: fcmToken).receive(on: DispatchQueue(label: "responseQueue")).sink { completion in
             switch completion {
                 case .failure(let error):
                     switch error {

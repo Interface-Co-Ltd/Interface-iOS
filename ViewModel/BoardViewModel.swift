@@ -43,7 +43,7 @@ class BoardViewModel:  ObservableObject {
             return
         }
         
-        ApiService.fetchBoards(token: token).sink { completion in
+        ApiService.fetchBoards(token: token).receive(on: DispatchQueue.global()).sink { completion in
             switch completion {
                 case .failure(let error):
                     switch error {

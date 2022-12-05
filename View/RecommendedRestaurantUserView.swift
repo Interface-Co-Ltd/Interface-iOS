@@ -15,7 +15,7 @@ struct RecommendedRestaurantUserView: View {
             ForEach(store.indices) { index in
                 NavigationLink {
                     MyWebView(urlToLoad: store[index].link)
-                        .navigationTitle("\(store[index].name)의 Pick")
+//                        .navigationTitle("\(store[index].name)의 Pick")
                         .modifier(VersionedNavigationBarColorModifier(color: Color("bkg")))
                         .background(Color("bkg").ignoresSafeArea())
                         
@@ -41,7 +41,7 @@ struct RecommendedRestaurantUserView: View {
                             $0.key == UUID()
                         } ?? false, store: store, cooperation: index)
                     }
-                    .cornerRadius(15)
+//                    .cornerRadius(15)
 //                    .frame(width: UIScreen.main.bounds.size.width)
 //                    .frame(height: 80)
                     .padding(20)

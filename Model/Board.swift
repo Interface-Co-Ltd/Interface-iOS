@@ -10,7 +10,8 @@ import Foundation
 struct Board: Codable, Identifiable {
     let id = UUID()
         let title, content, type, user: String
-        let images: [BoardImage]?
+//        let images: [BoardImage]?
+    let images: String?
         let createdDate, modifiedDate: Date
 
         enum CodingKeys: String, CodingKey {
@@ -38,10 +39,10 @@ struct Board: Codable, Identifiable {
     }
 }
 
-struct BoardImage: Codable {
-    let uuid, uploadPath, fileName: String
-    let boardid: Int
-}
+//struct BoardImage: Codable {
+//    let uuid, uploadPath, fileName: String
+//    let boardid: Int
+//}
 
 //preview용 게시판 모델 생성자 사용시 코드 "Board.preview"
 extension Board {

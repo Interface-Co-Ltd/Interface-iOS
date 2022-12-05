@@ -12,23 +12,22 @@ struct NotificationHistoryView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVStack(alignment: .leading, spacing: 35) {
+                LazyVStack(alignment: .leading, spacing: 20) {
                     ForEach(0..<10) { _ in
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
                                 Text("공지사항")
-                                    .font(.title3)
+                                    .font(.headline)
                                     .fontWeight(.semibold)
                                 
                                 Spacer()
                             }
-                            .padding(.leading)
                             
                             HStack {
                                 VStack(alignment: .leading, spacing: 5.0) {
                                     
                                     Text("2학기 사물함 배정")
-                                        .font(.headline)
+                                        .font(.subheadline)
                                         .fontWeight(.semibold)
                                     
                                     Text("22/07/21 21:33")
@@ -38,9 +37,9 @@ struct NotificationHistoryView: View {
                                 
                                 Spacer()
                             }
-                            .padding(.all, 25)
-                            .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg-accent")))
                         }
+                        .padding(.all, 25)
+                        .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg")))
                     }
                 }
                 .padding()

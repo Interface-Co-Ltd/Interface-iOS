@@ -125,10 +125,12 @@ extension AppDelegate: MessagingDelegate {
             return
         }
         
-        LoginViewModel().fcmToken = token
-        print("token \(token)")
-        self.fcmToken = token
-        print("fcmToken \(self.fcmToken)")
+        DispatchQueue(label: "loginResponse").async {
+            LoginViewModel().fcmToken = token
+            print("token \(token)")
+            self.fcmToken = token
+            print("fcmToken \(self.fcmToken)")
+        }
         
     }
 }

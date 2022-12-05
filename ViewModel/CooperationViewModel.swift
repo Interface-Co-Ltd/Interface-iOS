@@ -37,7 +37,7 @@ class CooperationViewModel: ObservableObject {
             return
         }
         
-        ApiService.fetchCooperations(token: token).sink { completion in
+        ApiService.fetchCooperations(token: token).receive(on: DispatchQueue.global()).sink { completion in
             switch completion {
                 case .failure(let error):
                     switch error {
