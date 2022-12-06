@@ -110,7 +110,9 @@ struct SearchView: View {
                     LazyVStack {
                         ForEach(matchedBoardList) { item in
                             NavigationLink {
-                                NoticeDetailView(notice: item)
+//                                GeometryReader {
+//                                    NoticeDetailView(notice: item, safeArea: $0.safeAreaInsets, size: $0.size)
+//                                }
                             } label: {
                                 VStack(spacing: 10) {
                                     Rectangle()

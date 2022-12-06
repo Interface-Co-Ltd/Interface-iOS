@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		01065CA8291C17320067C9AC /* MenuNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065C9F291C17310067C9AC /* MenuNotificationView.swift */; };
 		01065CAC291C17320067C9AC /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CA3291C17310067C9AC /* NoticeView.swift */; };
-		01065CAD291C17320067C9AC /* NoticeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CA4291C17320067C9AC /* NoticeDetailView.swift */; };
 		01065CAF291C17320067C9AC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CA6291C17320067C9AC /* MenuView.swift */; };
 		01065CBA291C215F0067C9AC /* SubRecommendedRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CB9291C215F0067C9AC /* SubRecommendedRestaurantView.swift */; };
 		01065CBC291C244E0067C9AC /* SubNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01065CBB291C244E0067C9AC /* SubNoticeView.swift */; };
@@ -61,6 +60,7 @@
 		C5B823972913D0E40021FAF6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B823962913D0E30021FAF6 /* MainTabView.swift */; };
 		C5CE5E78293DC321004E10BE /* NoticeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CE5E77293DC321004E10BE /* NoticeCellView.swift */; };
 		C5DF7F2B292CFA1600BF3712 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DF7F2A292CFA1600BF3712 /* ApiService.swift */; };
+		C5F59F51293F2E5100386EF8 /* NoticeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F59F50293F2E5100386EF8 /* NoticeDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +83,6 @@
 /* Begin PBXFileReference section */
 		01065C9F291C17310067C9AC /* MenuNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNotificationView.swift; sourceTree = "<group>"; };
 		01065CA3291C17310067C9AC /* NoticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
-		01065CA4291C17320067C9AC /* NoticeDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailView.swift; sourceTree = "<group>"; };
 		01065CA6291C17320067C9AC /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		01065CB9291C215F0067C9AC /* SubRecommendedRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubRecommendedRestaurantView.swift; sourceTree = "<group>"; };
 		01065CBB291C244E0067C9AC /* SubNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubNoticeView.swift; sourceTree = "<group>"; };
@@ -139,6 +138,7 @@
 		C5CE5E77293DC321004E10BE /* NoticeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCellView.swift; sourceTree = "<group>"; };
 		C5DF7F2A292CFA1600BF3712 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		C5EB7AA82915647E00B786DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C5F59F50293F2E5100386EF8 /* NoticeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,8 +296,8 @@
 				C5B823942913AF5D0021FAF6 /* InformationWithSelectionView.swift */,
 				01065C9F291C17310067C9AC /* MenuNotificationView.swift */,
 				01065CA6291C17320067C9AC /* MenuView.swift */,
+				C5F59F50293F2E5100386EF8 /* NoticeDetailView.swift */,
 				01065CA3291C17310067C9AC /* NoticeView.swift */,
-				01065CA4291C17320067C9AC /* NoticeDetailView.swift */,
 				010E508A292521D90027D3D9 /* RecommendedRestaurantUserView.swift */,
 				C57A0292291D387F00D585D6 /* SearchView.swift */,
 				B931B59229234EB300059E4B /* IDcardDetailView.swift */,
@@ -487,6 +487,7 @@
 				C5A58D042933AB6B001D1CB1 /* LoginViewModel.swift in Sources */,
 				01065CBA291C215F0067C9AC /* SubRecommendedRestaurantView.swift in Sources */,
 				C5B823772913AE460021FAF6 /* CooperationViewModel.swift in Sources */,
+				C5F59F51293F2E5100386EF8 /* NoticeDetailView.swift in Sources */,
 				C5A58CFE293366C2001D1CB1 /* LoginTextfieldView.swift in Sources */,
 				C58251FC29351D47006F7BF8 /* DynamicIslandNotification.swift in Sources */,
 				C59D919129262392007B179E /* NoticationHistoryView.swift in Sources */,
@@ -499,7 +500,6 @@
 				C5B823862913AE980021FAF6 /* Board.swift in Sources */,
 				016EEB5029360DCF004C013A /* FavoriteButton.swift in Sources */,
 				B931B59329234EB300059E4B /* IDcardDetailView.swift in Sources */,
-				01065CAD291C17320067C9AC /* NoticeDetailView.swift in Sources */,
 				C5A58CF529320036001D1CB1 /* AppDelegate.swift in Sources */,
 				C5A58D0029339BB0001D1CB1 /* LoginRequest.swift in Sources */,
 				C5B823792913AE460021FAF6 /* ScheduleViewModel.swift in Sources */,

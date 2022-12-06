@@ -11,6 +11,10 @@ struct NoticeCellView: View {
     @Environment(\.colorScheme) var displayMode
     
     @State var notice: Board
+    @State var showDetailView: Bool = false
+    
+    var safeArea: EdgeInsets
+    var size: CGSize
     
     var body: some View {
         ZStack {
@@ -25,14 +29,12 @@ struct NoticeCellView: View {
                     }
                     .clipped()
                     
-                    LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(displayMode == .dark ? 0.8 : 0.6)]), startPoint: .top, endPoint: .bottom)
+                    LinearGradient(gradient: Gradient(colors: [Color.clear, Color("bkg").opacity(0.8)]), startPoint: .top, endPoint: .bottom)
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                .shadow(radius: 20)
             }
             
             VStack(alignment: .leading, spacing: 10) {
-                
                 if notice.images != nil {
                     Spacer()
                 }
@@ -41,7 +43,6 @@ struct NoticeCellView: View {
                     Text(notice.title)
                         .font(.title3)
                         .fontWeight(.semibold)
-                        .foregroundColor(notice.images == nil ? .primary : .white)
                     
                     Spacer()
                 }
@@ -59,17 +60,25 @@ struct NoticeCellView: View {
                     Text("작성자 : \(notice.user)")
                 }
                 .font(.caption2)
-                .foregroundColor(notice.images == nil ? .secondary : .white.opacity(0.8))
+                .foregroundColor(.secondary)
             }
             .padding(notice.images == nil ? 25 : 15)
         }
+        .onTapGesture {
+            showDetailView = true
+        }
         .frame(minHeight: notice.images != nil ? 200 : 0)
         .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg")))
+        .fullScreenCover(isPresented: $showDetailView) {
+            NoticeDetailView(notice: notice, showDetailView: $showDetailView, safeArea: safeArea, size: size)
+        }
     }
 }
 
 struct NoticeCellView_Previews: PreviewProvider {
     static var previews: some View {
-        NoticeCellView(notice: BoardViewModel.preview.boardList![0])
+        GeometryReader { reader in
+            NoticeCellView(notice: BoardViewModel.preview.boardList![0], safeArea: reader.safeAreaInsets, size: reader.size)
+        }
     }
 }

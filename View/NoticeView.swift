@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct NoticeView: View {
-    @State var isLoading = true
     @State var store: [Board]
     
     private let columns = [
@@ -19,14 +18,12 @@ struct NoticeView: View {
         GeometryReader { reader in
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 30) {
-                    //            LazyVStack {
-                    ForEach(store) { board in
-                        NavigationLink {
-                            NoticeDetailView(notice: board)
+                    ForEach(store) { notice in
+                        Button {
+                            
                         } label: {
-                            NoticeCellView(notice: board)
+                            NoticeCellView(notice: notice, safeArea: reader.safeAreaInsets, size: reader.size)
                         }
-                        .navigationTitle("공지사항")
                         .buttonStyle(ScaledButtonStyle())
                         .foregroundColor(.primary)
                     }
