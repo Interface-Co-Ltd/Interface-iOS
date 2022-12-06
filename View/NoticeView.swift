@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct NoticeView: View {
-    @State var isLoading = true
+    @Namespace var heroEffect
+    
     @State var store: [Board]
+    @State var showDetailView = false
     
     var body: some View {
         VStack {
@@ -46,10 +48,28 @@ struct NoticeView: View {
                             }
                             .padding(.all, 25)
                             .modifier(VersionedSubViewBackgroundModifier(color: Color("sub-view-bkg-accent")))
+                LazyVGrid(columns: columns, alignment: .leading, spacing: 30) {
+                    ForEach(store) { board in
+                        if #available(iOS 15.0, *) {
+                            Button {
+                                showDetailView.toggle()
+                            } label: {
+                                NoticeCellView(notice: board)
+                            }
+                            .buttonStyle(ScaledButtonStyle())
+                            .foregroundColor(.primary)
+                            
+                        } else {
+                            NavigationLink {
+                                GeometryReader {
+                                    NoticeDetailView(notice: board, safeArea: $0.safeAreaInsets, size: $0.size)
+                                }
+                            } label: {
+                                NoticeCellView(notice: board)
+                            }
+                            .buttonStyle(ScaledButtonStyle())
+                            .foregroundColor(.primary)
                         }
-                        .navigationTitle("공지사항")
-                        .buttonStyle(ScaledButtonStyle())
-                        .foregroundColor(.primary)
                     }
                 }
                 

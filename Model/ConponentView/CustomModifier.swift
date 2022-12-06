@@ -209,3 +209,25 @@ struct VersionedNetworkDisconnetedAlert: ViewModifier {
         }
     }
 }
+
+struct ShowHeroEffectNoticeDetail: ViewModifier {
+    @Binding var showDetailView: Bool
+    
+    @State var notice: Board
+    
+    var safeArea: EdgeInsets
+    var size: CGSize
+    
+    func body(content: Content) -> some View {
+        if #available(iOS 15.0, *) {
+            content
+                .overlay {
+                    if showDetailView {
+                        NoticeDetailView(notice: notice, safeArea: safeArea, size: size)
+                    }
+                }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+}
